@@ -19,7 +19,6 @@ export function Hero() {
         fill
         sizes="100vw"
         preload
-        quality={70}
         aria-hidden="true"
         className="-z-20 object-cover"
       />
@@ -67,7 +66,17 @@ export function Hero() {
               variant="outline"
               className="min-h-11 border-white/30 bg-white/10 text-white backdrop-blur-sm hover:bg-white/20 hover:text-white"
             >
-              <Link href={site.resumePath} target="_blank" rel="noopener">
+              {/*
+                prefetch={false} is load-bearing: /resume redirects to the PDF,
+                so Next's default viewport prefetch would download the whole
+                231KB file on every page load.
+              */}
+              <Link
+                href={site.resumePath}
+                target="_blank"
+                rel="noopener"
+                prefetch={false}
+              >
                 <FileTextIcon className="size-4" />
                 Résumé
               </Link>

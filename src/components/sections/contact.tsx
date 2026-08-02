@@ -54,10 +54,12 @@ export function Contact() {
                     <MailIcon className="size-4" aria-hidden="true" />
                     Email me
                   </Link>
+                  {/* prefetch={false}: /resume redirects to a 231KB PDF. */}
                   <Link
                     href={site.resumePath}
                     target="_blank"
                     rel="noopener"
+                    prefetch={false}
                     className="inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-lg border border-white/30 bg-white/10 px-5 text-sm font-bold text-white transition-colors duration-200 hover:bg-white/20"
                   >
                     <FileTextIcon className="size-4" aria-hidden="true" />

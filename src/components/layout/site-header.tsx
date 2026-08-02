@@ -74,11 +74,19 @@ export function SiteHeader() {
               size="sm"
               onClick={() => setPaletteOpen(true)}
               className="text-muted-foreground hidden h-9 gap-2 pr-1.5 pl-2.5 sm:inline-flex"
-              aria-label="Open command palette"
             >
               <SearchIcon className="size-3.5" />
               <span className="text-xs">Search</span>
-              <kbd className="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center rounded border px-1.5 font-mono text-[0.65rem] font-medium">
+              {/*
+                aria-hidden keeps the accessible name exactly "Search". With
+                the shortcut included, the visible text would no longer be
+                contained in the accessible name and voice control ("click
+                Search") would stop working.
+              */}
+              <kbd
+                aria-hidden="true"
+                className="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center rounded border px-1.5 font-mono text-[0.65rem] font-medium"
+              >
                 {shortcut ?? " "}
               </kbd>
             </Button>
