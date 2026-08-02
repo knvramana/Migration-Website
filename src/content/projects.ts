@@ -1,35 +1,39 @@
 export interface Project {
-  /** Rendered as an oversized mono watermark behind the title. */
-  number: string;
+  /**
+   * The field a reader actually gains something from. These replaced a
+   * decorative 01–04 counter: the projects are not a sequence, so numbering
+   * them encoded nothing true about them.
+   */
+  domain: string;
   title: string;
   subtitle: string;
   description: string;
   tags: string[];
   href?: string;
-  /** Bento emphasis — the first card spans two columns. */
+  /** Bento emphasis — the two research-weight cards span two columns. */
   span?: string;
 }
 
 export const projects: Project[] = [
   {
-    number: "01",
+    domain: "Natural language · Knowledge graphs",
     title: "RoboProf",
     subtitle: "Chatbot using intelligent systems",
     description:
-      "Academic support chatbot that answers university-related queries by combining NLP, a knowledge graph and deep learning. Built with Rasa NLU for intent handling, SPARQL over an RDF course ontology for grounded retrieval, and Apache Tika to ingest lecture material.",
+      "Academic support chatbot that answers university-related queries by combining NLP, a knowledge graph and deep learning. Rasa NLU handles intent, SPARQL queries an RDF course ontology for grounded retrieval, and Apache Tika ingests lecture material. The same grounding instinct as the MCP work — answer from a source, not from recall.",
     tags: ["NLP", "Rasa NLU", "SPARQL", "Knowledge Graphs", "Deep Learning"],
     span: "md:col-span-2",
   },
   {
-    number: "02",
+    domain: "Cloud application",
     title: "Auction Avenue",
-    subtitle: "Cloud-hosted bidding platform",
+    subtitle: "Hosted bidding platform",
     description:
-      "Auction and bidding system built on Django's MVT architecture with Python, SQLite3 and a hand-written HTML/CSS frontend, deployed to Heroku.",
+      "Auction and bidding system on Django's MVT architecture with Python and SQLite3, deployed to Heroku.",
     tags: ["Django", "Python", "SQLite3", "Heroku"],
   },
   {
-    number: "03",
+    domain: "Computer vision",
     title: "ASL Classification",
     subtitle: "American Sign Language recognition",
     description:
@@ -37,9 +41,9 @@ export const projects: Project[] = [
     tags: ["PyTorch", "Computer Vision", "Machine Learning"],
   },
   {
-    number: "04",
+    domain: "Algorithms research",
     title: "Graph Colouring on Online Graphs",
-    subtitle: "Algorithms research",
+    subtitle: "First Fit vs CBIP",
     description:
       "Empirical study of the First Fit and CBIP algorithms on bipartite online graphs, including implementation and competitive-ratio analysis.",
     tags: ["Algorithms", "Python", "Research"],

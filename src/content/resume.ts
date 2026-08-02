@@ -400,6 +400,45 @@ export const certifications: Certification[] = [
 
 /* -------------------------------------------------------------------------- */
 
+/**
+ * Numbers a hiring manager can scan in five seconds. Every one traces to a
+ * specific bullet in the experience below — nothing rounded up for effect.
+ */
+export interface Impact {
+  value: string;
+  label: string;
+  context: string;
+  accent: Accent;
+}
+
+export const impact: Impact[] = [
+  {
+    value: "15+",
+    label: "Production defects resolved",
+    context:
+      "Indexing, linking, permissions and config contexts across IBM ELM",
+    accent: "blue",
+  },
+  {
+    value: "15–20%",
+    label: "Regression coverage added",
+    context: "JUnit and Mockito on backend service and integration components",
+    accent: "teal",
+  },
+  {
+    value: "~35%",
+    label: "Faster dashboard response",
+    context: "Redis caching, query optimisation and code splitting",
+    accent: "gold",
+  },
+  {
+    value: "₹25L+",
+    label: "Patient payments processed",
+    context: "Payment gateway integrated into clinical billing at LVPEI",
+    accent: "violet",
+  },
+];
+
 export const about = {
   paragraphs: [
     "I build and stabilise software across frontend workflows, backend services, API integrations, persistence layers and release validation. My work at IBM centres on Engineering Lifecycle Management, where I debug distributed enterprise systems, coordinate interim-fix readiness and ship customer-facing fixes under sprint timelines.",

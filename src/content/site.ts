@@ -30,21 +30,41 @@ export const site = {
     linkedin: "https://www.linkedin.com/in/ramanakoduri/",
   },
 
+  /** Order matches the page. Education is on the page but not in the nav —
+      six items is the most the pill bar holds without wrapping. */
   nav: [
+    { label: "Agentic AI", href: "#agentic" },
     { label: "About", href: "#about" },
     { label: "Experience", href: "#experience" },
     { label: "Skills", href: "#skills" },
     { label: "Projects", href: "#projects" },
-    { label: "Education", href: "#education" },
     { label: "Contact", href: "#contact" },
   ],
 
-  /** Shown in the hero as mono chips — the "balanced full-stack + AI" statement. */
-  heroStats: [
-    { value: "4+", label: "Years building production software" },
-    { value: "IBM ELM", label: "Enterprise platform, Fortune 500 users" },
-    { value: "MCP", label: "Agentic AI prototypes on watsonx" },
-  ],
+  availability: {
+    open: true,
+    text: "Open to Application Developer and AI Engineer roles",
+  },
+
+  /**
+   * The compact tool call shown in the hero. Static and server-rendered — the
+   * animated version lives in the Agentic AI section, and one orchestrated
+   * moment beats two competing ones.
+   */
+  heroTrace: {
+    server: "mcp · rmm-tools",
+    rows: [
+      {
+        key: "ask",
+        value: '"Which requirements changed since the 7.0.3 baseline?"',
+      },
+      {
+        key: "call",
+        value: 'rmm.query_requirements({ configuration: "7.0.3" })',
+      },
+      { key: "ground", value: "24 changed · 5 with no linked test case" },
+    ],
+  },
 } as const;
 
 export type Site = typeof site;

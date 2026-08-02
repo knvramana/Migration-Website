@@ -15,7 +15,7 @@ export function Projects() {
       <div className="grid gap-4 md:grid-cols-2">
         {projects.map((project, index) => (
           <Reveal
-            key={project.number}
+            key={project.title}
             delay={index * 70}
             className={cn("min-w-0", project.span)}
           >

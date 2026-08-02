@@ -60,6 +60,13 @@
   /* Hero is intentionally dark in BOTH themes — legacy #111827 */
   --hero: oklch(0.2101 0.0318 264.66);
   --hero-foreground: oklch(1 0 0);
+  /*
+    Deliberately NOT overridden in .dark. The hero and contact panels stay dark
+    in both themes, so an accent that flipped with the theme would render as
+    dark teal on a dark panel in light mode — 4.5:1 at best, and muddy.
+    #2dd4bf holds 9.5:1 on the hero regardless of theme.
+  */
+  --hero-accent: oklch(0.7845 0.1325 181.91);
 
   --shadow-card: 0 8px 28px oklch(0.246 0.0299 259.06 / 0.06);
   --shadow-raised: 0 22px 55px oklch(0.246 0.0299 259.06 / 0.1);
@@ -172,6 +179,7 @@
   --color-tag-border: var(--tag-border);
   --color-hero: var(--hero);
   --color-hero-foreground: var(--hero-foreground);
+  --color-hero-accent: var(--hero-accent);
 
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
