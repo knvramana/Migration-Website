@@ -1,0 +1,282 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/*
+  Tailwind v4 + next-themes: without this declaration `dark:` utilities never
+  fire, because v4 has no `darkMode: "class"` config to inherit. Uses :where()
+  so the `.dark` element itself matches too, not only its descendants.
+*/
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------------------------------------------------------------------------
+   Palette
+   Derived from the legacy portfolio.css brand colours, converted to OKLCH.
+
+   Two families exist for each accent and they are NOT interchangeable:
+     --rail-*   decoration only (rails, watermarks, >=24px bold display type).
+                Legacy values kept verbatim. Teal 3.74:1 and gold 3.64:1 on
+                white both fail WCAG AA for body text.
+     --brand-*  text-safe. Any accent colour carrying an actual word uses these.
+--------------------------------------------------------------------------- */
+
+:root {
+  --radius: 0.625rem;
+
+  --background: oklch(0.9792 0.0041 271.37); /* legacy --paper   #f7f8fb */
+  --foreground: oklch(0.246 0.0299 259.06); /* legacy --ink     #18212f */
+  --card: oklch(1 0 0); /* legacy --surface #ffffff */
+  --card-foreground: oklch(0.246 0.0299 259.06);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.246 0.0299 259.06);
+  --primary: oklch(0.5051 0.2028 263.88); /* legacy --blue    #2457d6 */
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.9732 0.0131 251.56); /* legacy tag bg    #f0f7ff */
+  --secondary-foreground: oklch(0.5051 0.2028 263.88);
+  --muted: oklch(0.956 0.006 264);
+  --muted-foreground: oklch(0.5444 0.035 265.11); /* legacy --muted   #667085 */
+  --accent: oklch(0.956 0.006 264);
+  --accent-foreground: oklch(0.246 0.0299 259.06);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.9125 0.0122 247.96); /* legacy --line    #dce3ea */
+  --input: oklch(0.9125 0.0122 247.96);
+  --ring: oklch(0.5051 0.2028 263.88);
+
+  /* Decorative rails — legacy hexes, verbatim */
+  --rail-blue: oklch(0.5051 0.2028 263.88); /* #2457d6 */
+  --rail-teal: oklch(0.6002 0.1038 184.7); /* #0d9488 */
+  --rail-gold: oklch(0.6264 0.1248 70.45); /* #b7791f */
+  --rail-violet: oklch(0.5499 0.1736 286.25); /* #6d5bd0 */
+
+  /* Text-safe accents — teal/gold darkened to clear 4.5:1 */
+  --brand-blue: oklch(0.5051 0.2028 263.88); /* #2457d6  6.16:1 */
+  --brand-teal: oklch(0.5109 0.0861 186.39); /* #0f766e  5.47:1 */
+  --brand-gold: oklch(0.5291 0.1047 74.1); /* #8f6114  5.40:1 */
+  --brand-violet: oklch(0.5499 0.1736 286.25); /* #6d5bd0  5.18:1 */
+
+  --tag: oklch(0.9732 0.0131 251.56); /* #f0f7ff */
+  --tag-border: oklch(0.9098 0.044 256.79); /* #cfe3ff */
+
+  /* Hero is intentionally dark in BOTH themes — legacy #111827 */
+  --hero: oklch(0.2101 0.0318 264.66);
+  --hero-foreground: oklch(1 0 0);
+
+  --shadow-card: 0 8px 28px oklch(0.246 0.0299 259.06 / 0.06);
+  --shadow-raised: 0 22px 55px oklch(0.246 0.0299 259.06 / 0.1);
+
+  --chart-1: oklch(0.5051 0.2028 263.88);
+  --chart-2: oklch(0.6002 0.1038 184.7);
+  --chart-3: oklch(0.6264 0.1248 70.45);
+  --chart-4: oklch(0.5499 0.1736 286.25);
+  --chart-5: oklch(0.5444 0.035 265.11);
+
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: oklch(0.246 0.0299 259.06);
+  --sidebar-primary: oklch(0.5051 0.2028 263.88);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.956 0.006 264);
+  --sidebar-accent-foreground: oklch(0.246 0.0299 259.06);
+  --sidebar-border: oklch(0.9125 0.0122 247.96);
+  --sidebar-ring: oklch(0.5051 0.2028 263.88);
+}
+
+.dark {
+  --background: oklch(0.1689 0.02 265.79); /* #0b0f18 — never pure black */
+  --foreground: oklch(0.9413 0.0109 256.7); /* #e7ecf3  16.1:1 */
+  --card: oklch(0.206 0.0295 266.08); /* #111725 */
+  --card-foreground: oklch(0.9413 0.0109 256.7);
+  --popover: oklch(0.2354 0.0332 263.62); /* #161e2e */
+  --popover-foreground: oklch(0.9413 0.0109 256.7);
+  --primary: oklch(0.7028 0.1547 264.8); /* #6f9bff   7.1:1 */
+  --primary-foreground: oklch(0.1689 0.02 265.79); /* dark ink on light blue */
+  --secondary: oklch(0.2354 0.0332 263.62);
+  --secondary-foreground: oklch(0.7028 0.1547 264.8);
+  --muted: oklch(0.2354 0.0332 263.62);
+  --muted-foreground: oklch(0.7215 0.0295 258.37); /* #9aa6b8   7.8:1 */
+  --accent: oklch(0.2354 0.0332 263.62);
+  --accent-foreground: oklch(0.9413 0.0109 256.7);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(0.2926 0.0337 262.82); /* #232c3d */
+  --input: oklch(0.2926 0.0337 262.82);
+  --ring: oklch(0.7028 0.1547 264.8);
+
+  --rail-blue: oklch(0.7028 0.1547 264.8); /* #6f9bff */
+  --rail-teal: oklch(0.7845 0.1325 181.91); /* #2dd4bf */
+  --rail-gold: oklch(0.7655 0.1369 80.08); /* #e0a83c */
+  --rail-violet: oklch(0.7328 0.1495 290.53); /* #a996ff */
+
+  /* On dark, the rail values already clear 7:1 — no separate text ramp needed */
+  --brand-blue: oklch(0.7028 0.1547 264.8);
+  --brand-teal: oklch(0.7845 0.1325 181.91);
+  --brand-gold: oklch(0.7655 0.1369 80.08);
+  --brand-violet: oklch(0.7328 0.1495 290.53);
+
+  --tag: oklch(0.246 0.05 264);
+  --tag-border: oklch(0.33 0.07 264);
+
+  --hero: oklch(0.14 0.023 265);
+  --hero-foreground: oklch(0.9413 0.0109 256.7);
+
+  --shadow-card: 0 8px 28px oklch(0 0 0 / 0.45);
+  --shadow-raised: 0 22px 55px oklch(0 0 0 / 0.55);
+
+  --chart-1: oklch(0.7028 0.1547 264.8);
+  --chart-2: oklch(0.7845 0.1325 181.91);
+  --chart-3: oklch(0.7655 0.1369 80.08);
+  --chart-4: oklch(0.7328 0.1495 290.53);
+  --chart-5: oklch(0.7215 0.0295 258.37);
+
+  --sidebar: oklch(0.206 0.0295 266.08);
+  --sidebar-foreground: oklch(0.9413 0.0109 256.7);
+  --sidebar-primary: oklch(0.7028 0.1547 264.8);
+  --sidebar-primary-foreground: oklch(0.1689 0.02 265.79);
+  --sidebar-accent: oklch(0.2354 0.0332 263.62);
+  --sidebar-accent-foreground: oklch(0.9413 0.0109 256.7);
+  --sidebar-border: oklch(0.2926 0.0337 262.82);
+  --sidebar-ring: oklch(0.7028 0.1547 264.8);
+}
+
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, monospace;
+  --font-heading: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-rail-blue: var(--rail-blue);
+  --color-rail-teal: var(--rail-teal);
+  --color-rail-gold: var(--rail-gold);
+  --color-rail-violet: var(--rail-violet);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-teal: var(--brand-teal);
+  --color-brand-gold: var(--brand-gold);
+  --color-brand-violet: var(--brand-violet);
+  --color-tag: var(--tag);
+  --color-tag-border: var(--tag-border);
+  --color-hero: var(--hero);
+  --color-hero-foreground: var(--hero-foreground);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  --shadow-card: var(--shadow-card);
+  --shadow-raised: var(--shadow-raised);
+
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply font-sans;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  /* Tailwind preflight strips focus rings; put a visible one back everywhere. */
+  :focus-visible {
+    @apply outline-ring outline-2 outline-offset-2;
+  }
+
+  ::selection {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+  }
+}
+
+@layer components {
+  /* Legacy container formula: min(1120px, calc(100% - 32px)) */
+  .container-page {
+    width: min(1120px, calc(100% - 2rem));
+    margin-inline: auto;
+  }
+}
+
+@layer utilities {
+  /*
+      The single scroll-reveal mechanism. <Reveal> flips data-revealed via
+      IntersectionObserver; all motion lives here in CSS. Works in every
+      browser including Firefox, and costs no animation library.
+    */
+  [data-reveal] {
+    opacity: 0;
+    translate: 0 14px;
+  }
+
+  [data-reveal][data-revealed="true"] {
+    opacity: 1;
+    translate: none;
+    transition:
+      opacity 420ms var(--ease-expo),
+      translate 420ms var(--ease-expo);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal],
+    [data-reveal][data-revealed="true"] {
+      opacity: 1;
+      translate: none;
+      transition: none;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
