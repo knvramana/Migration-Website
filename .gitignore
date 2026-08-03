@@ -32,6 +32,8 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+# ...but the template belongs in the repo, or nobody knows what to set.
+!.env.example
 
 # vercel
 .vercel
@@ -39,3 +41,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Résumé working drafts. The version the site actually serves lives at
+# public/ramana-koduri-resume.pdf and IS tracked.
+/RamanaKoduri_Resume.pdf
+/Ramana_Koduri.pdf
+/Ramana_Koduri_Resume.pdf
+
+# Lighthouse reports
+/lh*.json
