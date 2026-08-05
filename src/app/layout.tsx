@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Instrument_Sans, IBM_Plex_Mono } from "next/font/google";
+import { Instrument_Sans, IBM_Plex_Mono, Nunito } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -43,6 +43,19 @@ const plexMono = IBM_Plex_Mono({
   variable: "--font-plex-mono",
   display: "swap",
   preload: false,
+});
+
+/*
+  Nunito for headings only. A rounded display face is what gives a warm page
+  its friendliness — the reference uses M PLUS Rounded 1c; Nunito gets the
+  same softness without lifting the exact typeface. Two weights, no preload,
+  since it never appears in body copy.
+*/
+const nunito = Nunito({
+  subsets: ["latin"],
+  weight: ["700", "800"],
+  variable: "--font-nunito",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -116,7 +129,7 @@ export default function RootLayout({
       lang="en"
       suppressHydrationWarning
       data-scroll-behavior="smooth"
-      className={`${instrumentSans.variable} ${plexMono.variable}`}
+      className={`${instrumentSans.variable} ${nunito.variable} ${plexMono.variable}`}
     >
       <head>
         {/* Reveal starts at opacity:0, so restore it when JS never runs. */}

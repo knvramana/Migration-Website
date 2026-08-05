@@ -36,7 +36,7 @@ export function Panel({
           <Kicker>{kicker}</Kicker>
           <h2
             id={`${id}-heading`}
-            className="mt-4 text-3xl leading-[1.08] font-extrabold tracking-[-0.02em] text-balance sm:text-4xl md:text-5xl"
+            className="font-display decoration-brand/40 mt-4 text-3xl leading-[1.12] font-extrabold tracking-[-0.02em] text-balance underline decoration-[3px] underline-offset-[7px] sm:text-4xl"
           >
             {title}
           </h2>
