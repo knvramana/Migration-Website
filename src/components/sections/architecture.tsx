@@ -65,10 +65,10 @@ export function Architecture() {
       <div className="mx-auto max-w-4xl">
         {/* Above the line */}
         <Reveal>
-          <div className="border-rail-violet/40 bg-card shadow-card relative overflow-hidden rounded-xl border p-6 md:p-7">
+          <div className="border-rail-indigo/40 bg-card shadow-card relative overflow-hidden rounded-xl border p-6 md:p-7">
             <div
               aria-hidden="true"
-              className="absolute inset-0 bg-[radial-gradient(30rem_16rem_at_20%_0%,var(--rail-violet),transparent_70%)] opacity-[0.07]"
+              className="absolute inset-0 bg-[radial-gradient(30rem_16rem_at_20%_0%,var(--rail-indigo),transparent_70%)] opacity-[0.07]"
             />
             <div className="relative flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
               <div className="min-w-0">
@@ -107,7 +107,7 @@ export function Architecture() {
               className="border-border absolute inset-x-0 top-1/2 border-t border-dashed"
             />
             <div className="bg-background relative mx-auto w-fit px-4 text-center">
-              <p className="text-brand-violet font-mono text-xs font-extrabold tracking-tight">
+              <p className="text-rail-indigo font-mono text-xs font-extrabold tracking-tight">
                 {boundary.name}
               </p>
               <p className="text-muted-foreground mx-auto mt-1.5 max-w-md text-xs leading-relaxed text-pretty">

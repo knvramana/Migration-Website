@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Instrument_Sans, IBM_Plex_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -14,28 +14,33 @@ import { site } from "@/content/site";
 import "./globals.css";
 
 /*
-  Variable, which is what next/font does by default and — measured — what is
-  actually smallest. Pinning three static weights (400/600/800) came out at
-  186KB vs 170KB for the two variable faces, because each static Latin
-  instance carries its own full glyph set. The type scale is still restricted
-  to 400/600/800 in the components; that is a design decision, not a payload
-  one.
+  Instrument Sans rather than Inter. Inter + shadcn's neutral defaults is the
+  stack every scaffolded portfolio already ships, so it actively signals
+  "template"; Instrument Sans is warmer, reads well at text sizes, and is
+  OFL-licensed on Google Fonts.
+
+  Variable, which measurement showed is also the smallest option — pinning
+  static weights made the payload larger, because each static Latin instance
+  carries its own full glyph set.
 */
-const inter = Inter({
+const instrumentSans = Instrument_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-instrument",
   display: "swap",
 });
 
 /*
-  Mono stays variable — measured, two static weights came out slightly LARGER
-  than the single variable file (43KB across 2 requests vs 40KB in 1).
-  It carries labels, metrics and trace payloads but never body copy, so it is
-  not needed for first paint: no preload.
+  IBM Plex Mono carries the structural layer — section labels, metrics, tech
+  chips, and the tool-call payloads. It is IBM's own typeface, which is a real
+  reason to choose it here rather than an arbitrary one, and it is OFL.
+
+  No preload: mono never appears in body copy, so it is not needed for first
+  paint.
 */
-const jetbrainsMono = JetBrains_Mono({
+const plexMono = IBM_Plex_Mono({
   subsets: ["latin"],
-  variable: "--font-jetbrains",
+  weight: ["400", "500", "600"],
+  variable: "--font-plex-mono",
   display: "swap",
   preload: false,
 });
@@ -97,8 +102,8 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   colorScheme: "light dark",
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f7f8fb" },
-    { media: "(prefers-color-scheme: dark)", color: "#0b0f18" },
+    { media: "(prefers-color-scheme: light)", color: "#fdfdfc" },
+    { media: "(prefers-color-scheme: dark)", color: "#191816" },
   ],
 };
 
@@ -113,7 +118,7 @@ export default function RootLayout({
       lang="en"
       suppressHydrationWarning
       data-scroll-behavior="smooth"
-      className={`${inter.variable} ${jetbrainsMono.variable}`}
+      className={`${instrumentSans.variable} ${plexMono.variable}`}
     >
       <head>
         {/* Reveal starts at opacity:0, so restore it when JS never runs. */}

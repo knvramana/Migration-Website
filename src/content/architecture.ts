@@ -38,7 +38,7 @@ export const agenticLayer: Layer = {
     "Orchestration",
   ],
   involvement: "built",
-  accent: "violet",
+  accent: "indigo",
 };
 
 /** The seam itself — the reason the two halves can talk. */
@@ -57,7 +57,7 @@ export const productLayers: Layer[] = [
       "Rhapsody Model Manager workflows used by Fortune 500 engineering teams.",
     tech: ["React", "Dojo", "TypeScript"],
     involvement: "owned",
-    accent: "blue",
+    accent: "rust",
   },
   {
     name: "Services",
@@ -65,7 +65,7 @@ export const productLayers: Layer[] = [
       "REST and OSLC service layers — the API surface the tools ultimately resolve to.",
     tech: ["Java", "REST", "OSLC", "JUnit"],
     involvement: "owned",
-    accent: "blue",
+    accent: "rust",
   },
   {
     name: "Persistence & indexing",
@@ -81,7 +81,7 @@ export const productLayers: Layer[] = [
       "TRS feeds and cross-application links between ELM products — where most production defects actually live.",
     tech: ["TRS feeds", "Cross-app links", "Permissions"],
     involvement: "debugged",
-    accent: "gold",
+    accent: "amber",
   },
 ];
 

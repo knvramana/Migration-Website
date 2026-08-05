@@ -119,9 +119,7 @@ export function AgenticTrace() {
                       <span
                         className={cn(
                           "font-mono text-[0.7rem] tabular-nums",
-                          isActive
-                            ? "text-brand-teal"
-                            : "text-muted-foreground",
+                          isActive ? "text-rail-teal" : "text-muted-foreground",
                         )}
                       >
                         {String(index + 1).padStart(2, "0")}
@@ -150,7 +148,7 @@ export function AgenticTrace() {
               tabIndex={0}
               className="min-w-0 p-6 md:p-8 lg:col-span-8"
             >
-              <p className="text-brand-teal font-mono text-[0.7rem] tracking-[0.14em] uppercase lg:hidden">
+              <p className="text-rail-teal font-mono text-[0.7rem] tracking-[0.14em] uppercase lg:hidden">
                 {step.layer}
               </p>
               <h3 className="mt-2 text-xl font-extrabold tracking-tight text-balance lg:mt-0">

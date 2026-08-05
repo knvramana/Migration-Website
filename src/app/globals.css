@@ -10,150 +10,137 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* ---------------------------------------------------------------------------
-   Palette
-   Derived from the legacy portfolio.css brand colours, converted to OKLCH.
+   Palette — warm neutrals, light-first.
 
-   Two families exist for each accent and they are NOT interchangeable:
-     --rail-*   decoration only (rails, watermarks, >=24px bold display type).
-                Legacy values kept verbatim. Teal 3.74:1 and gold 3.64:1 on
-                white both fail WCAG AA for body text.
-     --brand-*  text-safe. Any accent colour carrying an actual word uses these.
+   Replaces the cool blue-grey scale inherited from the legacy site. Two
+   reasons: `#fff` + `#000` + a blue accent is the shadcn/Inter default that
+   every scaffolded site already ships, and the old palette was built around a
+   dark hero photograph that no longer exists.
+
+   Foreground is #21201c, never pure black. Body copy sits a step lighter than
+   headings rather than everything being maximum contrast.
+
+   Accent hues double as both decoration and text: at these values all four
+   clear 4.5:1 on every light surface, so the old split between decorative
+   rails and a darkened text ramp (which existed because the legacy teal and
+   gold failed as body text) is gone.
 --------------------------------------------------------------------------- */
 
 :root {
   --radius: 0.625rem;
 
-  --background: oklch(0.9792 0.0041 271.37); /* legacy --paper   #f7f8fb */
-  --foreground: oklch(0.246 0.0299 259.06); /* legacy --ink     #18212f */
-  --card: oklch(1 0 0); /* legacy --surface #ffffff */
-  --card-foreground: oklch(0.246 0.0299 259.06);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.246 0.0299 259.06);
-  --primary: oklch(0.5051 0.2028 263.88); /* legacy --blue    #2457d6 */
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.9732 0.0131 251.56); /* legacy tag bg    #f0f7ff */
-  --secondary-foreground: oklch(0.5051 0.2028 263.88);
-  --muted: oklch(0.956 0.006 264);
-  /*
-    Darkened from the legacy #667085. That value cleared 4.5:1 on the page
-    background (4.68) but only reached 4.36 against --muted, so every piece of
-    secondary text sitting on a muted surface — code blocks, the shortcut
-    key-cap — failed AA. #5E6878 clears 4.94 / 5.31 / 5.63 on muted, page and
-    card respectively.
-  */
-  --muted-foreground: oklch(0.5146 0.0282 259.79); /* #5e6878 */
-  --accent: oklch(0.956 0.006 264);
-  --accent-foreground: oklch(0.246 0.0299 259.06);
+  --background: oklch(0.9938 0.0013 106.42); /* #fdfdfc */
+  --foreground: oklch(0.2431 0.0076 95.37); /* #21201c  16.0:1 */
+  --card: oklch(0.9938 0.0013 106.42); /* same as page — cards are borders, not slabs */
+  --card-foreground: oklch(0.2431 0.0076 95.37);
+  --popover: oklch(0.9818 0.0013 106.42); /* #f9f9f8 */
+  --popover-foreground: oklch(0.2431 0.0076 95.37);
+  --primary: oklch(0.5182 0.1367 35.71); /* #a8452b rust  5.8:1 */
+  --primary-foreground: oklch(0.9938 0.0013 106.42);
+  --secondary: oklch(0.9556 0.0017 67.8); /* #f1f0ef */
+  --secondary-foreground: oklch(0.2431 0.0076 95.37);
+  --muted: oklch(0.9556 0.0017 67.8);
+  --muted-foreground: oklch(0.4809 0.0095 99.04); /* #5f5e58  6.4:1 */
+  --accent: oklch(0.9556 0.0017 67.8);
+  --accent-foreground: oklch(0.2431 0.0076 95.37);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.9125 0.0122 247.96); /* legacy --line    #dce3ea */
-  --input: oklch(0.9125 0.0122 247.96);
-  --ring: oklch(0.5051 0.2028 263.88);
 
-  /* Decorative rails — legacy hexes, verbatim */
-  --rail-blue: oklch(0.5051 0.2028 263.88); /* #2457d6 */
-  --rail-teal: oklch(0.6002 0.1038 184.7); /* #0d9488 */
-  --rail-gold: oklch(0.6264 0.1248 70.45); /* #b7791f */
-  --rail-violet: oklch(0.5499 0.1736 286.25); /* #6d5bd0 */
+  /* Alpha-based so hairlines composite correctly over any surface. */
+  --border: oklch(0 0 0 / 0.09);
+  --input: oklch(0 0 0 / 0.12);
+  --ring: oklch(0.5182 0.1367 35.71);
 
-  /* Text-safe accents — teal/gold darkened to clear 4.5:1 */
-  --brand-blue: oklch(0.5051 0.2028 263.88); /* #2457d6  6.16:1 */
-  --brand-teal: oklch(0.5109 0.0861 186.39); /* #0f766e  5.47:1 */
-  --brand-gold: oklch(0.5291 0.1047 74.1); /* #8f6114  5.40:1 */
-  --brand-violet: oklch(0.5499 0.1736 286.25); /* #6d5bd0  5.18:1 */
+  /* Categorical hues. Text-safe on every light surface. */
+  --rail-rust: oklch(0.5182 0.1367 35.71); /* #a8452b  5.8:1 */
+  --rail-teal: oklch(0.4847 0.0832 181.53); /* #0f6e62  6.0:1 */
+  --rail-amber: oklch(0.5088 0.1009 70.01); /* #8a5a16  5.8:1 */
+  --rail-indigo: oklch(0.4287 0.1196 278.91); /* #43458f  8.3:1 */
 
-  --tag: oklch(0.9732 0.0131 251.56); /* #f0f7ff */
-  --tag-border: oklch(0.9098 0.044 256.79); /* #cfe3ff */
+  --tag: oklch(0.9556 0.0017 67.8);
+  --tag-border: oklch(0 0 0 / 0.1);
 
-  /* Hero is intentionally dark in BOTH themes — legacy #111827 */
-  --hero: oklch(0.2101 0.0318 264.66);
-  --hero-foreground: oklch(1 0 0);
-  /*
-    Deliberately NOT overridden in .dark. The hero and contact panels stay dark
-    in both themes, so an accent that flipped with the theme would render as
-    dark teal on a dark panel in light mode — 4.5:1 at best, and muddy.
-    #2dd4bf holds 9.5:1 on the hero regardless of theme.
-  */
-  --hero-accent: oklch(0.7845 0.1325 181.91);
+  /* The one dark anchor left on the page: the contact panel. Warm ink,
+     not the old navy — it reads as intentional rather than as a photo. */
+  --ink: oklch(0.2431 0.0076 95.37);
+  --ink-foreground: oklch(0.9938 0.0013 106.42);
+  --ink-accent: oklch(0.711 0.1354 40); /* #e8825e — fixed, never flips */
 
-  --shadow-card: 0 8px 28px oklch(0.246 0.0299 259.06 / 0.06);
-  --shadow-raised: 0 22px 55px oklch(0.246 0.0299 259.06 / 0.1);
+  /* Shadows are reserved for genuinely floating things (dialog, toast).
+     Static cards use a hairline border instead. */
+  --shadow-card: 0 1px 2px oklch(0 0 0 / 0.04);
+  --shadow-raised: 0 12px 32px oklch(0 0 0 / 0.1);
 
-  --chart-1: oklch(0.5051 0.2028 263.88);
-  --chart-2: oklch(0.6002 0.1038 184.7);
-  --chart-3: oklch(0.6264 0.1248 70.45);
-  --chart-4: oklch(0.5499 0.1736 286.25);
-  --chart-5: oklch(0.5444 0.035 265.11);
+  --chart-1: oklch(0.5182 0.1367 35.71);
+  --chart-2: oklch(0.4847 0.0832 181.53);
+  --chart-3: oklch(0.5088 0.1009 70.01);
+  --chart-4: oklch(0.4287 0.1196 278.91);
+  --chart-5: oklch(0.4809 0.0095 99.04);
 
-  --sidebar: oklch(1 0 0);
-  --sidebar-foreground: oklch(0.246 0.0299 259.06);
-  --sidebar-primary: oklch(0.5051 0.2028 263.88);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.956 0.006 264);
-  --sidebar-accent-foreground: oklch(0.246 0.0299 259.06);
-  --sidebar-border: oklch(0.9125 0.0122 247.96);
-  --sidebar-ring: oklch(0.5051 0.2028 263.88);
+  --sidebar: oklch(0.9818 0.0013 106.42);
+  --sidebar-foreground: oklch(0.2431 0.0076 95.37);
+  --sidebar-primary: oklch(0.5182 0.1367 35.71);
+  --sidebar-primary-foreground: oklch(0.9938 0.0013 106.42);
+  --sidebar-accent: oklch(0.9556 0.0017 67.8);
+  --sidebar-accent-foreground: oklch(0.2431 0.0076 95.37);
+  --sidebar-border: oklch(0 0 0 / 0.09);
+  --sidebar-ring: oklch(0.5182 0.1367 35.71);
 }
 
 .dark {
-  --background: oklch(0.1689 0.02 265.79); /* #0b0f18 — never pure black */
-  --foreground: oklch(0.9413 0.0109 256.7); /* #e7ecf3  16.1:1 */
-  --card: oklch(0.206 0.0295 266.08); /* #111725 */
-  --card-foreground: oklch(0.9413 0.0109 256.7);
-  --popover: oklch(0.2354 0.0332 263.62); /* #161e2e */
-  --popover-foreground: oklch(0.9413 0.0109 256.7);
-  --primary: oklch(0.7028 0.1547 264.8); /* #6f9bff   7.1:1 */
-  --primary-foreground: oklch(0.1689 0.02 265.79); /* dark ink on light blue */
-  --secondary: oklch(0.2354 0.0332 263.62);
-  --secondary-foreground: oklch(0.7028 0.1547 264.8);
-  --muted: oklch(0.2354 0.0332 263.62);
-  --muted-foreground: oklch(0.7215 0.0295 258.37); /* #9aa6b8   7.8:1 */
-  --accent: oklch(0.2354 0.0332 263.62);
-  --accent-foreground: oklch(0.9413 0.0109 256.7);
+  --background: oklch(0.2094 0.0042 84.59); /* #191816 warm near-black */
+  --foreground: oklch(0.9556 0.0057 84.57); /* #f2f0ec  15.6:1 */
+  --card: oklch(0.2404 0.0064 78.2); /* #211f1c */
+  --card-foreground: oklch(0.9556 0.0057 84.57);
+  --popover: oklch(0.2745 0.0085 75.24); /* #2a2723 */
+  --popover-foreground: oklch(0.9556 0.0057 84.57);
+  --primary: oklch(0.711 0.1354 40); /* #e8825e  6.6:1 */
+  --primary-foreground: oklch(0.2094 0.0042 84.59);
+  --secondary: oklch(0.2745 0.0085 75.24);
+  --secondary-foreground: oklch(0.9556 0.0057 84.57);
+  --muted: oklch(0.2745 0.0085 75.24);
+  --muted-foreground: oklch(0.7149 0.0134 75.33); /* #a8a29a  7.0:1 */
+  --accent: oklch(0.2745 0.0085 75.24);
+  --accent-foreground: oklch(0.9556 0.0057 84.57);
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(0.2926 0.0337 262.82); /* #232c3d */
-  --input: oklch(0.2926 0.0337 262.82);
-  --ring: oklch(0.7028 0.1547 264.8);
 
-  --rail-blue: oklch(0.7028 0.1547 264.8); /* #6f9bff */
-  --rail-teal: oklch(0.7845 0.1325 181.91); /* #2dd4bf */
-  --rail-gold: oklch(0.7655 0.1369 80.08); /* #e0a83c */
-  --rail-violet: oklch(0.7328 0.1495 290.53); /* #a996ff */
+  --border: oklch(1 1 1 / 0.12);
+  --input: oklch(1 1 1 / 0.16);
+  --ring: oklch(0.711 0.1354 40);
 
-  /* On dark, the rail values already clear 7:1 — no separate text ramp needed */
-  --brand-blue: oklch(0.7028 0.1547 264.8);
-  --brand-teal: oklch(0.7845 0.1325 181.91);
-  --brand-gold: oklch(0.7655 0.1369 80.08);
-  --brand-violet: oklch(0.7328 0.1495 290.53);
+  --rail-rust: oklch(0.711 0.1354 40); /* #e8825e  6.6:1 */
+  --rail-teal: oklch(0.7618 0.1129 181.27); /* #4dc9b6  8.7:1 */
+  --rail-amber: oklch(0.7687 0.1281 78.34); /* #e0a94a  8.4:1 */
+  --rail-indigo: oklch(0.7254 0.121 282.43); /* #9b9cf0  7.1:1 */
 
-  --tag: oklch(0.246 0.05 264);
-  --tag-border: oklch(0.33 0.07 264);
+  --tag: oklch(0.2745 0.0085 75.24);
+  --tag-border: oklch(1 1 1 / 0.14);
 
-  --hero: oklch(0.14 0.023 265);
-  --hero-foreground: oklch(0.9413 0.0109 256.7);
+  --ink: oklch(0.1794 0.004 84.59);
+  --ink-foreground: oklch(0.9556 0.0057 84.57);
 
-  --shadow-card: 0 8px 28px oklch(0 0 0 / 0.45);
-  --shadow-raised: 0 22px 55px oklch(0 0 0 / 0.55);
+  --shadow-card: 0 1px 2px oklch(0 0 0 / 0.3);
+  --shadow-raised: 0 12px 32px oklch(0 0 0 / 0.5);
 
-  --chart-1: oklch(0.7028 0.1547 264.8);
-  --chart-2: oklch(0.7845 0.1325 181.91);
-  --chart-3: oklch(0.7655 0.1369 80.08);
-  --chart-4: oklch(0.7328 0.1495 290.53);
-  --chart-5: oklch(0.7215 0.0295 258.37);
+  --chart-1: oklch(0.711 0.1354 40);
+  --chart-2: oklch(0.7618 0.1129 181.27);
+  --chart-3: oklch(0.7687 0.1281 78.34);
+  --chart-4: oklch(0.7254 0.121 282.43);
+  --chart-5: oklch(0.7149 0.0134 75.33);
 
-  --sidebar: oklch(0.206 0.0295 266.08);
-  --sidebar-foreground: oklch(0.9413 0.0109 256.7);
-  --sidebar-primary: oklch(0.7028 0.1547 264.8);
-  --sidebar-primary-foreground: oklch(0.1689 0.02 265.79);
-  --sidebar-accent: oklch(0.2354 0.0332 263.62);
-  --sidebar-accent-foreground: oklch(0.9413 0.0109 256.7);
-  --sidebar-border: oklch(0.2926 0.0337 262.82);
-  --sidebar-ring: oklch(0.7028 0.1547 264.8);
+  --sidebar: oklch(0.2404 0.0064 78.2);
+  --sidebar-foreground: oklch(0.9556 0.0057 84.57);
+  --sidebar-primary: oklch(0.711 0.1354 40);
+  --sidebar-primary-foreground: oklch(0.2094 0.0042 84.59);
+  --sidebar-accent: oklch(0.2745 0.0085 75.24);
+  --sidebar-accent-foreground: oklch(0.9556 0.0057 84.57);
+  --sidebar-border: oklch(1 1 1 / 0.12);
+  --sidebar-ring: oklch(0.711 0.1354 40);
 }
 
 @theme inline {
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, monospace;
-  --font-heading: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, SFMono-Regular, monospace;
+  --font-heading: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -174,19 +161,15 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  --color-rail-blue: var(--rail-blue);
+  --color-rail-rust: var(--rail-rust);
   --color-rail-teal: var(--rail-teal);
-  --color-rail-gold: var(--rail-gold);
-  --color-rail-violet: var(--rail-violet);
-  --color-brand-blue: var(--brand-blue);
-  --color-brand-teal: var(--brand-teal);
-  --color-brand-gold: var(--brand-gold);
-  --color-brand-violet: var(--brand-violet);
+  --color-rail-amber: var(--rail-amber);
+  --color-rail-indigo: var(--rail-indigo);
   --color-tag: var(--tag);
   --color-tag-border: var(--tag-border);
-  --color-hero: var(--hero);
-  --color-hero-foreground: var(--hero-foreground);
-  --color-hero-accent: var(--hero-accent);
+  --color-ink: var(--ink);
+  --color-ink-foreground: var(--ink-foreground);
+  --color-ink-accent: var(--ink-accent);
 
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
@@ -255,14 +238,36 @@
     width: min(1120px, calc(100% - 2rem));
     margin-inline: auto;
   }
+
+  /*
+    Replaces the hero photograph. A graph-paper wash built from a single
+    radial-gradient — zero assets, zero requests — masked so it fades out
+    before it can read as a repeating pattern. Alpha stays under 0.08; above
+    that it stops looking like a drafting grid and starts looking like a 2019
+    SaaS template.
+  */
+  .dot-grid {
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      var(--foreground) 1px,
+      transparent 0
+    );
+    background-size: 22px 22px;
+    opacity: 0.07;
+    mask-image: radial-gradient(
+      120% 85% at 50% 0%,
+      #000 25%,
+      transparent 78%
+    );
+  }
 }
 
 @layer utilities {
   /*
-      The single scroll-reveal mechanism. <Reveal> flips data-revealed via
-      IntersectionObserver; all motion lives here in CSS. Works in every
-      browser including Firefox, and costs no animation library.
-    */
+    The single scroll-reveal mechanism. <Reveal> flips data-revealed via
+    IntersectionObserver; all motion lives here in CSS. Works in every
+    browser including Firefox, and costs no animation library.
+  */
   [data-reveal] {
     opacity: 0;
     translate: 0 14px;
@@ -297,34 +302,32 @@
 }
 
 /*
-  Print. Recruiters do print portfolios, and a dark hero across a page break
-  is unusable on paper. Force the light palette, drop the chrome, and let the
-  content flow as a document.
+  Print. Recruiters do print portfolios, and site chrome plus a dark panel
+  across a page break is unusable on paper.
 */
 @media print {
   :root,
   .dark {
     --background: #ffffff;
-    --foreground: #18212f;
+    --foreground: #21201c;
     --card: #ffffff;
-    --card-foreground: #18212f;
+    --card-foreground: #21201c;
     --muted: #ffffff;
-    --muted-foreground: #44506a;
-    --border: #c9d2dc;
-    --hero: #ffffff;
-    --hero-foreground: #18212f;
-    --hero-accent: #0f766e;
-    --brand-blue: #1c46ad;
-    --brand-teal: #0f766e;
-    --brand-gold: #8f6114;
-    --brand-violet: #574aa8;
+    --muted-foreground: #4a4943;
+    --border: #cfceca;
+    --ink: #ffffff;
+    --ink-foreground: #21201c;
+    --ink-accent: #0f6e62;
+    --rail-rust: #a8452b;
+    --rail-teal: #0f6e62;
+    --rail-amber: #8a5a16;
+    --rail-indigo: #43458f;
     --tag: #ffffff;
-    --tag-border: #c9d2dc;
+    --tag-border: #cfceca;
     --shadow-card: none;
     --shadow-raised: none;
   }
 
-  /* Site chrome carries no meaning on paper. */
   header,
   footer,
   [role="tablist"],
@@ -334,7 +337,7 @@
 
   body {
     background: #ffffff !important;
-    color: #18212f !important;
+    color: #21201c !important;
   }
 
   /* Reveal never fires without a viewport intersection — force it visible. */
@@ -349,11 +352,11 @@
   }
 
   h1 {
-    font-size: 2rem !important;
+    font-size: 1.8rem !important;
   }
 
   h2 {
-    font-size: 1.35rem !important;
+    font-size: 1.3rem !important;
     break-after: avoid;
   }
 
@@ -366,17 +369,15 @@
     break-inside: avoid;
   }
 
-  /* The hero and contact panels are dark by design; on paper they must not be. */
-  [class*="bg-hero"] {
+  [class*="bg-ink"] {
     background: #ffffff !important;
-    color: #18212f !important;
+    color: #21201c !important;
   }
 
   [class*="text-white"] {
-    color: #18212f !important;
+    color: #21201c !important;
   }
 
-  /* Spell out destinations a printed page cannot resolve. */
   a[href^="http"]::after {
     content: " (" attr(href) ")";
     font-size: 0.7em;

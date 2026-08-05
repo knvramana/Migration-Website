@@ -21,15 +21,15 @@ export function Contact() {
     >
       <div className="container-page">
         <Reveal>
-          <div className="bg-hero shadow-raised relative isolate overflow-hidden rounded-2xl p-8 md:p-12">
+          <div className="bg-ink shadow-raised relative isolate overflow-hidden rounded-2xl p-8 md:p-12">
             <div
               aria-hidden="true"
-              className="absolute inset-0 -z-10 bg-[radial-gradient(45rem_28rem_at_85%_0%,oklch(0.5051_0.2028_263.88/0.35),transparent_70%)]"
+              className="absolute inset-0 -z-10 bg-[radial-gradient(45rem_28rem_at_85%_0%,oklch(0.5182_0.1367_35.71/0.30),transparent_70%)]"
             />
 
             <div className="grid gap-10 lg:grid-cols-12 lg:items-end lg:gap-14">
               <div className="lg:col-span-7">
-                <Eyebrow className="text-hero-accent">Contact</Eyebrow>
+                <Eyebrow className="text-ink-accent">Contact</Eyebrow>
                 <h2
                   id="contact-heading"
                   className="mt-4 text-3xl leading-[1.08] font-extrabold tracking-[-0.02em] text-balance text-white sm:text-4xl md:text-5xl"
@@ -49,7 +49,7 @@ export function Contact() {
                 <div className="flex flex-wrap gap-3">
                   <Link
                     href={`mailto:${site.email}`}
-                    className="inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-lg bg-white px-5 text-sm font-extrabold text-[oklch(0.2101_0.0318_264.66)] transition-transform duration-200 hover:-translate-y-0.5"
+                    className="text-ink inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-lg bg-white px-5 text-sm font-extrabold transition-transform duration-200 hover:-translate-y-0.5"
                   >
                     <MailIcon className="size-4" aria-hidden="true" />
                     Email me

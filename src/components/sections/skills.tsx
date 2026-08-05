@@ -64,7 +64,7 @@ export function Skills() {
                       "inline-flex size-10 shrink-0 items-center justify-center rounded-lg",
                       group.featured
                         ? "bg-primary text-primary-foreground"
-                        : "bg-secondary text-brand-blue",
+                        : "bg-secondary text-rail-indigo",
                     )}
                   >
                     <Icon className="size-5" />

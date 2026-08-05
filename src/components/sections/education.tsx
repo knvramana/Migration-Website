@@ -65,11 +65,11 @@ export function Education() {
               className="bg-card shadow-card flex items-start gap-3 rounded-xl border p-6"
             >
               <AwardIcon
-                className="text-brand-gold mt-0.5 size-5 shrink-0"
+                className="text-rail-amber mt-0.5 size-5 shrink-0"
                 aria-hidden="true"
               />
               <div>
-                <p className="text-brand-gold font-mono text-xs tracking-tight">
+                <p className="text-rail-amber font-mono text-xs tracking-tight">
                   Certification · {cert.code}
                 </p>
                 <h3 className="mt-2 font-extrabold tracking-tight text-balance">

@@ -10,8 +10,8 @@ import { cn } from "@/lib/utils";
  * snippets. These payloads are JSON-ish and HTTP-ish only, so a single pass
  * over quoted strings, numbers and literals covers everything shown.
  *
- * All accent colours use the text-safe --brand-* ramp, never the decorative
- * --rail-* one.
+ * Accent colours use the categorical --rail-* hues, which are text-safe on
+ * every surface in this palette.
  */
 const JSON_TOKEN =
   /("(?:\\.|[^"\\])*")(\s*:)?|(\b-?\d+(?:\.\d+)?\b)|\b(true|false|null)\b/g;
@@ -32,7 +32,7 @@ function highlightJson(line: string): ReactNode[] {
       nodes.push(
         <span
           key={key++}
-          className={colon ? "text-brand-blue" : "text-brand-teal"}
+          className={colon ? "text-rail-indigo" : "text-rail-teal"}
         >
           {quoted}
         </span>,
@@ -40,13 +40,13 @@ function highlightJson(line: string): ReactNode[] {
       if (colon) nodes.push(colon);
     } else if (number !== undefined) {
       nodes.push(
-        <span key={key++} className="text-brand-gold">
+        <span key={key++} className="text-rail-amber">
           {number}
         </span>,
       );
     } else if (literal !== undefined) {
       nodes.push(
-        <span key={key++} className="text-brand-violet">
+        <span key={key++} className="text-rail-indigo">
           {literal}
         </span>,
       );
@@ -66,7 +66,7 @@ function highlightHttp(line: string): ReactNode[] {
   const verb = line.match(HTTP_LEAD);
   if (verb) {
     return [
-      <span key="v" className="text-brand-blue font-semibold">
+      <span key="v" className="text-rail-indigo font-semibold">
         {verb[1]}
       </span>,
       line.slice(verb[1].length),
@@ -78,7 +78,7 @@ function highlightHttp(line: string): ReactNode[] {
     const indent = line.length - line.trimStart().length;
     return [
       line.slice(0, indent),
-      <span key="s" className="text-brand-teal font-semibold">
+      <span key="s" className="text-rail-teal font-semibold">
         {status[0]}
       </span>,
       line.trimStart().slice(status[0].length),
@@ -100,7 +100,7 @@ function highlightAnswer(line: string): ReactNode[] {
     const index = match.index ?? 0;
     if (index > cursor) nodes.push(line.slice(cursor, index));
     nodes.push(
-      <span key={key++} className="text-brand-teal font-semibold">
+      <span key={key++} className="text-rail-teal font-semibold">
         {match[1]}
       </span>,
     );

@@ -20,10 +20,10 @@ export default function OpengraphImage() {
         flexDirection: "column",
         justifyContent: "space-between",
         padding: "72px 80px",
-        backgroundColor: "#111827",
+        backgroundColor: "#fdfdfc",
         backgroundImage:
-          "radial-gradient(1000px 600px at 20% 0%, rgba(36,87,214,0.45), transparent 70%)",
-        color: "white",
+          "radial-gradient(900px 520px at 15% 0%, rgba(168,69,43,0.10), transparent 70%)",
+        color: "#21201c",
       }}
     >
       <div style={{ display: "flex", flexDirection: "column" }}>
@@ -32,7 +32,7 @@ export default function OpengraphImage() {
             fontSize: 22,
             letterSpacing: 4,
             textTransform: "uppercase",
-            color: "#2dd4bf",
+            color: "#a8452b",
           }}
         >
           {site.role}
@@ -53,7 +53,7 @@ export default function OpengraphImage() {
             marginTop: 28,
             fontSize: 32,
             lineHeight: 1.35,
-            color: "rgba(255,255,255,0.78)",
+            color: "#5f5e58",
             maxWidth: 900,
           }}
         >
@@ -69,7 +69,7 @@ export default function OpengraphImage() {
         }}
       >
         <div style={{ display: "flex", gap: 10 }}>
-          {["#2457d6", "#0d9488", "#b7791f", "#6d5bd0"].map((color) => (
+          {["#a8452b", "#0f6e62", "#8a5a16", "#43458f"].map((color) => (
             <div
               key={color}
               style={{
@@ -81,7 +81,7 @@ export default function OpengraphImage() {
             />
           ))}
         </div>
-        <div style={{ fontSize: 24, color: "rgba(255,255,255,0.6)" }}>
+        <div style={{ fontSize: 24, color: "#5f5e58" }}>
           {site.url.replace(/^https?:\/\//, "")}
         </div>
       </div>

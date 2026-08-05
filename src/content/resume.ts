@@ -7,7 +7,7 @@
  * that carries it.
  */
 
-export type Accent = "blue" | "teal" | "gold" | "violet";
+export type Accent = "rust" | "teal" | "amber" | "indigo";
 
 /**
  * Highlights are grouped so the two pillars are *visible* rather than
@@ -51,7 +51,7 @@ export const experience: Role[] = [
     start: "2025-01",
     end: "Present",
     period: "Jan 2025 — Present",
-    accent: "blue",
+    accent: "rust",
     featured: true,
     summary:
       "Building and stabilising Rhapsody Model Manager and IBM ELM for Fortune 500 engineering teams, while prototyping the agentic AI layer that lets those users talk to their data in natural language.",
@@ -151,7 +151,7 @@ export const experience: Role[] = [
     start: "2021-03",
     end: "2022-01",
     period: "Mar 2021 — Jan 2022",
-    accent: "gold",
+    accent: "amber",
     summary:
       "Built and hardened Java Spring Boot services integrating with OSI PI real-time process data for enterprise operations.",
     highlights: [
@@ -181,7 +181,7 @@ export const experience: Role[] = [
     start: "2020-01",
     end: "2021-03",
     period: "Jan 2020 — Mar 2021",
-    accent: "violet",
+    accent: "indigo",
     summary:
       "Backend APIs and workflow automation for patient care, EMR and clinical data at a leading eye-care institute, built with data privacy as a first constraint.",
     highlights: [
@@ -396,14 +396,14 @@ export const education: Education[] = [
     institution: "Concordia University",
     location: "Montreal, Canada",
     period: "2022 — 2024",
-    accent: "violet",
+    accent: "indigo",
   },
   {
     degree: "B.Tech, Computer Science and Engineering",
     institution: "Geethanjali College of Engineering and Technology",
     location: "Hyderabad, India",
     period: "2016 — 2020",
-    accent: "blue",
+    accent: "rust",
   },
 ];
 
@@ -440,7 +440,7 @@ export const impact: Impact[] = [
     label: "Production defects resolved",
     context:
       "Indexing, linking, permissions and config contexts across IBM ELM",
-    accent: "blue",
+    accent: "rust",
   },
   {
     value: "15–20%",
@@ -452,13 +452,13 @@ export const impact: Impact[] = [
     value: "~35%",
     label: "Faster dashboard response",
     context: "Redis caching, query optimisation and code splitting",
-    accent: "gold",
+    accent: "amber",
   },
   {
     value: "₹25L+",
     label: "Patient payments processed",
     context: "Payment gateway integrated into clinical billing at LVPEI",
-    accent: "violet",
+    accent: "indigo",
   },
 ];
 
