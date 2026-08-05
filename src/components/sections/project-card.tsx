@@ -4,7 +4,7 @@ import type { Project } from "@/content/projects";
 export function ProjectCard({ project }: { project: Project }) {
   return (
     <article className="group bg-card shadow-card hover:border-foreground/25 hover:shadow-raised relative flex h-full flex-col rounded-xl border p-6 transition-[box-shadow,border-color] duration-200 md:p-8">
-      <p className="text-muted-foreground font-mono text-[0.7rem] tracking-[0.12em] uppercase">
+      <p className="text-brand font-mono text-[0.7rem] tracking-[0.12em] uppercase">
         {project.domain}
       </p>
 

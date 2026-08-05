@@ -17,7 +17,6 @@ export function personLd() {
     jobTitle: `${current.title}, ${current.team}`,
     description: site.description,
     email: `mailto:${site.email}`,
-    telephone: site.phone,
     worksFor: {
       "@type": "Organization",
       name: current.company,

@@ -9,7 +9,7 @@ export function ExperienceCard({ role }: { role: Role }) {
           <h3 className="text-lg font-extrabold tracking-tight">
             {role.company}
           </h3>
-          <p className="mt-1.5 font-semibold">{role.title}</p>
+          <p className="text-brand mt-1.5 font-semibold">{role.title}</p>
           {role.team ? (
             <p className="text-muted-foreground mt-1 text-sm">{role.team}</p>
           ) : null}

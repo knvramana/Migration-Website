@@ -11,7 +11,7 @@ export function Tag({
   return (
     <span
       className={cn(
-        "bg-tag border-tag-border text-foreground inline-flex min-h-7 items-center rounded-full border px-2.5 font-mono text-[0.7rem] font-semibold tracking-tight",
+        "bg-tag border-tag-border text-brand inline-flex min-h-7 items-center rounded-full border px-2.5 font-mono text-[0.7rem] font-semibold tracking-tight",
         className,
       )}
     >

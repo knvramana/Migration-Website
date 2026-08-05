@@ -29,7 +29,7 @@ export function Hero() {
       />
 
       <div className="container-page max-w-3xl">
-        <p className="text-muted-foreground font-mono text-xs tracking-[0.14em] uppercase">
+        <p className="text-brand font-mono text-xs tracking-[0.14em] uppercase">
           {site.role} · IBM Canada
         </p>
 

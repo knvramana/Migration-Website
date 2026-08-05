@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRightIcon, FileTextIcon } from "lucide-react";
 
-import { GithubIcon, LinkedinIcon } from "@/components/common/brand-icons";
+import { LinkedinIcon } from "@/components/common/brand-icons";
 import { CopyEmail } from "@/components/common/copy-email";
 import { Reveal } from "@/components/common/reveal";
 import { Eyebrow } from "@/components/common/section";
@@ -21,18 +21,6 @@ const methods = [
     value: site.email,
     href: `mailto:${site.email}`,
     Icon: null,
-  },
-  {
-    label: "Phone",
-    value: site.phoneDisplay,
-    href: `tel:${site.phone}`,
-    Icon: null,
-  },
-  {
-    label: "GitHub",
-    value: "github.com/knvramana",
-    href: site.socials.github,
-    Icon: GithubIcon,
   },
   {
     label: "LinkedIn",

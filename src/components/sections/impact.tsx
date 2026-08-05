@@ -15,7 +15,7 @@ export function Impact() {
         <ul className="grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
           {impact.map((item, index) => (
             <Reveal key={item.label} delay={index * 60} as="li">
-              <p className="font-mono text-2xl font-extrabold tracking-tight tabular-nums md:text-3xl">
+              <p className="text-brand font-mono text-2xl font-extrabold tracking-tight tabular-nums md:text-3xl">
                 {item.value}
               </p>
               <p className="mt-2 text-sm font-extrabold">{item.label}</p>
