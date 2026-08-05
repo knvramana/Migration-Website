@@ -1,24 +1,20 @@
 import { cn } from "@/lib/utils";
 
 /**
- * A block, not a "section".
- *
- * The previous Section component made `eyebrow` a required prop, so nine
- * blocks were forced through an identical shape — mono uppercase label, then
- * a 48px extrabold heading, then bordered cards. Nine repetitions of one
- * rhythm is what made the page read as a template.
- *
- * Here the heading is body size at weight 600, the label is gone, and the
- * only structure is a hairline and space.
+ * Section wrapper. The heading is a real heading again — the previous pass
+ * flattened everything to body size, which read as an unstyled document.
+ * Hierarchy without shouting: 24px semibold, no uppercase eyebrow above it.
  */
 export function Block({
   id,
   title,
+  lead,
   children,
   className,
 }: {
   id: string;
   title: string;
+  lead?: string;
   children: React.ReactNode;
   className?: string;
 }) {
@@ -26,12 +22,20 @@ export function Block({
     <section
       id={id}
       aria-labelledby={`${id}-heading`}
-      className={cn("block scroll-mt-10", className)}
+      className={cn("border-border scroll-mt-8 border-t py-14", className)}
     >
-      <h2 id={`${id}-heading`} className="text-foreground mb-6">
+      <h2
+        id={`${id}-heading`}
+        className="text-[1.5rem] leading-tight font-semibold tracking-[-0.02em]"
+      >
         {title}
       </h2>
-      {children}
+      {lead ? (
+        <p className="text-muted-foreground mt-3 max-w-2xl leading-relaxed">
+          {lead}
+        </p>
+      ) : null}
+      <div className="mt-8">{children}</div>
     </section>
   );
 }

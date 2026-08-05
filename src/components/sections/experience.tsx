@@ -1,52 +1,63 @@
 import { Block } from "@/components/common/block";
 import { experience } from "@/content/resume";
 
-/**
- * One hairline-separated list, not four bordered cards.
- *
- * Bullets are capped at three per role and each one is a result, not a
- * responsibility — six identical dashes across four roles produced thirty
- * lines of undifferentiated grey that nobody read past item two.
- */
 export function Experience() {
   return (
-    <Block id="work" title="Work">
-      <div className="rows">
+    <Block id="experience" title="Experience">
+      <div className="grid gap-4">
         {experience.map((role) => (
-          <article key={role.company} className="py-6 first:pt-0 last:pb-0">
-            <div className="flex flex-wrap items-baseline justify-between gap-x-4">
-              <h3 className="text-foreground">
-                {role.company}
-                <span className="text-muted-foreground font-normal">
-                  {" · "}
-                  {role.title}
-                </span>
+          <article
+            key={role.company}
+            className="border-border bg-card rounded-xl border p-6 md:p-7"
+          >
+            <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+              <h3 className="text-[1.0625rem] font-semibold tracking-tight">
+                {role.title}
               </h3>
-              <time className="text-faint text-[0.8125rem] whitespace-nowrap">
+              <time className="text-faint font-mono text-[0.8125rem] whitespace-nowrap">
                 {role.period}
               </time>
             </div>
 
-            <p className="text-muted-foreground mt-3">{role.summary}</p>
+            <p className="text-accent-fg mt-1 text-[0.9375rem] font-medium">
+              {role.company}
+              {role.team ? (
+                <span className="text-faint font-normal">
+                  {" · "}
+                  {role.team}
+                </span>
+              ) : null}
+            </p>
 
-            <ul className="mt-4 grid gap-2">
-              {role.highlights.slice(0, 3).map((item) => (
+            <p className="text-muted-foreground mt-4 leading-relaxed">
+              {role.summary}
+            </p>
+
+            <ul className="mt-4 grid gap-2.5">
+              {role.highlights.map((item) => (
                 <li
                   key={item}
-                  className="text-faint relative pl-4 text-[0.9375rem]"
+                  className="text-muted-foreground relative pl-5 text-[0.9375rem] leading-relaxed"
                 >
                   <span
                     aria-hidden="true"
-                    className="absolute top-[0.7em] left-0 h-px w-2 bg-current"
+                    className="bg-accent-fg/50 absolute top-[0.6em] left-0 h-1.5 w-1.5 rounded-full"
                   />
                   {item}
                 </li>
               ))}
             </ul>
 
-            <p className="text-faint mt-4 font-mono text-[0.75rem]">
-              {role.stack.join(" · ")}
-            </p>
+            <ul className="mt-5 flex flex-wrap gap-1.5">
+              {role.stack.map((item) => (
+                <li
+                  key={item}
+                  className="bg-secondary text-muted-foreground rounded-md px-2 py-1 font-mono text-[0.6875rem]"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
           </article>
         ))}
       </div>

@@ -1,32 +1,41 @@
 import { Block } from "@/components/common/block";
 import { certifications, education } from "@/content/resume";
 
-/** Two rows and a certification line. Not two cards. */
 export function Education() {
   return (
-    <Block id="education" title="Education">
-      <div className="rows">
+    <Block id="education" title="Education & Certifications">
+      <div className="grid gap-4 md:grid-cols-2">
         {education.map((entry) => (
-          <div key={entry.degree} className="py-4 first:pt-0">
-            <div className="flex flex-wrap items-baseline justify-between gap-x-4">
-              <h3 className="text-foreground font-medium">{entry.degree}</h3>
-              <time className="text-faint text-[0.8125rem] whitespace-nowrap">
-                {entry.period}
-              </time>
-            </div>
+          <article
+            key={entry.degree}
+            className="border-border bg-card rounded-xl border p-5"
+          >
+            <time className="text-faint font-mono text-[0.8125rem]">
+              {entry.period}
+            </time>
+            <h3 className="mt-2 font-semibold tracking-tight">
+              {entry.degree}
+            </h3>
             <p className="text-muted-foreground mt-1 text-[0.9375rem]">
-              {entry.institution} · {entry.location}
+              {entry.institution}
             </p>
-          </div>
+            <p className="text-faint text-[0.875rem]">{entry.location}</p>
+          </article>
         ))}
 
         {certifications.map((cert) => (
-          <div key={cert.code} className="py-4 last:pb-0">
-            <h3 className="text-foreground font-medium">{cert.name}</h3>
+          <article
+            key={cert.code}
+            className="border-border bg-card rounded-xl border p-5 md:col-span-2"
+          >
+            <span className="text-accent-fg font-mono text-[0.8125rem]">
+              {cert.code}
+            </span>
+            <h3 className="mt-2 font-semibold tracking-tight">{cert.name}</h3>
             <p className="text-muted-foreground mt-1 text-[0.9375rem]">
-              {cert.issuer} · {cert.code}
+              {cert.issuer}
             </p>
-          </div>
+          </article>
         ))}
       </div>
     </Block>

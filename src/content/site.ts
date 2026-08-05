@@ -30,11 +30,12 @@ export const site = {
   },
 
   nav: [
-    { label: "Work", href: "#work" },
-    { label: "Stack", href: "#stack" },
-    { label: "Projects", href: "#projects" },
+    { label: "About", href: "#about" },
+    { label: "Experience", href: "#experience" },
+    { label: "Skills", href: "#skills" },
+    { label: "Work", href: "#projects" },
     { label: "Education", href: "#education" },
-    { label: "Elsewhere", href: "#contact" },
+    { label: "Contact", href: "#contact" },
   ],
 
   availability: {
