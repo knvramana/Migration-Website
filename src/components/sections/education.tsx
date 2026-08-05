@@ -14,7 +14,7 @@ export function Education() {
       <div className="grid gap-4 md:grid-cols-2">
         {education.map((entry, index) => (
           <Reveal key={entry.degree} delay={index * 70}>
-            <article className="border-border bg-card h-full rounded-xl border p-6 md:p-7">
+            <article className="border-border bg-card shadow-card h-full rounded-xl border p-6 md:p-7">
               <div className="flex items-start gap-3">
                 <GraduationCapIcon
                   className="text-muted-foreground mt-0.5 size-5 shrink-0"
@@ -45,7 +45,7 @@ export function Education() {
           {certifications.map((cert) => (
             <li
               key={cert.code}
-              className="border-border bg-card flex items-start gap-3 rounded-xl border p-6"
+              className="border-border bg-card shadow-card flex items-start gap-3 rounded-xl border p-6"
             >
               <AwardIcon
                 className="text-muted-foreground mt-0.5 size-5 shrink-0"

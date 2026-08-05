@@ -33,23 +33,23 @@
 :root {
   --radius: 0.625rem;
 
-  --background: oklch(0.9789 0.0029 264.54); /* #fafafb  page */
+  --background: oklch(0.9913 0.0013 286.38); /* #fcfcfd  near-white page */
   --foreground: oklch(0.2071 0.0356 266.32); /* #16181d  17.0:1 */
-  --card: oklch(1 0 0); /* #ffffff  cards lift off the page */
+  --card: oklch(1 0 0); /* #ffffff  lifted by border + shadow, not tone */
   --card-foreground: oklch(0.2071 0.0356 266.32);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.2071 0.0356 266.32);
   --primary: oklch(0.2091 0.0104 268.19); /* near-black, not a brand hue */
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.9573 0.0074 260.73); /* #f4f5f7  raised */
+  --secondary: oklch(0.9638 0.0058 264.53); /* #f1f3f7  chips only */
   --secondary-foreground: oklch(0.2071 0.0356 266.32);
-  --muted: oklch(0.9573 0.0074 260.73);
+  --muted: oklch(0.9638 0.0058 264.53);
   --muted-foreground: oklch(0.4954 0.0413 270.98); /* #656a73  5.2:1 */
-  --accent: oklch(0.9573 0.0074 260.73);
+  --accent: oklch(0.9638 0.0058 264.53);
   --accent-foreground: oklch(0.2071 0.0356 266.32);
   --destructive: oklch(0.577 0.245 27.325);
 
-  --border: oklch(0.2071 0.0356 266.32 / 0.11);
+  --border: oklch(0.2071 0.0356 266.32 / 0.13);
   --input: oklch(0.2071 0.0356 266.32 / 0.14);
   --ring: oklch(0.4632 0.2033 266.43);
 
@@ -58,18 +58,22 @@
      no headroom. #1d4ed8 holds 6.14–6.70 across all three surfaces. */
   --link: oklch(0.4632 0.2033 266.43); /* #1d4ed8 */
 
-  --tag: oklch(0.9573 0.0074 260.73);
-  --tag-border: oklch(0.2071 0.0356 266.32 / 0.11);
+  --tag: oklch(0.9638 0.0058 264.53);
+  --tag-border: oklch(0.2071 0.0356 266.32 / 0.13);
 
   --ink: oklch(0.2071 0.0356 266.32);
   --ink-foreground: oklch(1 0 0);
 
   /* Grain strength per theme — multiply on light, soft-light on dark. */
-  --grain-opacity: 0.032;
+  --grain-opacity: 0.024;
   --grain-blend: multiply;
 
-  --shadow-card: 0 1px 2px oklch(0 0 0 / 0.04);
-  --shadow-raised: 0 12px 32px oklch(0 0 0 / 0.1);
+  --shadow-card:
+    0 1px 2px oklch(0.2071 0.0356 266.32 / 0.05),
+    0 1px 3px oklch(0.2071 0.0356 266.32 / 0.04);
+  --shadow-raised:
+    0 4px 16px oklch(0.2071 0.0356 266.32 / 0.08),
+    0 12px 32px oklch(0.2071 0.0356 266.32 / 0.06);
 
   --chart-1: oklch(0.2091 0.0104 268.19);
   --chart-2: oklch(0.4 0.01 264);
@@ -92,7 +96,7 @@
 .dark {
   /* Blue-tinted rather than flat neutral grey, and lifted off pure black.
      Cards are a genuine step above the page so the layout still reads. */
-  --background: oklch(0.1727 0.0134 264.13); /* #121316 */
+  --background: oklch(0.1727 0.0134 264.13); /* #0d1016 */
   --foreground: oklch(0.9393 0.0116 264.51); /* #e9eaee  15.5:1 */
   --card: oklch(0.217 0.0193 262.08); /* #1a1c20 */
   --card-foreground: oklch(0.9393 0.0116 264.51);

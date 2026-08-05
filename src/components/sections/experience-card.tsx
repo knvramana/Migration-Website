@@ -1,9 +1,14 @@
 import { TagRow } from "@/components/common/tag";
 import type { Role } from "@/content/resume";
 
+/**
+ * A card, matching skills, projects and education. This was the only section
+ * still rendering as hairline-separated rows, which made the most important
+ * block on the page read as the plainest.
+ */
 export function ExperienceCard({ role }: { role: Role }) {
   return (
-    <article className="border-border border-t py-8 first:border-t-0 first:pt-0 md:py-10">
+    <article className="border-border bg-card shadow-card rounded-xl border p-6 md:p-8">
       <div className="grid gap-6 lg:grid-cols-12 lg:gap-10">
         <header className="lg:col-span-4">
           <h3 className="text-lg font-extrabold tracking-tight">
@@ -32,7 +37,7 @@ export function ExperienceCard({ role }: { role: Role }) {
               >
                 <span
                   aria-hidden="true"
-                  className="bg-foreground/30 absolute top-2.5 left-0 size-1 rounded-full"
+                  className="bg-brand/45 absolute top-2.5 left-0 size-1.5 rounded-full"
                 />
                 {item}
               </li>
