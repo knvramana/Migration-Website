@@ -1,62 +1,52 @@
 export interface Project {
-  title: string;
+  /**
+   * The field a reader actually gains something from. These replaced a
+   * decorative 01–04 counter: the projects are not a sequence, so numbering
+   * them encoded nothing true about them.
+   */
   domain: string;
-  year: string;
-  /** Challenge → approach → result. What the problem actually was. */
-  challenge: string;
-  approach: string;
-  result: string;
+  title: string;
+  subtitle: string;
+  description: string;
   tags: string[];
   href?: string;
+  /** Bento emphasis — the two research-weight cards span two columns. */
+  span?: string;
 }
 
 export const projects: Project[] = [
   {
+    domain: "Natural language · Knowledge graphs",
     title: "RoboProf",
-    domain: "NLP · Knowledge graphs",
-    year: "2023",
-    challenge:
-      "University course queries were answered by hand from scattered PDFs, outlines and slide decks. A plain language model answered fluently and wrongly, because nothing tied its output to an actual document.",
-    approach:
-      "Rasa NLU for intent, Apache Tika to ingest course material, and an RDF ontology queried over SPARQL so every answer is retrieved from a source rather than generated from recall.",
-    result:
-      "Grounded responses that cite the course record they came from, with unanswerable questions returning nothing instead of a confident invention.",
-    tags: ["Rasa NLU", "SPARQL", "RDF", "Apache Tika", "Python"],
+    subtitle: "Chatbot using intelligent systems",
+    description:
+      "Academic support chatbot that answers university-related queries by combining NLP, a knowledge graph and deep learning. Rasa NLU handles intent, SPARQL queries an RDF course ontology for grounded retrieval, and Apache Tika ingests lecture material. Answers are retrieved from the ontology rather than generated, so every response traces to a source.",
+    tags: ["NLP", "Rasa NLU", "SPARQL", "Knowledge Graphs", "Deep Learning"],
+    span: "md:col-span-2",
   },
   {
-    title: "ASL Alphabet Classification",
-    domain: "Computer vision",
-    year: "2023",
-    challenge:
-      "American Sign Language letters differ by small hand-shape changes, and several pairs are near-identical from a single fixed camera angle.",
-    approach:
-      "A convolutional classifier in PyTorch over the ASL alphabet set, with augmentation for rotation and lighting to stop the model keying on background rather than hand shape.",
-    result:
-      "A working alphabet classifier, and a clear read on which letter pairs the confusion matrix says a single-frame model cannot separate.",
-    tags: ["PyTorch", "CNN", "Computer Vision", "Python"],
-  },
-  {
-    title: "Auction Avenue",
     domain: "Cloud application",
-    year: "2022",
-    challenge:
-      "Build a multi-user bidding platform where concurrent bids on the same lot cannot corrupt the auction state.",
-    approach:
-      "Django MVT with server-side bid validation and transactional writes, deployed to Heroku with SQLite for the initial rollout.",
-    result:
-      "An end-to-end auction flow — listing, bidding, closing — with bid ordering enforced at the database rather than in the view.",
-    tags: ["Django", "Python", "SQLite", "Heroku"],
+    title: "Auction Avenue",
+    subtitle: "Hosted bidding platform",
+    description:
+      "Auction and bidding system on Django's MVT architecture with Python and SQLite3, deployed to Heroku.",
+    tags: ["Django", "Python", "SQLite3", "Heroku"],
   },
   {
-    title: "Graph Colouring on Online Graphs",
+    domain: "Computer vision",
+    title: "ASL Classification",
+    subtitle: "American Sign Language recognition",
+    description:
+      "PyTorch image-classification model for ASL alphabet recognition, built to support more inclusive communication workflows.",
+    tags: ["PyTorch", "Computer Vision", "Machine Learning"],
+  },
+  {
     domain: "Algorithms research",
-    year: "2023",
-    challenge:
-      "Online graph colouring must commit to a colour before seeing the rest of the graph. The question was how badly First Fit degrades against CBIP on bipartite inputs.",
-    approach:
-      "Implemented both algorithms, generated bipartite online instances across sizes and arrival orders, and measured colours used against the offline optimum.",
-    result:
-      "Empirical competitive ratios for both, confirming where First Fit's worst case actually bites versus where it is fine in practice.",
+    title: "Graph Colouring on Online Graphs",
+    subtitle: "First Fit vs CBIP",
+    description:
+      "Empirical study of the First Fit and CBIP algorithms on bipartite online graphs, including implementation and competitive-ratio analysis.",
     tags: ["Algorithms", "Python", "Research"],
+    span: "md:col-span-2",
   },
 ];

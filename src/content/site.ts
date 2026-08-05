@@ -32,9 +32,9 @@ export const site = {
   nav: [
     { label: "About", href: "#about" },
     { label: "Experience", href: "#experience" },
+    { label: "Stack", href: "#architecture" },
     { label: "Skills", href: "#skills" },
-    { label: "Work", href: "#projects" },
-    { label: "Education", href: "#education" },
+    { label: "Projects", href: "#projects" },
     { label: "Contact", href: "#contact" },
   ],
 

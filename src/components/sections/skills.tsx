@@ -1,40 +1,83 @@
-import { Block } from "@/components/common/block";
-import { skillGroups } from "@/content/resume";
+import {
+  BrainIcon,
+  ChartNoAxesColumnIcon,
+  CloudIcon,
+  Code2Icon,
+  DatabaseIcon,
+  FlaskConicalIcon,
+  LayoutGridIcon,
+  NetworkIcon,
+  ServerIcon,
+  type LucideIcon,
+} from "lucide-react";
 
-/**
- * Grouped by domain with a context line each. No icons in coloured squares,
- * no "featured" cell — the grouping and the sentence carry it.
- */
+import { Reveal } from "@/components/common/reveal";
+import { Section } from "@/components/common/section";
+import { Tag } from "@/components/common/tag";
+import { skillGroups, type SkillIcon } from "@/content/resume";
+import { cn } from "@/lib/utils";
+
+const icons: Record<SkillIcon, LucideIcon> = {
+  brain: BrainIcon,
+  server: ServerIcon,
+  layout: LayoutGridIcon,
+  database: DatabaseIcon,
+  cloud: CloudIcon,
+  code: Code2Icon,
+  flask: FlaskConicalIcon,
+  network: NetworkIcon,
+  chart: ChartNoAxesColumnIcon,
+};
+
 export function Skills() {
+  // Stagger outward from the middle of the grid, so the eye lands centre-first.
+  const midpoint = (skillGroups.length - 1) / 2;
+
   return (
-    <Block
+    <Section
       id="skills"
-      title="Technical Skills"
-      lead="Grouped by what I actually use them for, rather than as a flat inventory."
+      eyebrow="Skills"
+      title="Two pillars, one stack."
+      lead="The AI work is not a side interest bolted onto a backend résumé — it runs on the same services, data models and integration surfaces as everything else here."
     >
-      <div className="grid gap-4 md:grid-cols-2">
-        {skillGroups.map((group) => (
-          <div
-            key={group.title}
-            className="border-border bg-card rounded-xl border p-5"
-          >
-            <h3 className="font-semibold tracking-tight">{group.title}</h3>
-            <p className="text-faint mt-1.5 text-[0.875rem] leading-snug">
-              {group.context}
-            </p>
-            <ul className="mt-4 flex flex-wrap gap-1.5">
-              {group.items.map((item) => (
-                <li
-                  key={item}
-                  className="bg-secondary text-muted-foreground rounded-md px-2 py-1 font-mono text-[0.6875rem]"
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+      <div className="grid auto-rows-[minmax(0,auto)] grid-cols-1 gap-4 md:grid-cols-6 lg:grid-cols-12">
+        {skillGroups.map((group, index) => {
+          const Icon = icons[group.icon];
+          const delay = Math.round(Math.abs(index - midpoint) * 55);
+
+          return (
+            <Reveal
+              key={group.title}
+              delay={delay}
+              className={cn("min-w-0", group.span)}
+            >
+              <div className="bg-card shadow-card relative flex h-full flex-col overflow-hidden rounded-xl border p-6">
+                <div className="relative flex items-center gap-3">
+                  <Icon
+                    className="text-muted-foreground size-[1.125rem] shrink-0"
+                    aria-hidden="true"
+                  />
+                  <h3 className="text-base font-bold tracking-tight text-balance">
+                    {group.title}
+                  </h3>
+                </div>
+
+                <p className="text-muted-foreground relative mt-3 text-sm leading-relaxed text-pretty">
+                  {group.context}
+                </p>
+
+                <ul className="relative mt-4 flex flex-wrap gap-2">
+                  {group.items.map((item) => (
+                    <li key={item}>
+                      <Tag>{item}</Tag>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+          );
+        })}
       </div>
-    </Block>
+    </Section>
   );
 }

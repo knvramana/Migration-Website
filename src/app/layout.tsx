@@ -1,21 +1,27 @@
 import type { Metadata, Viewport } from "next";
-import { Instrument_Sans, IBM_Plex_Mono, Newsreader } from "next/font/google";
+import { Instrument_Sans, IBM_Plex_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import { ThemeProvider } from "@/components/layout/theme-provider";
-import { SiteShell } from "@/components/layout/site-shell";
+import { SiteHeader } from "@/components/layout/site-header";
+import { SiteFooter } from "@/components/layout/site-footer";
 import { JsonLd } from "@/components/common/json-ld";
+import { Toaster } from "@/components/ui/sonner";
 import { personLd, webSiteLd } from "@/lib/jsonld";
 import { site } from "@/content/site";
 
 import "./globals.css";
 
 /*
-  Three families, three jobs.
+  Instrument Sans rather than Inter. Inter + shadcn's neutral defaults is the
+  stack every scaffolded portfolio already ships, so it actively signals
+  "template"; Instrument Sans is warmer, reads well at text sizes, and is
+  OFL-licensed on Google Fonts.
 
-  Instrument Sans carries everything. Inter plus shadcn's neutral defaults is
-  the stack every scaffolded portfolio ships, so it actively signals template.
+  Variable, which measurement showed is also the smallest option — pinning
+  static weights made the payload larger, because each static Latin instance
+  carries its own full glyph set.
 */
 const instrumentSans = Instrument_Sans({
   subsets: ["latin"],
@@ -24,27 +30,16 @@ const instrumentSans = Instrument_Sans({
 });
 
 /*
-  Newsreader italic, for exactly one clause in the opening paragraph. A single
-  serif accent on an otherwise text-only page is the cheapest way to make it
-  read as typeset rather than unstyled — 400 italic only, so it costs one file.
-*/
-const newsreader = Newsreader({
-  subsets: ["latin"],
-  weight: ["400"],
-  style: ["italic"],
-  variable: "--font-newsreader",
-  display: "swap",
-  preload: false,
-});
+  IBM Plex Mono carries the structural layer — section labels, metrics, tech
+  chips, and the tool-call payloads. It is IBM's own typeface, which is a real
+  reason to choose it here rather than an arbitrary one, and it is OFL.
 
-/*
-  IBM Plex Mono, cut back to tabular data and tech listings only — no longer
-  decorating section labels. It is IBM's own typeface, which is an actual
-  reason to choose it here.
+  No preload: mono never appears in body copy, so it is not needed for first
+  paint.
 */
 const plexMono = IBM_Plex_Mono({
   subsets: ["latin"],
-  weight: ["400"],
+  weight: ["400", "500", "600"],
   variable: "--font-plex-mono",
   display: "swap",
   preload: false,
@@ -60,15 +55,17 @@ export const metadata: Metadata = {
   applicationName: site.name,
   keywords: [
     "Ramana Koduri",
-    "Software Developer",
     "Full-Stack Developer",
+    "AI Application Engineer",
     "IBM ELM",
     "Engineering Lifecycle Management",
+    "OSLC",
     "OSLC",
     "Java",
     "Spring Boot",
     "Django",
     "React",
+    "Next.js",
     "Toronto",
   ],
   authors: [{ name: site.name, url: site.url }],
@@ -119,9 +116,20 @@ export default function RootLayout({
       lang="en"
       suppressHydrationWarning
       data-scroll-behavior="smooth"
-      className={`${instrumentSans.variable} ${newsreader.variable} ${plexMono.variable}`}
+      className={`${instrumentSans.variable} ${plexMono.variable}`}
     >
+      <head>
+        {/* Reveal starts at opacity:0, so restore it when JS never runs. */}
+        <noscript>
+          <style>{`[data-reveal]{opacity:1 !important;translate:none !important}`}</style>
+        </noscript>
+      </head>
       <body className="font-sans">
+        {/*
+          Light is the default rather than the system preference: the design
+          is built light-first, with the hero and contact panels as dark
+          anchors. Dark remains one click away and persists.
+        */}
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
@@ -130,11 +138,16 @@ export default function RootLayout({
         >
           <a
             href="#main"
-            className="bg-primary text-primary-foreground focus:ring-ring sr-only rounded-md px-4 py-2 text-sm font-medium focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-100 focus:ring-2"
+            className="bg-primary text-primary-foreground focus:ring-ring sr-only rounded-md px-4 py-2 text-sm font-semibold focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-100 focus:ring-2"
           >
             Skip to content
           </a>
-          <SiteShell>{children}</SiteShell>
+          {/* Page-wide grain. Fixed, non-interactive, hidden from print. */}
+          <div aria-hidden="true" data-print-hide="" className="grain" />
+          <SiteHeader />
+          <main id="main">{children}</main>
+          <SiteFooter />
+          <Toaster position="bottom-right" />
         </ThemeProvider>
         <JsonLd data={personLd()} />
         <JsonLd data={webSiteLd()} />
