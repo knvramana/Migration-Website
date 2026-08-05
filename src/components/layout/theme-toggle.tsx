@@ -1,23 +1,21 @@
 "use client";
 
-import { MoonIcon, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 
-import { Button } from "@/components/ui/button";
 import { useMounted } from "@/hooks/use-mounted";
 
 type DocumentWithViewTransition = Document & {
   startViewTransition?: (callback: () => void) => { ready: Promise<void> };
 };
 
+/** A text control, not an icon in a rounded square. */
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
   const mounted = useMounted();
 
-  // Hold a fixed-size placeholder until mounted, otherwise the icon visibly
-  // flips on hydration and the header reflows.
+  // Fixed-size placeholder until mounted, or the label flips on hydration.
   if (!mounted) {
-    return <div className="size-9 shrink-0" aria-hidden="true" />;
+    return <span className="block h-5 w-10" aria-hidden="true" />;
   }
 
   const isDark = resolvedTheme === "dark";
@@ -25,36 +23,26 @@ export function ThemeToggle() {
   const toggle = () => {
     const next = isDark ? "light" : "dark";
     const doc = document as DocumentWithViewTransition;
-
-    // Cross-fade the whole document where the browser supports it. Purely
-    // additive: without startViewTransition, or under reduced motion, the
-    // theme just swaps instantly as before.
-    const prefersReducedMotion = window.matchMedia(
+    const reduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
 
-    if (!doc.startViewTransition || prefersReducedMotion) {
+    if (!doc.startViewTransition || reduced) {
       setTheme(next);
       return;
     }
-
     doc.startViewTransition(() => setTheme(next));
   };
 
   return (
-    <Button
-      variant="ghost"
-      size="icon"
-      className="size-9 shrink-0"
-      aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
-      aria-pressed={isDark}
+    <button
+      type="button"
       onClick={toggle}
+      aria-pressed={isDark}
+      className="text-faint hover:text-foreground text-[0.8125rem] transition-colors duration-150"
     >
-      {isDark ? (
-        <SunIcon className="size-4" />
-      ) : (
-        <MoonIcon className="size-4" />
-      )}
-    </Button>
+      {isDark ? "light" : "dark"}
+      <span className="sr-only"> theme</span>
+    </button>
   );
 }

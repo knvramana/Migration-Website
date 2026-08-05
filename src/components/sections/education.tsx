@@ -1,71 +1,34 @@
-import { AwardIcon, GraduationCapIcon } from "lucide-react";
-
-import { Reveal } from "@/components/common/reveal";
-import { Section } from "@/components/common/section";
+import { Block } from "@/components/common/block";
 import { certifications, education } from "@/content/resume";
 
+/** Two rows and a certification line. Not two cards. */
 export function Education() {
   return (
-    <Section
-      id="education"
-      eyebrow="Education"
-      title="Education & credentials."
-    >
-      <div className="grid gap-4 md:grid-cols-2">
-        {education.map((entry, index) => (
-          <Reveal key={entry.degree} delay={index * 70}>
-            <article className="border-border bg-card h-full rounded-xl border p-6 md:p-7">
-              <div className="flex items-start gap-3">
-                <GraduationCapIcon
-                  className="text-muted-foreground mt-0.5 size-5 shrink-0"
-                  aria-hidden="true"
-                />
-                <div className="min-w-0">
-                  <p className="text-muted-foreground font-mono text-xs tracking-tight">
-                    {entry.period}
-                  </p>
-                  <h3 className="mt-2 text-lg font-extrabold tracking-tight text-balance">
-                    {entry.degree}
-                  </h3>
-                  <p className="text-muted-foreground mt-1.5 text-sm">
-                    {entry.institution}
-                  </p>
-                  <p className="text-muted-foreground text-sm">
-                    {entry.location}
-                  </p>
-                </div>
-              </div>
-            </article>
-          </Reveal>
+    <Block id="education" title="Education">
+      <div className="rows">
+        {education.map((entry) => (
+          <div key={entry.degree} className="py-4 first:pt-0">
+            <div className="flex flex-wrap items-baseline justify-between gap-x-4">
+              <h3 className="text-foreground font-medium">{entry.degree}</h3>
+              <time className="text-faint text-[0.8125rem] whitespace-nowrap">
+                {entry.period}
+              </time>
+            </div>
+            <p className="text-muted-foreground mt-1 text-[0.9375rem]">
+              {entry.institution} · {entry.location}
+            </p>
+          </div>
+        ))}
+
+        {certifications.map((cert) => (
+          <div key={cert.code} className="py-4 last:pb-0">
+            <h3 className="text-foreground font-medium">{cert.name}</h3>
+            <p className="text-muted-foreground mt-1 text-[0.9375rem]">
+              {cert.issuer} · {cert.code}
+            </p>
+          </div>
         ))}
       </div>
-
-      <Reveal delay={140}>
-        <ul className="mt-4 grid gap-4">
-          {certifications.map((cert) => (
-            <li
-              key={cert.code}
-              className="border-border bg-card flex items-start gap-3 rounded-xl border p-6"
-            >
-              <AwardIcon
-                className="text-muted-foreground mt-0.5 size-5 shrink-0"
-                aria-hidden="true"
-              />
-              <div className="min-w-0">
-                <p className="text-muted-foreground font-mono text-xs tracking-tight">
-                  Certification · {cert.code}
-                </p>
-                <h3 className="mt-2 font-extrabold tracking-tight text-balance">
-                  {cert.name}
-                </h3>
-                <p className="text-muted-foreground mt-1 text-sm">
-                  {cert.issuer}
-                </p>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </Reveal>
-    </Section>
+    </Block>
   );
 }

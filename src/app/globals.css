@@ -1,75 +1,54 @@
 @import "tailwindcss";
-@import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
 /*
   Tailwind v4 + next-themes: without this declaration `dark:` utilities never
-  fire, because v4 has no `darkMode: "class"` config to inherit. Uses :where()
-  so the `.dark` element itself matches too, not only its descendants.
+  fire, because v4 has no `darkMode: "class"` config to inherit.
 */
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* ---------------------------------------------------------------------------
    Palette — cool slate, near-monochrome.
 
-   Colour appears on two things: links and the focus ring. Buttons are
-   near-black rather than a brand hue, and hierarchy is carried by type scale,
-   spacing and hairline rules.
-
-   Two deliberate corrections to the previous pass:
-
-   1. The page is #fafafb, not pure white, and cards are #ffffff — so cards
-      genuinely lift off the page instead of everything being one flat field.
-   2. Dark is blue-tinted and lifted off near-black. Flat neutral grey at
-      #0f0f0f reads dead, and cards at #171717 were indistinguishable from
-      the page behind them.
+   Colour appears on two things: links and the focus ring. Everything else is
+   carried by three text tiers, a hard measure, and space.
 
    Verified contrast (light / dark):
-     text   17.02 / 15.45
-     muted   5.21 /  7.87
-     link    6.42 /  7.38
+     text    17.02 / 15.45
+     muted    5.21 /  7.87
+     faint    4.64 /  6.17
+     link     6.42 /  7.38
 --------------------------------------------------------------------------- */
 
 :root {
-  --radius: 0.625rem;
+  --radius: 0.5rem;
 
-  --background: oklch(0.9854 0.0013 286.38); /* #fafafb  page */
-  --foreground: oklch(0.2091 0.0104 268.19); /* #16181d  17.0:1 */
-  --card: oklch(1 0 0); /* #ffffff  cards lift off the page */
+  --background: oklch(0.9854 0.0013 286.38); /* #fafafb */
+  --foreground: oklch(0.2091 0.0104 268.19); /* #16181d */
+  --card: oklch(1 0 0);
   --card-foreground: oklch(0.2091 0.0104 268.19);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.2091 0.0104 268.19);
-  --primary: oklch(0.2091 0.0104 268.19); /* near-black, not a brand hue */
+  --primary: oklch(0.2091 0.0104 268.19);
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.97 0.0029 264.54); /* #f4f5f7  raised */
+  --secondary: oklch(0.97 0.0029 264.54);
   --secondary-foreground: oklch(0.2091 0.0104 268.19);
   --muted: oklch(0.97 0.0029 264.54);
-  --muted-foreground: oklch(0.5231 0.0154 262.34); /* #656a73  5.2:1 */
+  --muted-foreground: oklch(0.5231 0.0154 262.34); /* #656a73 */
   --accent: oklch(0.97 0.0029 264.54);
   --accent-foreground: oklch(0.2091 0.0104 268.19);
   --destructive: oklch(0.577 0.245 27.325);
 
-  --border: oklch(0 0 0 / 0.08);
+  /* A third text tier. Metadata sits here so only content is full strength. */
+  --faint: oklch(0.5505 0.0138 259.82); /* #6d727a  4.64:1 */
+
+  --border: oklch(0 0 0 / 0.09);
   --input: oklch(0 0 0 / 0.12);
   --ring: oklch(0.2091 0.0104 268.19);
-
-  /* The entire colour budget: links and the focus ring. Darkened from
-     #2563eb, which sat at 4.74:1 on the raised surface — passing, but with
-     no headroom. #1d4ed8 holds 6.14–6.70 across all three surfaces. */
   --link: oklch(0.4882 0.2172 264.38); /* #1d4ed8 */
-
-  --tag: oklch(0.97 0.0029 264.54);
-  --tag-border: oklch(0 0 0 / 0.09);
 
   --ink: oklch(0.2091 0.0104 268.19);
   --ink-foreground: oklch(1 0 0);
-
-  /* Grain strength per theme — multiply on light, soft-light on dark. */
-  --grain-opacity: 0.032;
-  --grain-blend: multiply;
-
-  --shadow-card: 0 1px 2px oklch(0 0 0 / 0.04);
-  --shadow-raised: 0 12px 32px oklch(0 0 0 / 0.1);
 
   --chart-1: oklch(0.2091 0.0104 268.19);
   --chart-2: oklch(0.4 0.01 264);
@@ -83,46 +62,36 @@
   --sidebar-primary-foreground: oklch(1 0 0);
   --sidebar-accent: oklch(0.97 0.0029 264.54);
   --sidebar-accent-foreground: oklch(0.2091 0.0104 268.19);
-  --sidebar-border: oklch(0 0 0 / 0.08);
+  --sidebar-border: oklch(0 0 0 / 0.09);
   --sidebar-ring: oklch(0.2091 0.0104 268.19);
 }
 
 .dark {
-  /* Blue-tinted rather than flat neutral grey, and lifted off pure black.
-     Cards are a genuine step above the page so the layout still reads. */
   --background: oklch(0.187 0.0063 271.07); /* #121316 */
-  --foreground: oklch(0.9374 0.0055 274.96); /* #e9eaee  15.5:1 */
-  --card: oklch(0.226 0.0083 264.39); /* #1a1c20 */
+  --foreground: oklch(0.9374 0.0055 274.96); /* #e9eaee */
+  --card: oklch(0.226 0.0083 264.39);
   --card-foreground: oklch(0.9374 0.0055 274.96);
-  --popover: oklch(0.2676 0.0103 260.7); /* #23262b */
+  --popover: oklch(0.2676 0.0103 260.7);
   --popover-foreground: oklch(0.9374 0.0055 274.96);
   --primary: oklch(0.9374 0.0055 274.96);
   --primary-foreground: oklch(0.187 0.0063 271.07);
   --secondary: oklch(0.2676 0.0103 260.7);
   --secondary-foreground: oklch(0.9374 0.0055 274.96);
   --muted: oklch(0.2676 0.0103 260.7);
-  --muted-foreground: oklch(0.7335 0.0172 262.73); /* #a3a9b4  7.9:1 */
+  --muted-foreground: oklch(0.7335 0.0172 262.73); /* #a3a9b4 */
   --accent: oklch(0.2676 0.0103 260.7);
   --accent-foreground: oklch(0.9374 0.0055 274.96);
   --destructive: oklch(0.704 0.191 22.216);
 
-  --border: oklch(1 0 0 / 0.11);
+  --faint: oklch(0.6685 0.0177 262.73); /* #8f95a0  6.17:1 */
+
+  --border: oklch(1 0 0 / 0.12);
   --input: oklch(1 0 0 / 0.15);
   --ring: oklch(0.9374 0.0055 274.96);
-
-  --link: oklch(0.719 0.1322 264.2); /* #7aa2f7  7.4:1 */
-
-  --tag: oklch(0.2676 0.0103 260.7);
-  --tag-border: oklch(1 0 0 / 0.13);
+  --link: oklch(0.719 0.1322 264.2); /* #7aa2f7 */
 
   --ink: oklch(0.187 0.0063 271.07);
   --ink-foreground: oklch(0.9374 0.0055 274.96);
-
-  --grain-opacity: 0.055;
-  --grain-blend: soft-light;
-
-  --shadow-card: 0 1px 2px oklch(0 0 0 / 0.3);
-  --shadow-raised: 0 12px 32px oklch(0 0 0 / 0.5);
 
   --chart-1: oklch(0.9374 0.0055 274.96);
   --chart-2: oklch(0.82 0.012 264);
@@ -136,14 +105,14 @@
   --sidebar-primary-foreground: oklch(0.187 0.0063 271.07);
   --sidebar-accent: oklch(0.2676 0.0103 260.7);
   --sidebar-accent-foreground: oklch(0.9374 0.0055 274.96);
-  --sidebar-border: oklch(1 0 0 / 0.11);
+  --sidebar-border: oklch(1 0 0 / 0.12);
   --sidebar-ring: oklch(0.9374 0.0055 274.96);
 }
 
 @theme inline {
   --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-newsreader), Georgia, "Times New Roman", serif;
   --font-mono: var(--font-plex-mono), ui-monospace, SFMono-Regular, monospace;
-  --font-heading: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -163,10 +132,8 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-
+  --color-faint: var(--faint);
   --color-link: var(--link);
-  --color-tag: var(--tag);
-  --color-tag-border: var(--tag-border);
   --color-ink: var(--ink);
   --color-ink-foreground: var(--ink-foreground);
 
@@ -192,11 +159,6 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
-
-  --shadow-card: var(--shadow-card);
-  --shadow-raised: var(--shadow-raised);
-
-  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @layer base {
@@ -209,10 +171,35 @@
     -webkit-tap-highlight-color: transparent;
   }
 
+  /*
+    16px / 28px. Measured against paco.me, shud.in and emilkowal.ski, all of
+    which ship 16/28 body — the previous 18px was pushing every line longer
+    than the measure wanted.
+  */
   body {
     @apply bg-background text-foreground antialiased;
+    font-size: 1rem;
+    line-height: 1.75rem;
     font-synthesis-weight: none;
     text-rendering: optimizeLegibility;
+    /* Terminal whitespace, so the last block reads as placed, not truncated. */
+    padding-bottom: 14rem;
+  }
+
+  /*
+    Headings are reset to body size and only re-introduced where earned.
+    Weight tops out at 600: the previous font-extrabold (800) was applied to
+    headings, stat values, stat labels and card titles alike, which is a
+    texture rather than a hierarchy.
+  */
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-size: 1rem;
+    line-height: 1.75rem;
+    font-weight: 600;
+    margin: 0;
   }
 
   button:not(:disabled),
@@ -220,7 +207,6 @@
     cursor: pointer;
   }
 
-  /* Tailwind preflight strips focus rings; put a visible one back everywhere. */
   :focus-visible {
     @apply outline-ring outline-2 outline-offset-2;
   }
@@ -229,83 +215,139 @@
     background-color: var(--foreground);
     color: var(--background);
   }
+
+  /* Numbers align wherever they sit next to each other. */
+  time,
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
 }
 
 @layer components {
-  /* Legacy container formula: min(1120px, calc(100% - 32px)) */
-  .container-page {
-    width: min(1120px, calc(100% - 2rem));
-    margin-inline: auto;
+  /*
+    The one structural idea: a narrow measure with a sticky label rail and a
+    single hairline between them. Replaces a floating pill header and nine
+    repeated section eyebrows with one persistent, functional index.
+  */
+  .shell {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    padding: 1.5rem;
   }
 
   /*
-    Page-wide grain. Stops both themes reading as a flat field of colour
-    without being visible as a texture.
-
-    An inline SVG turbulence tile, not a live filter: the browser rasterises
-    the 160px tile once and repeats it, so there is no per-pixel filter cost
-    across the viewport. ~400 bytes, no request. Fixed positioning means it
-    does not repaint on scroll.
-
-    multiply on light / soft-light on dark — screen-blending grain onto a dark
-    background just fogs it.
+    Rail entries are real tap targets: 24px minimum box with 8px between them,
+    negative-margined so the text still aligns flush with the rail edge.
   */
-  .grain {
-    position: fixed;
-    inset: 0;
-    z-index: 60;
-    pointer-events: none;
-    opacity: var(--grain-opacity);
-    mix-blend-mode: var(--grain-blend);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  .rail {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.75rem;
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+  }
+
+  .rail > * {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.5rem;
+  }
+
+  .measure {
+    position: relative;
+    max-width: 42rem; /* 672px */
+    min-width: 0;
+  }
+
+  @media (min-width: 60rem) {
+    .shell {
+      flex-direction: row;
+      gap: 0;
+      padding: 3.5rem;
+    }
+
+    .rail {
+      position: sticky;
+      top: 3.5rem;
+      align-self: flex-start;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      width: 7rem;
+      gap: 0.375rem;
+      align-items: flex-end;
+      padding-right: 3.5rem;
+    }
+
+    .measure {
+      padding-left: 3.5rem;
+    }
+
+    /*
+      mix-blend-mode keeps the hairline from ever reading as a card border —
+      it multiplies into the page rather than sitting on top of it.
+    */
+    .measure::before {
+      content: "";
+      position: absolute;
+      inset-block: 0;
+      left: 0;
+      width: 1px;
+      background: var(--border);
+      mix-blend-mode: multiply;
+    }
+
+    .dark .measure::before {
+      mix-blend-mode: screen;
+    }
   }
 
   /*
-    Replaces the hero photograph the legacy site used. A drafting grid built
-    from one radial-gradient — no asset, no request — masked so it fades out
-    before it can read as a repeating pattern. Alpha stays low; above ~0.08 it
-    stops looking like graph paper and starts looking like a SaaS template.
+    A block, not a "section". Two spacing magnitudes: 5rem between blocks,
+    the default 28px rhythm inside them. The old page used one identical
+    112px gap everywhere, so the ratio never registered.
   */
-  .dot-grid {
-    background-image: radial-gradient(
-      circle at 1px 1px,
-      var(--foreground) 1px,
-      transparent 0
-    );
-    background-size: 24px 24px;
-    opacity: 0.055;
-    mask-image: radial-gradient(115% 80% at 50% 0%, #000 22%, transparent 76%);
+  .block + .block {
+    margin-top: 5rem;
+  }
+
+  /* One container per list, hairlines between items — not a border per card. */
+  .rows > * + * {
+    border-top: 1px solid var(--border);
+  }
+
+  /*
+    Hover bleeds past the text column so a row reads as a target without
+    needing a visible border at rest.
+  */
+  .row-link {
+    display: block;
+    margin-inline: -0.75rem;
+    padding-inline: 0.75rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .row-link:hover {
+    background: var(--secondary);
+  }
+
+  /* Links are the only ornament on a text page, so they get real craft. */
+  .link {
+    color: var(--link);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2.5px;
+    text-decoration-color: color-mix(in oklch, var(--link) 45%, transparent);
+    transition: text-decoration-color 150ms ease;
+  }
+
+  .link:hover {
+    text-decoration-color: var(--link);
   }
 }
 
 @layer utilities {
-  /*
-    The single scroll-reveal mechanism. <Reveal> flips data-revealed via
-    IntersectionObserver; all motion lives here in CSS. Works in every
-    browser including Firefox, and costs no animation library.
-  */
-  [data-reveal] {
-    opacity: 0;
-    translate: 0 14px;
-  }
-
-  [data-reveal][data-revealed="true"] {
-    opacity: 1;
-    translate: none;
-    transition:
-      opacity 420ms var(--ease-expo),
-      translate 420ms var(--ease-expo);
-    transition-delay: var(--reveal-delay, 0ms);
-  }
-
   @media (prefers-reduced-motion: reduce) {
-    [data-reveal],
-    [data-reveal][data-revealed="true"] {
-      opacity: 1;
-      translate: none;
-      transition: none;
-    }
-
     *,
     *::before,
     *::after {
@@ -317,77 +359,45 @@
   }
 }
 
-/*
-  Print. Recruiters do print portfolios, and site chrome plus a dark panel
-  across a page break is unusable on paper.
-*/
 @media print {
   :root,
   .dark {
     --background: #ffffff;
-    --foreground: #1a1a1a;
+    --foreground: #16181d;
     --card: #ffffff;
-    --card-foreground: #1a1a1a;
-    --muted: #ffffff;
     --muted-foreground: #4a4a4a;
+    --faint: #5a5a5a;
     --border: #cccccc;
     --link: #1d4ed8;
-    --ink: #ffffff;
-    --ink-foreground: #1a1a1a;
-    --tag: #ffffff;
-    --tag-border: #cccccc;
-    --shadow-card: none;
-    --shadow-raised: none;
   }
 
-  header,
-  footer,
-  [role="tablist"],
+  .rail,
   [data-print-hide] {
     display: none !important;
   }
 
   body {
     background: #ffffff !important;
-    color: #1a1a1a !important;
+    color: #16181d !important;
+    padding-bottom: 0 !important;
   }
 
-  /* Reveal never fires without a viewport intersection — force it visible. */
-  [data-reveal] {
-    opacity: 1 !important;
-    translate: none !important;
+  .measure {
+    max-width: none !important;
+    padding-left: 0 !important;
   }
 
-  section {
-    padding-block: 1.25rem !important;
+  .measure::before {
+    display: none !important;
+  }
+
+  .block + .block {
+    margin-top: 1.5rem !important;
+  }
+
+  li,
+  tr {
     break-inside: avoid;
-  }
-
-  h1 {
-    font-size: 1.8rem !important;
-  }
-
-  h2 {
-    font-size: 1.3rem !important;
-    break-after: avoid;
-  }
-
-  h3 {
-    break-after: avoid;
-  }
-
-  article,
-  li {
-    break-inside: avoid;
-  }
-
-  [class*="bg-ink"] {
-    background: #ffffff !important;
-    color: #1a1a1a !important;
-  }
-
-  [class*="text-white"] {
-    color: #1a1a1a !important;
   }
 
   a[href^="http"]::after {
