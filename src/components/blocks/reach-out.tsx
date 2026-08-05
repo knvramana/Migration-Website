@@ -33,8 +33,8 @@ const methods = [
 export function ReachOut() {
   return (
     <section
-      id="contact"
-      aria-labelledby="contact-heading"
+      id="hello"
+      aria-labelledby="hello-heading"
       className="scroll-mt-28 pt-8 pb-20 md:pb-28"
     >
       <div className="container-page">
@@ -47,12 +47,12 @@ export function ReachOut() {
 
             <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
               <div className="lg:col-span-5">
-                <Kicker className="text-white/60">Contact</Kicker>
+                <Kicker className="text-white/60">Say hello</Kicker>
                 <h2
-                  id="contact-heading"
+                  id="hello-heading"
                   className="mt-3 text-2xl leading-tight font-bold tracking-[-0.02em] text-balance text-white sm:text-3xl"
                 >
-                  Get in touch
+                  Say hello
                 </h2>
                 <p className="mt-4 max-w-sm leading-relaxed text-pretty text-white/70">
                   {site.availability.text}. Email is the fastest way to reach me

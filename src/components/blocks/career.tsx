@@ -6,9 +6,9 @@ import { experience } from "@/content/resume";
 export function Career() {
   return (
     <Panel
-      id="experience"
-      kicker="Experience"
-      title="Four years of shipping software that had to hold up."
+      id="work"
+      kicker="Work"
+      title="Where I&rsquo;ve worked."
       lead="Enterprise tooling, ed-tech, energy services and healthcare — the work below spans frontend workflows, backend services, integrations and the release validation that decides whether any of it reaches a customer."
     >
       <div className="grid gap-5">

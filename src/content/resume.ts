@@ -367,3 +367,38 @@ export const about = {
     { label: "Certified", value: "Azure Data Engineer (DP-203)" },
   ],
 } as const;
+
+/* -------------------------------------------------------------------------- */
+
+/** A dated line per turning point — reads faster than a paragraph of narrative. */
+export interface BioEntry {
+  year: string;
+  text: string;
+}
+
+export const bio: BioEntry[] = [
+  {
+    year: "2016",
+    text: "Began a B.Tech in Computer Science and Engineering at Geethanjali College, Hyderabad.",
+  },
+  {
+    year: "2020",
+    text: "Graduated, and joined LVPEI Centre for Innovation building backend APIs for clinical and EMR workflows.",
+  },
+  {
+    year: "2021",
+    text: "Joined Wipro as a Project Engineer on Spring Boot services reading live OSI PI process data.",
+  },
+  {
+    year: "2022",
+    text: "Shipped an ed-tech platform at CognitiveBotics, then moved to Montreal for a Master of Applied Computer Science at Concordia.",
+  },
+  {
+    year: "2024",
+    text: "Completed the M.ACS and became Microsoft Certified: Azure Data Engineer Associate.",
+  },
+  {
+    year: "2025",
+    text: "Joined IBM Canada, working on Engineering Lifecycle Management.",
+  },
+];

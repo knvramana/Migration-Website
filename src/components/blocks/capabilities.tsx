@@ -35,9 +35,9 @@ export function Capabilities() {
 
   return (
     <Panel
-      id="skills"
-      kicker="Skills"
-      title="What I work with."
+      id="toolkit"
+      kicker="Toolkit"
+      title="The toolkit."
       lead="Grouped by what I actually use each one for, rather than as a flat inventory of names."
     >
       <div className="grid auto-rows-[minmax(0,auto)] grid-cols-1 gap-4 md:grid-cols-6 lg:grid-cols-12">

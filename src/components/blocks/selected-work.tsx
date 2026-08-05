@@ -7,9 +7,9 @@ import { cn } from "@/lib/utils";
 export function SelectedWork() {
   return (
     <Panel
-      id="projects"
-      kicker="Projects"
-      title="Selected projects."
+      id="builds"
+      kicker="Builds"
+      title="Things I&rsquo;ve built."
       lead="Academic and personal work in NLP, cloud applications, computer vision and algorithms research."
     >
       <div className="grid gap-4 md:grid-cols-2">

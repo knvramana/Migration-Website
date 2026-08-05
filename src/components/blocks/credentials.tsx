@@ -6,7 +6,7 @@ import { certifications, education } from "@/content/resume";
 
 export function Credentials() {
   return (
-    <Panel id="education" kicker="Education" title="Education & credentials.">
+    <Panel id="studies" kicker="Studies" title="Studies &amp; credentials.">
       <div className="grid gap-4 md:grid-cols-2">
         {education.map((entry, index) => (
           <Reveal key={entry.degree} delay={index * 70}>
