@@ -9,7 +9,7 @@ export function Outcomes() {
   return (
     <section
       aria-label="Selected outcomes"
-      className="border-border border-y py-10 md:py-12"
+      className="py-10 md:py-12"
     >
       <div className="container-page">
         <ul className="grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
