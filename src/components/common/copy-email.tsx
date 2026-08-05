@@ -6,7 +6,11 @@ import { toast } from "sonner";
 
 import { site } from "@/content/site";
 
-/** Secondary action beside the résumé button — same height, quieter fill. */
+/**
+ * A quiet text action under the contact icons. Previously styled for the dark
+ * contact panel — white text on a white border — which would have been
+ * invisible now that the section sits on the paper background.
+ */
 export function CopyEmail() {
   const [copied, setCopied] = useState(false);
 
@@ -25,14 +29,14 @@ export function CopyEmail() {
     <button
       type="button"
       onClick={copy}
-      className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-white/25 px-4 text-sm font-medium text-white transition-colors duration-200 hover:border-white/45 hover:bg-white/10"
+      className="text-muted-foreground hover:text-brand inline-flex min-h-9 items-center gap-2 font-mono text-sm transition-colors duration-200"
     >
       {copied ? (
         <CheckIcon className="size-4 shrink-0" aria-hidden="true" />
       ) : (
         <CopyIcon className="size-4 shrink-0" aria-hidden="true" />
       )}
-      {copied ? "Copied" : "Copy email"}
+      {copied ? "Copied" : site.email}
     </button>
   );
 }

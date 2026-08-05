@@ -1,33 +1,29 @@
 import Link from "next/link";
-import { ArrowUpRightIcon, FileTextIcon } from "lucide-react";
+import { FileTextIcon, MailIcon } from "lucide-react";
 
-import { LinkedinIcon } from "@/components/common/brand-icons";
+import { GithubIcon, LinkedinIcon } from "@/components/common/brand-icons";
 import { CopyEmail } from "@/components/common/copy-email";
-import { Reveal } from "@/components/common/reveal";
 import { Kicker } from "@/components/common/panel";
+import { Reveal } from "@/components/common/reveal";
 import { site } from "@/content/site";
 
 /**
- * One consistent list of contact methods.
+ * Icons, not a panel of rows.
  *
- * The previous version stacked three different button treatments in a
- * cramped column — a full-width mono button, a two-up button row, then a
- * phone button beside two icon squares — under a 48px slogan. Every item
- * here shares one shape, and the slogan is gone.
+ * This was a dark slab holding a heading, a paragraph, two buttons and a 2x2
+ * grid of labelled contact rows — four competing treatments for what is
+ * really a handful of links. One row of targets does the whole job.
  */
-const methods = [
-  {
-    label: "Email",
-    value: site.email,
-    href: `mailto:${site.email}`,
-    Icon: null,
-  },
+const links = [
+  { label: "Email", href: `mailto:${site.email}`, Icon: MailIcon, out: false },
   {
     label: "LinkedIn",
-    value: "in/ramanakoduri",
     href: site.socials.linkedin,
     Icon: LinkedinIcon,
+    out: true,
   },
+  { label: "GitHub", href: site.socials.github, Icon: GithubIcon, out: true },
+  { label: "Résumé", href: site.resumePath, Icon: FileTextIcon, out: true },
 ];
 
 export function ReachOut() {
@@ -35,72 +31,49 @@ export function ReachOut() {
     <section
       id="hello"
       aria-labelledby="hello-heading"
-      className="scroll-mt-28 pt-8 pb-20 md:pb-28"
+      className="scroll-mt-28 pt-14 pb-24 md:pt-16 md:pb-28"
     >
-      <div className="container-page">
+      <div className="container-page text-center">
         <Reveal>
-          <div className="bg-ink relative isolate overflow-hidden rounded-2xl p-8 md:p-10">
-            <div
-              aria-hidden="true"
-              className="absolute inset-0 -z-10 bg-[radial-gradient(40rem_24rem_at_80%_-10%,oklch(1_0_0/0.07),transparent_70%)]"
-            />
+          <Kicker>Say hello</Kicker>
 
-            <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
-              <div className="lg:col-span-5">
-                <Kicker className="text-white/60">Say hello</Kicker>
-                <h2
-                  id="hello-heading"
-                  className="mt-3 text-2xl leading-tight font-bold tracking-[-0.02em] text-balance text-white sm:text-3xl"
+          <h2
+            id="hello-heading"
+            className="font-display decoration-brand/40 mt-4 text-3xl leading-[1.12] font-extrabold tracking-[-0.02em] text-balance underline decoration-[3px] underline-offset-[7px]"
+          >
+            Get in touch.
+          </h2>
+
+          <p className="text-muted-foreground mx-auto mt-5 max-w-md leading-relaxed text-pretty">
+            {site.availability.text}. Email is the fastest way to reach me.
+          </p>
+
+          <ul className="mt-9 flex flex-wrap items-center justify-center gap-3">
+            {links.map(({ label, href, Icon, out }) => (
+              <li key={label}>
+                <Link
+                  href={href}
+                  aria-label={label}
+                  title={label}
+                  prefetch={href.startsWith("/") ? false : undefined}
+                  {...(out
+                    ? {
+                        target: "_blank",
+                        rel: href.startsWith("http")
+                          ? "noopener noreferrer"
+                          : "noopener",
+                      }
+                    : {})}
+                  className="border-border bg-card text-muted-foreground hover:border-brand hover:text-brand hover:shadow-card group inline-flex size-14 items-center justify-center rounded-full border transition-all duration-200 hover:-translate-y-0.5"
                 >
-                  Say hello
-                </h2>
-                <p className="mt-4 max-w-sm leading-relaxed text-pretty text-white/70">
-                  {site.availability.text}. Email is the fastest way to reach me
-                  — I read everything.
-                </p>
+                  <Icon className="size-5 transition-transform duration-200 group-hover:scale-110" />
+                </Link>
+              </li>
+            ))}
+          </ul>
 
-                <div className="mt-7 flex flex-wrap items-center gap-3">
-                  <Link
-                    href={site.resumePath}
-                    target="_blank"
-                    rel="noopener"
-                    prefetch={false}
-                    className="text-ink inline-flex min-h-11 items-center gap-2 rounded-lg bg-white px-5 text-sm font-semibold transition-opacity duration-200 hover:opacity-90"
-                  >
-                    <FileTextIcon className="size-4" aria-hidden="true" />
-                    Download résumé
-                  </Link>
-                  <CopyEmail />
-                </div>
-              </div>
-
-              {/* One shape, four times. */}
-              <ul className="grid gap-px overflow-hidden rounded-xl border border-white/12 bg-white/12 sm:grid-cols-2 lg:col-span-7">
-                {methods.map(({ label, value, href, Icon }) => (
-                  <li key={label}>
-                    <Link
-                      href={href}
-                      {...(href.startsWith("http")
-                        ? { target: "_blank", rel: "noopener noreferrer" }
-                        : {})}
-                      className="group bg-ink flex h-full min-h-[5.25rem] flex-col justify-center gap-1 px-5 py-4 transition-colors duration-200 hover:bg-white/6"
-                    >
-                      <span className="flex items-center gap-2 font-mono text-[0.7rem] tracking-[0.12em] text-white/50 uppercase">
-                        {Icon ? <Icon className="size-3 shrink-0" /> : null}
-                        {label}
-                      </span>
-                      <span className="flex items-center gap-1.5 text-[0.9375rem] break-words text-white">
-                        {value}
-                        <ArrowUpRightIcon
-                          className="size-3.5 shrink-0 text-white/40 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                          aria-hidden="true"
-                        />
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div className="mt-7">
+            <CopyEmail />
           </div>
         </Reveal>
       </div>
