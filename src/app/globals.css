@@ -10,123 +10,134 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* ---------------------------------------------------------------------------
-   Palette — near-monochrome.
+   Palette — cool slate, near-monochrome.
 
-   Colour appears on roughly three things: links, the focus ring, and nothing
-   else. Buttons are near-black rather than a brand hue. Hierarchy is carried
-   by type scale, spacing and hairline rules instead of by colour, which is
-   what the strongest engineer portfolios actually do.
+   Colour appears on two things: links and the focus ring. Buttons are
+   near-black rather than a brand hue, and hierarchy is carried by type scale,
+   spacing and hairline rules.
 
-   Foreground is #1a1a1a, never pure black. Body copy sits at #666 — a step
-   down from headings rather than everything competing at full contrast.
+   Two deliberate corrections to the previous pass:
+
+   1. The page is #fafafb, not pure white, and cards are #ffffff — so cards
+      genuinely lift off the page instead of everything being one flat field.
+   2. Dark is blue-tinted and lifted off near-black. Flat neutral grey at
+      #0f0f0f reads dead, and cards at #171717 were indistinguishable from
+      the page behind them.
 
    Verified contrast (light / dark):
-     text    17.40 / 17.12
-     muted    5.74 /  7.42
-     link     6.70 /  9.10
+     text   17.02 / 15.45
+     muted   5.21 /  7.87
+     link    6.42 /  7.38
 --------------------------------------------------------------------------- */
 
 :root {
   --radius: 0.625rem;
 
-  --background: oklch(1 0 0); /* #ffffff */
-  --foreground: oklch(0.2178 0 0); /* #1a1a1a  17.4:1 */
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.2178 0 0);
-  --popover: oklch(0.9851 0 0); /* #fafafa */
-  --popover-foreground: oklch(0.2178 0 0);
-  --primary: oklch(0.2178 0 0); /* near-black buttons, not a brand hue */
+  --background: oklch(0.9854 0.0013 286.38); /* #fafafb  page */
+  --foreground: oklch(0.2091 0.0104 268.19); /* #16181d  17.0:1 */
+  --card: oklch(1 0 0); /* #ffffff  cards lift off the page */
+  --card-foreground: oklch(0.2091 0.0104 268.19);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.2091 0.0104 268.19);
+  --primary: oklch(0.2091 0.0104 268.19); /* near-black, not a brand hue */
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.9672 0 0); /* #f4f4f4 */
-  --secondary-foreground: oklch(0.2178 0 0);
-  --muted: oklch(0.9672 0 0);
-  --muted-foreground: oklch(0.5103 0 0); /* #666666  5.7:1 */
-  --accent: oklch(0.9672 0 0);
-  --accent-foreground: oklch(0.2178 0 0);
+  --secondary: oklch(0.97 0.0029 264.54); /* #f4f5f7  raised */
+  --secondary-foreground: oklch(0.2091 0.0104 268.19);
+  --muted: oklch(0.97 0.0029 264.54);
+  --muted-foreground: oklch(0.5231 0.0154 262.34); /* #656a73  5.2:1 */
+  --accent: oklch(0.97 0.0029 264.54);
+  --accent-foreground: oklch(0.2091 0.0104 268.19);
   --destructive: oklch(0.577 0.245 27.325);
 
-  /* Alpha-based so hairlines composite correctly over any surface. */
   --border: oklch(0 0 0 / 0.08);
   --input: oklch(0 0 0 / 0.12);
-  --ring: oklch(0.2178 0 0);
+  --ring: oklch(0.2091 0.0104 268.19);
 
-  /* The entire colour budget. */
-  --link: oklch(0.4568 0.2146 264.05); /* #1d4ed8  6.7:1 */
+  /* The entire colour budget: links and the focus ring. Darkened from
+     #2563eb, which sat at 4.74:1 on the raised surface — passing, but with
+     no headroom. #1d4ed8 holds 6.14–6.70 across all three surfaces. */
+  --link: oklch(0.4882 0.2172 264.38); /* #1d4ed8 */
 
-  --tag: oklch(0.9672 0 0);
+  --tag: oklch(0.97 0.0029 264.54);
   --tag-border: oklch(0 0 0 / 0.09);
 
-  /* One dark anchor: the contact panel. */
-  --ink: oklch(0.2178 0 0);
+  --ink: oklch(0.2091 0.0104 268.19);
   --ink-foreground: oklch(1 0 0);
 
-  /* Shadows are reserved for genuinely floating things (dialog, toast).
-     Static cards use a hairline border instead. */
+  /* Grain strength per theme — multiply on light, soft-light on dark. */
+  --grain-opacity: 0.032;
+  --grain-blend: multiply;
+
   --shadow-card: 0 1px 2px oklch(0 0 0 / 0.04);
   --shadow-raised: 0 12px 32px oklch(0 0 0 / 0.1);
 
-  --chart-1: oklch(0.2178 0 0);
-  --chart-2: oklch(0.4 0 0);
-  --chart-3: oklch(0.5103 0 0);
-  --chart-4: oklch(0.62 0 0);
-  --chart-5: oklch(0.74 0 0);
+  --chart-1: oklch(0.2091 0.0104 268.19);
+  --chart-2: oklch(0.4 0.01 264);
+  --chart-3: oklch(0.5231 0.0154 262.34);
+  --chart-4: oklch(0.63 0.014 264);
+  --chart-5: oklch(0.75 0.01 264);
 
-  --sidebar: oklch(0.9851 0 0);
-  --sidebar-foreground: oklch(0.2178 0 0);
-  --sidebar-primary: oklch(0.2178 0 0);
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: oklch(0.2091 0.0104 268.19);
+  --sidebar-primary: oklch(0.2091 0.0104 268.19);
   --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.9672 0 0);
-  --sidebar-accent-foreground: oklch(0.2178 0 0);
+  --sidebar-accent: oklch(0.97 0.0029 264.54);
+  --sidebar-accent-foreground: oklch(0.2091 0.0104 268.19);
   --sidebar-border: oklch(0 0 0 / 0.08);
-  --sidebar-ring: oklch(0.2178 0 0);
+  --sidebar-ring: oklch(0.2091 0.0104 268.19);
 }
 
 .dark {
-  --background: oklch(0.1684 0 0); /* #0f0f0f */
-  --foreground: oklch(0.9612 0 0); /* #f2f2f2  17.1:1 */
-  --card: oklch(0.2046 0 0); /* #171717 */
-  --card-foreground: oklch(0.9612 0 0);
-  --popover: oklch(0.2393 0 0); /* #1f1f1f */
-  --popover-foreground: oklch(0.9612 0 0);
-  --primary: oklch(0.9612 0 0);
-  --primary-foreground: oklch(0.1684 0 0);
-  --secondary: oklch(0.2393 0 0);
-  --secondary-foreground: oklch(0.9612 0 0);
-  --muted: oklch(0.2393 0 0);
-  --muted-foreground: oklch(0.709 0 0); /* #a1a1a1  7.4:1 */
-  --accent: oklch(0.2393 0 0);
-  --accent-foreground: oklch(0.9612 0 0);
+  /* Blue-tinted rather than flat neutral grey, and lifted off pure black.
+     Cards are a genuine step above the page so the layout still reads. */
+  --background: oklch(0.187 0.0063 271.07); /* #121316 */
+  --foreground: oklch(0.9374 0.0055 274.96); /* #e9eaee  15.5:1 */
+  --card: oklch(0.226 0.0083 264.39); /* #1a1c20 */
+  --card-foreground: oklch(0.9374 0.0055 274.96);
+  --popover: oklch(0.2676 0.0103 260.7); /* #23262b */
+  --popover-foreground: oklch(0.9374 0.0055 274.96);
+  --primary: oklch(0.9374 0.0055 274.96);
+  --primary-foreground: oklch(0.187 0.0063 271.07);
+  --secondary: oklch(0.2676 0.0103 260.7);
+  --secondary-foreground: oklch(0.9374 0.0055 274.96);
+  --muted: oklch(0.2676 0.0103 260.7);
+  --muted-foreground: oklch(0.7335 0.0172 262.73); /* #a3a9b4  7.9:1 */
+  --accent: oklch(0.2676 0.0103 260.7);
+  --accent-foreground: oklch(0.9374 0.0055 274.96);
   --destructive: oklch(0.704 0.191 22.216);
 
   --border: oklch(1 0 0 / 0.11);
   --input: oklch(1 0 0 / 0.15);
-  --ring: oklch(0.9612 0 0);
+  --ring: oklch(0.9374 0.0055 274.96);
 
-  --link: oklch(0.7661 0.1083 259.79); /* #8ab4f8  9.1:1 */
+  --link: oklch(0.719 0.1322 264.2); /* #7aa2f7  7.4:1 */
 
-  --tag: oklch(0.2393 0 0);
+  --tag: oklch(0.2676 0.0103 260.7);
   --tag-border: oklch(1 0 0 / 0.13);
 
-  --ink: oklch(0.1684 0 0);
-  --ink-foreground: oklch(0.9612 0 0);
+  --ink: oklch(0.187 0.0063 271.07);
+  --ink-foreground: oklch(0.9374 0.0055 274.96);
+
+  --grain-opacity: 0.055;
+  --grain-blend: soft-light;
 
   --shadow-card: 0 1px 2px oklch(0 0 0 / 0.3);
   --shadow-raised: 0 12px 32px oklch(0 0 0 / 0.5);
 
-  --chart-1: oklch(0.9612 0 0);
-  --chart-2: oklch(0.82 0 0);
-  --chart-3: oklch(0.709 0 0);
-  --chart-4: oklch(0.6 0 0);
-  --chart-5: oklch(0.48 0 0);
+  --chart-1: oklch(0.9374 0.0055 274.96);
+  --chart-2: oklch(0.82 0.012 264);
+  --chart-3: oklch(0.7335 0.0172 262.73);
+  --chart-4: oklch(0.62 0.014 264);
+  --chart-5: oklch(0.5 0.012 264);
 
-  --sidebar: oklch(0.2046 0 0);
-  --sidebar-foreground: oklch(0.9612 0 0);
-  --sidebar-primary: oklch(0.9612 0 0);
-  --sidebar-primary-foreground: oklch(0.1684 0 0);
-  --sidebar-accent: oklch(0.2393 0 0);
-  --sidebar-accent-foreground: oklch(0.9612 0 0);
+  --sidebar: oklch(0.226 0.0083 264.39);
+  --sidebar-foreground: oklch(0.9374 0.0055 274.96);
+  --sidebar-primary: oklch(0.9374 0.0055 274.96);
+  --sidebar-primary-foreground: oklch(0.187 0.0063 271.07);
+  --sidebar-accent: oklch(0.2676 0.0103 260.7);
+  --sidebar-accent-foreground: oklch(0.9374 0.0055 274.96);
   --sidebar-border: oklch(1 0 0 / 0.11);
-  --sidebar-ring: oklch(0.9612 0 0);
+  --sidebar-ring: oklch(0.9374 0.0055 274.96);
 }
 
 @theme inline {
@@ -225,6 +236,28 @@
   .container-page {
     width: min(1120px, calc(100% - 2rem));
     margin-inline: auto;
+  }
+
+  /*
+    Page-wide grain. Stops both themes reading as a flat field of colour
+    without being visible as a texture.
+
+    An inline SVG turbulence tile, not a live filter: the browser rasterises
+    the 160px tile once and repeats it, so there is no per-pixel filter cost
+    across the viewport. ~400 bytes, no request. Fixed positioning means it
+    does not repaint on scroll.
+
+    multiply on light / soft-light on dark — screen-blending grain onto a dark
+    background just fogs it.
+  */
+  .grain {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: var(--grain-opacity);
+    mix-blend-mode: var(--grain-blend);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
   /*

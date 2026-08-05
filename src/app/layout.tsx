@@ -100,8 +100,8 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   colorScheme: "light dark",
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#fdfdfc" },
-    { media: "(prefers-color-scheme: dark)", color: "#191816" },
+    { media: "(prefers-color-scheme: light)", color: "#fafafb" },
+    { media: "(prefers-color-scheme: dark)", color: "#121316" },
   ],
 };
 
@@ -142,6 +142,8 @@ export default function RootLayout({
           >
             Skip to content
           </a>
+          {/* Page-wide grain. Fixed, non-interactive, hidden from print. */}
+          <div aria-hidden="true" data-print-hide="" className="grain" />
           <SiteHeader />
           <main id="main">{children}</main>
           <SiteFooter />
