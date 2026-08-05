@@ -14,34 +14,47 @@ const socials = [
 
 export function Greeting() {
   return (
-    <section id="top" aria-label="Introduction" className="pt-28 pb-4 md:pt-32">
-      {/* A single line that says where and what, before any structure. */}
-      <p className="bg-secondary/70 text-muted-foreground mb-10 rounded-lg px-4 py-2.5 text-center text-sm">
-        Hello — I&rsquo;m a full-stack developer based in {site.location}.
+    <section id="top" aria-label="Introduction" className="pt-28 pb-2 md:pt-32">
+      {/*
+        The sprite gets a container of its own. Previously it was a bare
+        max-w-xs SVG left-aligned under the buttons, which read as an orphan
+        rather than as part of the composition.
+      */}
+      <div className="border-border bg-card shadow-card flex items-center justify-center rounded-2xl border px-6 py-8">
+        <PixelDesk className="text-foreground w-full max-w-[19rem]" />
+      </div>
+
+      <p className="bg-secondary/70 text-muted-foreground mt-6 rounded-lg px-4 py-2.5 text-center text-sm">
+        Hello &mdash; I&rsquo;m a full-stack developer based in {site.location}.
       </p>
 
-      <div className="flex flex-col-reverse items-center gap-6 md:flex-row md:items-center md:justify-between">
-        <div className="text-center md:text-left">
+      {/*
+        Name first in source order on every breakpoint. The previous
+        flex-col-reverse put the portrait above the name on mobile.
+      */}
+      <div className="mt-10 flex flex-col items-center gap-6 sm:flex-row sm:items-center sm:justify-between sm:gap-8">
+        <div className="order-2 text-center sm:order-1 sm:text-left">
           <h1 className="font-display text-[clamp(2rem,5.5vw,2.75rem)] leading-[1.1] font-extrabold tracking-[-0.03em]">
             {site.firstName} {site.lastName}
           </h1>
-          <p className="text-muted-foreground mt-2">
-            Software Developer{" "}
+          <p className="text-muted-foreground mt-2 text-[0.9375rem]">
+            Software Developer
             <span className="text-faint">
+              {" "}
               ( Enterprise Systems / Full-Stack )
             </span>
           </p>
         </div>
 
-        <div className="border-border bg-card shrink-0 overflow-hidden rounded-full border-2 shadow-[0_2px_10px_oklch(0.2543_0.0125_78.05/0.12)]">
+        <div className="border-border bg-card order-1 shrink-0 overflow-hidden rounded-full border-2 shadow-[0_2px_10px_oklch(0.2543_0.0125_78.05/0.14)] sm:order-2">
           <Image
             src="/images/portrait.jpg"
             alt="Portrait of Ramana Koduri"
             width={901}
             height={1309}
             sizes="112px"
-            className="size-24 object-cover object-top md:size-28"
-            priority
+            className="size-24 object-cover object-top sm:size-28"
+            preload
           />
         </div>
       </div>
@@ -89,8 +102,6 @@ export function Greeting() {
           ))}
         </ul>
       </div>
-
-      <PixelDesk className="text-foreground mt-12 w-full max-w-xs" />
     </section>
   );
 }

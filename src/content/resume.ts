@@ -370,35 +370,47 @@ export const about = {
 
 /* -------------------------------------------------------------------------- */
 
-/** A dated line per turning point — reads faster than a paragraph of narrative. */
+/** A dated line per turning point, with the city so the path is visible. */
 export interface BioEntry {
   year: string;
   text: string;
+  place: string;
+  /** True on the first entry in a new city — draws the place marker. */
+  moved?: boolean;
 }
 
 export const bio: BioEntry[] = [
   {
     year: "2016",
-    text: "Began a B.Tech in Computer Science and Engineering at Geethanjali College, Hyderabad.",
+    place: "Hyderabad, India",
+    moved: true,
+    text: "Began a B.Tech in Computer Science and Engineering at Geethanjali College.",
   },
   {
     year: "2020",
+    place: "Hyderabad, India",
     text: "Graduated, and joined LVPEI Centre for Innovation building backend APIs for clinical and EMR workflows.",
   },
   {
     year: "2021",
+    place: "Hyderabad, India",
     text: "Joined Wipro as a Project Engineer on Spring Boot services reading live OSI PI process data.",
   },
   {
     year: "2022",
+    place: "Montreal, Canada",
+    moved: true,
     text: "Shipped an ed-tech platform at CognitiveBotics, then moved to Montreal for a Master of Applied Computer Science at Concordia.",
   },
   {
     year: "2024",
+    place: "Montreal, Canada",
     text: "Completed the M.ACS and became Microsoft Certified: Azure Data Engineer Associate.",
   },
   {
     year: "2025",
+    place: "Toronto, Canada",
+    moved: true,
     text: "Joined IBM Canada, working on Engineering Lifecycle Management.",
   },
 ];
