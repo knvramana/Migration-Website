@@ -15,7 +15,7 @@ export function SiteFooter() {
     <footer className="border-border border-t">
       <div className="container-page flex min-h-24 flex-col items-center justify-between gap-4 py-6 sm:flex-row">
         <div className="text-center sm:text-left">
-          <p className="text-sm font-bold">{site.name}</p>
+          <p className="text-sm font-extrabold">{site.name}</p>
           <p className="text-muted-foreground mt-1 font-mono text-xs">
             {site.location} · Built with Next.js &amp; Tailwind
           </p>

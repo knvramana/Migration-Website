@@ -128,7 +128,7 @@ export function AgenticTrace() {
                       </span>
                       <span
                         className={cn(
-                          "text-sm font-bold tracking-tight whitespace-nowrap",
+                          "text-sm font-extrabold tracking-tight whitespace-nowrap",
                           isActive && "text-foreground",
                         )}
                       >

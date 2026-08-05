@@ -34,7 +34,14 @@
   --secondary: oklch(0.9732 0.0131 251.56); /* legacy tag bg    #f0f7ff */
   --secondary-foreground: oklch(0.5051 0.2028 263.88);
   --muted: oklch(0.956 0.006 264);
-  --muted-foreground: oklch(0.5444 0.035 265.11); /* legacy --muted   #667085 */
+  /*
+    Darkened from the legacy #667085. That value cleared 4.5:1 on the page
+    background (4.68) but only reached 4.36 against --muted, so every piece of
+    secondary text sitting on a muted surface — code blocks, the shortcut
+    key-cap — failed AA. #5E6878 clears 4.94 / 5.31 / 5.63 on muted, page and
+    card respectively.
+  */
+  --muted-foreground: oklch(0.5146 0.0282 259.79); /* #5e6878 */
   --accent: oklch(0.956 0.006 264);
   --accent-foreground: oklch(0.246 0.0299 259.06);
   --destructive: oklch(0.577 0.245 27.325);
@@ -286,5 +293,97 @@
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
     }
+  }
+}
+
+/*
+  Print. Recruiters do print portfolios, and a dark hero across a page break
+  is unusable on paper. Force the light palette, drop the chrome, and let the
+  content flow as a document.
+*/
+@media print {
+  :root,
+  .dark {
+    --background: #ffffff;
+    --foreground: #18212f;
+    --card: #ffffff;
+    --card-foreground: #18212f;
+    --muted: #ffffff;
+    --muted-foreground: #44506a;
+    --border: #c9d2dc;
+    --hero: #ffffff;
+    --hero-foreground: #18212f;
+    --hero-accent: #0f766e;
+    --brand-blue: #1c46ad;
+    --brand-teal: #0f766e;
+    --brand-gold: #8f6114;
+    --brand-violet: #574aa8;
+    --tag: #ffffff;
+    --tag-border: #c9d2dc;
+    --shadow-card: none;
+    --shadow-raised: none;
+  }
+
+  /* Site chrome carries no meaning on paper. */
+  header,
+  footer,
+  [role="tablist"],
+  [data-print-hide] {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #18212f !important;
+  }
+
+  /* Reveal never fires without a viewport intersection — force it visible. */
+  [data-reveal] {
+    opacity: 1 !important;
+    translate: none !important;
+  }
+
+  section {
+    padding-block: 1.25rem !important;
+    break-inside: avoid;
+  }
+
+  h1 {
+    font-size: 2rem !important;
+  }
+
+  h2 {
+    font-size: 1.35rem !important;
+    break-after: avoid;
+  }
+
+  h3 {
+    break-after: avoid;
+  }
+
+  article,
+  li {
+    break-inside: avoid;
+  }
+
+  /* The hero and contact panels are dark by design; on paper they must not be. */
+  [class*="bg-hero"] {
+    background: #ffffff !important;
+    color: #18212f !important;
+  }
+
+  [class*="text-white"] {
+    color: #18212f !important;
+  }
+
+  /* Spell out destinations a printed page cannot resolve. */
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.7em;
+    word-break: break-all;
+  }
+
+  @page {
+    margin: 14mm;
   }
 }

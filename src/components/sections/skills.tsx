@@ -74,7 +74,11 @@ export function Skills() {
                   </h3>
                 </div>
 
-                <ul className="relative mt-5 flex flex-wrap gap-2">
+                <p className="text-muted-foreground relative mt-3 text-sm leading-relaxed text-pretty">
+                  {group.context}
+                </p>
+
+                <ul className="relative mt-4 flex flex-wrap gap-2">
                   {group.items.map((item) => (
                     <li key={item}>
                       <Tag>{item}</Tag>

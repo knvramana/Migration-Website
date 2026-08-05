@@ -228,6 +228,12 @@ export type SkillIcon =
 export interface SkillGroup {
   title: string;
   icon: SkillIcon;
+  /**
+   * What this group is actually used for. A bare tag list says nothing a
+   * hundred other portfolios don't; the line of context is what makes it
+   * readable as experience rather than as keywords.
+   */
+  context: string;
   items: string[];
   /** Tailwind span classes for the bento grid. */
   span: string;
@@ -240,6 +246,8 @@ export const skillGroups: SkillGroup[] = [
     title: "AI & LLM Engineering",
     icon: "brain",
     featured: true,
+    context:
+      "Shipping LLM features into an enterprise product — exposing capabilities as agent-callable tools, then making the model's output verifiable against real records.",
     span: "md:col-span-6 lg:col-span-7 lg:row-span-2",
     items: [
       "LLM Integration (watsonx Granite, Claude, OpenAI)",
@@ -256,6 +264,8 @@ export const skillGroups: SkillGroup[] = [
   {
     title: "Backend",
     icon: "server",
+    context:
+      "Service layers and APIs that other teams build against, including the OSLC surface behind IBM ELM.",
     span: "md:col-span-6 lg:col-span-5",
     items: [
       "Python / Django",
@@ -273,6 +283,8 @@ export const skillGroups: SkillGroup[] = [
   {
     title: "Frontend",
     icon: "layout",
+    context:
+      "Product workflows, not landing pages — long-lived UI in React and Dojo where state and permissions matter.",
     span: "md:col-span-6 lg:col-span-5",
     items: [
       "React.js",
@@ -290,6 +302,8 @@ export const skillGroups: SkillGroup[] = [
   {
     title: "Databases & Data Systems",
     icon: "database",
+    context:
+      "Relational, document and real-time process data — including OSI PI feeds at Wipro.",
     span: "md:col-span-3 lg:col-span-4",
     items: [
       "PostgreSQL",
@@ -304,6 +318,8 @@ export const skillGroups: SkillGroup[] = [
   {
     title: "Cloud & DevOps",
     icon: "cloud",
+    context:
+      "Containerised delivery and CI/CD pipelines. Azure certified (DP-203).",
     span: "md:col-span-3 lg:col-span-4",
     items: [
       "Azure (DP-203 certified)",
@@ -319,12 +335,15 @@ export const skillGroups: SkillGroup[] = [
   {
     title: "Languages",
     icon: "code",
+    context: "Python and Java daily; TypeScript across the frontend work.",
     span: "md:col-span-3 lg:col-span-4",
     items: ["Python", "JavaScript", "TypeScript", "Java", "SQL"],
   },
   {
     title: "Testing & Tools",
     icon: "flask",
+    context:
+      "Regression coverage that gates a release, not tests written after the fact.",
     span: "md:col-span-3 lg:col-span-4",
     items: [
       "JUnit",
@@ -339,12 +358,16 @@ export const skillGroups: SkillGroup[] = [
   {
     title: "Data & ML",
     icon: "chart",
+    context:
+      "Analysis and classical modelling — the grounding for the LLM work above.",
     span: "md:col-span-3 lg:col-span-4",
     items: ["Pandas", "NumPy", "Scikit-learn", "Data Analysis"],
   },
   {
     title: "Architecture",
     icon: "network",
+    context:
+      "Reasoning about distributed systems well enough to find the defect in them.",
     span: "md:col-span-6 lg:col-span-4",
     items: [
       "System Design",

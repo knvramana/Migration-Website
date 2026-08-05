@@ -13,16 +13,31 @@ import { site } from "@/content/site";
 
 import "./globals.css";
 
+/*
+  Variable, which is what next/font does by default and — measured — what is
+  actually smallest. Pinning three static weights (400/600/800) came out at
+  186KB vs 170KB for the two variable faces, because each static Latin
+  instance carries its own full glyph set. The type scale is still restricted
+  to 400/600/800 in the components; that is a design decision, not a payload
+  one.
+*/
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
 });
 
+/*
+  Mono stays variable — measured, two static weights came out slightly LARGER
+  than the single variable file (43KB across 2 requests vs 40KB in 1).
+  It carries labels, metrics and trace payloads but never body copy, so it is
+  not needed for first paint: no preload.
+*/
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains",
   display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -107,10 +122,15 @@ export default function RootLayout({
         </noscript>
       </head>
       <body className="font-sans">
+        {/*
+          Light is the default rather than the system preference: the design
+          is built light-first, with the hero and contact panels as dark
+          anchors. Dark remains one click away and persists.
+        */}
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
-          enableSystem
+          defaultTheme="light"
+          enableSystem={false}
           disableTransitionOnChange
         >
           <a

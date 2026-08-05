@@ -33,9 +33,16 @@ export function SiteHeader() {
   return (
     <>
       <header className="fixed inset-x-0 top-3 z-50 md:top-4">
+        {/*
+          Opaque, not glass. This bar is fixed over the dark hero image, so a
+          translucent background makes every label's contrast depend on
+          whatever happens to be scrolling underneath — which fails outright in
+          light mode and is unverifiable by any contrast tool. Solid is the
+          correct trade for a fixed nav over imagery.
+        */}
         <nav
           aria-label="Primary"
-          className="border-border/60 bg-background/70 supports-[backdrop-filter]:bg-background/55 container-page flex min-h-14 items-center justify-between gap-3 rounded-xl border px-3 shadow-[0_12px_35px_oklch(0.246_0.03_259/0.12)] backdrop-blur-xl"
+          className="border-border bg-background container-page flex min-h-14 items-center justify-between gap-3 rounded-xl border px-3 shadow-[0_12px_35px_oklch(0.246_0.03_259/0.14)]"
         >
           <Link
             href="#home"
@@ -85,7 +92,7 @@ export function SiteHeader() {
               */}
               <kbd
                 aria-hidden="true"
-                className="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center rounded border px-1.5 font-mono text-[0.65rem] font-medium"
+                className="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center rounded border px-1.5 font-mono text-[0.65rem] font-semibold"
               >
                 {shortcut ?? " "}
               </kbd>

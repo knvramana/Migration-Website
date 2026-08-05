@@ -49,7 +49,7 @@ export function Contact() {
                 <div className="flex flex-wrap gap-3">
                   <Link
                     href={`mailto:${site.email}`}
-                    className="inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-lg bg-white px-5 text-sm font-bold text-[oklch(0.2101_0.0318_264.66)] transition-transform duration-200 hover:-translate-y-0.5"
+                    className="inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-lg bg-white px-5 text-sm font-extrabold text-[oklch(0.2101_0.0318_264.66)] transition-transform duration-200 hover:-translate-y-0.5"
                   >
                     <MailIcon className="size-4" aria-hidden="true" />
                     Email me
@@ -60,7 +60,7 @@ export function Contact() {
                     target="_blank"
                     rel="noopener"
                     prefetch={false}
-                    className="inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-lg border border-white/30 bg-white/10 px-5 text-sm font-bold text-white transition-colors duration-200 hover:bg-white/20"
+                    className="inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-lg border border-white/30 bg-white/10 px-5 text-sm font-extrabold text-white transition-colors duration-200 hover:bg-white/20"
                   >
                     <FileTextIcon className="size-4" aria-hidden="true" />
                     R&eacute;sum&eacute;

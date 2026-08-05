@@ -24,13 +24,13 @@ export function Impact() {
                 />
                 <p
                   className={cn(
-                    "font-mono text-2xl font-bold tracking-tight tabular-nums md:text-3xl",
+                    "font-mono text-2xl font-extrabold tracking-tight tabular-nums md:text-3xl",
                     textAccent[item.accent],
                   )}
                 >
                   {item.value}
                 </p>
-                <p className="mt-1.5 text-sm font-bold">{item.label}</p>
+                <p className="mt-1.5 text-sm font-extrabold">{item.label}</p>
                 <p className="text-muted-foreground mt-1 text-sm leading-snug text-pretty">
                   {item.context}
                 </p>

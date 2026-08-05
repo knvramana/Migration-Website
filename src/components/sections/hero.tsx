@@ -25,14 +25,17 @@ export function Hero() {
         sizes="100vw"
         preload
         aria-hidden="true"
+        data-print-hide=""
         className="-z-20 object-cover"
       />
       <div
         aria-hidden="true"
+        data-print-hide=""
         className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,oklch(0.14_0.023_265/0.96)_0%,oklch(0.14_0.023_265/0.86)_45%,oklch(0.14_0.023_265/0.55)_100%)]"
       />
       <div
         aria-hidden="true"
+        data-print-hide=""
         className="absolute inset-0 -z-10 bg-[radial-gradient(60rem_40rem_at_30%_35%,oklch(0.5051_0.2028_263.88/0.3),transparent_70%)]"
       />
 

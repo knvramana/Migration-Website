@@ -1,6 +1,7 @@
 import { Hero } from "@/components/sections/hero";
 import { Impact } from "@/components/sections/impact";
 import { AgenticTrace } from "@/components/sections/agentic-trace";
+import { Architecture } from "@/components/sections/architecture";
 import { About } from "@/components/sections/about";
 import { Experience } from "@/components/sections/experience";
 import { Skills } from "@/components/sections/skills";
@@ -15,6 +16,7 @@ export default function Home() {
       <Impact />
       {/* The differentiator goes high — before the conventional résumé sections. */}
       <AgenticTrace />
+      <Architecture />
       <About />
       <Experience />
       <Skills />
