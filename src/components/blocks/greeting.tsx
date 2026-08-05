@@ -22,11 +22,11 @@ export function Greeting() {
         read as a full-width colour band rather than a card.
       */}
       <div className="container-page">
-        <div className="border-border bg-card shadow-card flex items-center justify-center rounded-xl border px-6 py-8">
+        <div className="border-border bg-card shadow-card flex items-center justify-center rounded-xl border px-6 py-7">
           <PixelDesk className="text-foreground w-full max-w-[17rem]" />
         </div>
 
-        <p className="bg-secondary/70 text-muted-foreground mt-6 rounded-lg px-4 py-2.5 text-center text-sm">
+        <p className="bg-secondary/70 text-muted-foreground mt-6 rounded-lg px-4 py-2.5 text-sm">
           Hello &mdash; I&rsquo;m a full-stack developer based in{" "}
           {site.location}.
         </p>
@@ -35,8 +35,8 @@ export function Greeting() {
         Name first in source order on every breakpoint. The previous
         flex-col-reverse put the portrait above the name on mobile.
       */}
-        <div className="mt-10 flex flex-col items-center gap-6 sm:flex-row sm:items-center sm:justify-between sm:gap-8">
-          <div className="order-2 text-center sm:order-1 sm:text-left">
+        <div className="mt-10 flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between sm:gap-8">
+          <div className="order-2 sm:order-1">
             <h1 className="font-display text-[clamp(2rem,5.5vw,2.75rem)] leading-[1.1] font-extrabold tracking-[-0.03em]">
               {site.firstName} {site.lastName}
             </h1>

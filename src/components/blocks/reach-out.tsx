@@ -33,7 +33,7 @@ export function ReachOut() {
       aria-labelledby="hello-heading"
       className="scroll-mt-28 pt-14 pb-24 md:pt-16 md:pb-28"
     >
-      <div className="container-page text-center">
+      <div className="container-page">
         <Reveal>
           <Kicker>Say hello</Kicker>
 
@@ -44,11 +44,11 @@ export function ReachOut() {
             Get in touch.
           </h2>
 
-          <p className="text-muted-foreground mx-auto mt-5 max-w-md leading-relaxed text-pretty">
+          <p className="text-muted-foreground mt-5 max-w-md leading-relaxed text-pretty">
             {site.availability.text}. Email is the fastest way to reach me.
           </p>
 
-          <ul className="mt-9 flex flex-wrap items-center justify-center gap-3">
+          <ul className="mt-9 flex flex-wrap items-center gap-3">
             {links.map(({ label, href, Icon, out }) => (
               <li key={label}>
                 <Link
