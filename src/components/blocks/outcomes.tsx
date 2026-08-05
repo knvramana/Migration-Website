@@ -3,9 +3,9 @@ import { impact } from "@/content/resume";
 
 /**
  * A quiet band between the hero and the stack. No heading — the numbers are
- * the content, and an "Impact" title above them would say nothing extra.
+ * the content, and an "Outcomes" title above them would say nothing extra.
  */
-export function Impact() {
+export function Outcomes() {
   return (
     <section
       aria-label="Selected outcomes"

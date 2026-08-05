@@ -1,15 +1,15 @@
 import Image from "next/image";
 
 import { Reveal } from "@/components/common/reveal";
-import { Section } from "@/components/common/section";
+import { Panel } from "@/components/common/panel";
 import { about } from "@/content/resume";
 
-export function About() {
+export function Profile() {
   return (
-    <Section
+    <Panel
       id="about"
-      eyebrow="About"
-      title="Full-stack engineer for enterprise products — and the AI layer on top of them."
+      kicker="About"
+      title="Full-stack engineer for enterprise products."
     >
       <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
         <Reveal className="lg:col-span-4">
@@ -48,6 +48,6 @@ export function About() {
           </Reveal>
         </div>
       </div>
-    </Section>
+    </Panel>
   );
 }

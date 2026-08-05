@@ -266,7 +266,7 @@ export const skillGroups: SkillGroup[] = [
     ],
   },
   {
-    title: "Architecture",
+    title: "Platform",
     icon: "network",
     context:
       "Reasoning about distributed systems well enough to find the defect in them.",
@@ -325,13 +325,13 @@ export const certifications: Certification[] = [
  * Numbers a hiring manager can scan in five seconds. Every one traces to a
  * specific bullet in the experience above — nothing rounded up for effect.
  */
-export interface Impact {
+export interface Outcomes {
   value: string;
   label: string;
   context: string;
 }
 
-export const impact: Impact[] = [
+export const impact: Outcomes[] = [
   {
     value: "15+",
     label: "Production defects resolved",

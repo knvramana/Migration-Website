@@ -4,7 +4,7 @@ import { ArrowUpRightIcon, FileTextIcon } from "lucide-react";
 import { LinkedinIcon } from "@/components/common/brand-icons";
 import { CopyEmail } from "@/components/common/copy-email";
 import { Reveal } from "@/components/common/reveal";
-import { Eyebrow } from "@/components/common/section";
+import { Kicker } from "@/components/common/panel";
 import { site } from "@/content/site";
 
 /**
@@ -30,7 +30,7 @@ const methods = [
   },
 ];
 
-export function Contact() {
+export function ReachOut() {
   return (
     <section
       id="contact"
@@ -47,7 +47,7 @@ export function Contact() {
 
             <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
               <div className="lg:col-span-5">
-                <Eyebrow className="text-white/60">Contact</Eyebrow>
+                <Kicker className="text-white/60">Contact</Kicker>
                 <h2
                   id="contact-heading"
                   className="mt-3 text-2xl leading-tight font-bold tracking-[-0.02em] text-balance text-white sm:text-3xl"

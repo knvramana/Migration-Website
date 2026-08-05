@@ -10,7 +10,7 @@ const socials = [
   { href: site.socials.linkedin, label: "LinkedIn", Icon: LinkedinIcon },
 ];
 
-export function Hero() {
+export function Masthead() {
   return (
     <section
       id="home"

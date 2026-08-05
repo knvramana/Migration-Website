@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 
 import { Reveal } from "@/components/common/reveal";
-import { Section } from "@/components/common/section";
+import { Panel } from "@/components/common/panel";
 import { Tag } from "@/components/common/tag";
 import { skillGroups, type SkillIcon } from "@/content/resume";
 import { cn } from "@/lib/utils";
@@ -29,16 +29,16 @@ const icons: Record<SkillIcon, LucideIcon> = {
   chart: ChartNoAxesColumnIcon,
 };
 
-export function Skills() {
+export function Capabilities() {
   // Stagger outward from the middle of the grid, so the eye lands centre-first.
   const midpoint = (skillGroups.length - 1) / 2;
 
   return (
-    <Section
+    <Panel
       id="skills"
-      eyebrow="Skills"
-      title="Two pillars, one stack."
-      lead="The AI work is not a side interest bolted onto a backend résumé — it runs on the same services, data models and integration surfaces as everything else here."
+      kicker="Skills"
+      title="What I work with."
+      lead="Grouped by what I actually use each one for, rather than as a flat inventory of names."
     >
       <div className="grid auto-rows-[minmax(0,auto)] grid-cols-1 gap-4 md:grid-cols-6 lg:grid-cols-12">
         {skillGroups.map((group, index) => {
@@ -78,6 +78,6 @@ export function Skills() {
           );
         })}
       </div>
-    </Section>
+    </Panel>
   );
 }

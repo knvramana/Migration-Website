@@ -1,16 +1,12 @@
 import { AwardIcon, GraduationCapIcon } from "lucide-react";
 
 import { Reveal } from "@/components/common/reveal";
-import { Section } from "@/components/common/section";
+import { Panel } from "@/components/common/panel";
 import { certifications, education } from "@/content/resume";
 
-export function Education() {
+export function Credentials() {
   return (
-    <Section
-      id="education"
-      eyebrow="Education"
-      title="Education & credentials."
-    >
+    <Panel id="education" kicker="Education" title="Education & credentials.">
       <div className="grid gap-4 md:grid-cols-2">
         {education.map((entry, index) => (
           <Reveal key={entry.degree} delay={index * 70}>
@@ -66,6 +62,6 @@ export function Education() {
           ))}
         </ul>
       </Reveal>
-    </Section>
+    </Panel>
   );
 }

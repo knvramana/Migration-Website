@@ -1,8 +1,8 @@
 import { cn } from "@/lib/utils";
 
-interface SectionProps {
+interface PanelProps {
   id: string;
-  eyebrow: string;
+  kicker: string;
   title: React.ReactNode;
   lead?: React.ReactNode;
   children: React.ReactNode;
@@ -16,15 +16,15 @@ interface SectionProps {
  * the scroll-margin that keeps the floating nav from covering anchor targets,
  * so spacing stays consistent instead of being re-decided per section.
  */
-export function Section({
+export function Panel({
   id,
-  eyebrow,
+  kicker,
   title,
   lead,
   children,
   className,
   headingClassName,
-}: SectionProps) {
+}: PanelProps) {
   return (
     <section
       id={id}
@@ -33,7 +33,7 @@ export function Section({
     >
       <div className="container-page">
         <div className={cn("mb-10 max-w-3xl md:mb-14", headingClassName)}>
-          <Eyebrow>{eyebrow}</Eyebrow>
+          <Kicker>{kicker}</Kicker>
           <h2
             id={`${id}-heading`}
             className="mt-4 text-3xl leading-[1.08] font-extrabold tracking-[-0.02em] text-balance sm:text-4xl md:text-5xl"
@@ -52,7 +52,7 @@ export function Section({
   );
 }
 
-export function Eyebrow({
+export function Kicker({
   children,
   className,
 }: {

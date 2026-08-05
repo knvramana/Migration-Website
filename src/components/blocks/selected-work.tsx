@@ -1,14 +1,14 @@
 import { Reveal } from "@/components/common/reveal";
-import { Section } from "@/components/common/section";
-import { ProjectCard } from "./project-card";
+import { Panel } from "@/components/common/panel";
+import { WorkEntry } from "./work-entry";
 import { projects } from "@/content/projects";
 import { cn } from "@/lib/utils";
 
-export function Projects() {
+export function SelectedWork() {
   return (
-    <Section
+    <Panel
       id="projects"
-      eyebrow="Projects"
+      kicker="Projects"
       title="Selected projects."
       lead="Academic and personal work in NLP, cloud applications, computer vision and algorithms research."
     >
@@ -19,10 +19,10 @@ export function Projects() {
             delay={index * 70}
             className={cn("min-w-0", project.span)}
           >
-            <ProjectCard project={project} />
+            <WorkEntry project={project} />
           </Reveal>
         ))}
       </div>
-    </Section>
+    </Panel>
   );
 }

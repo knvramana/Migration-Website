@@ -1,25 +1,25 @@
-import { Hero } from "@/components/sections/hero";
-import { Impact } from "@/components/sections/impact";
-import { Architecture } from "@/components/sections/architecture";
-import { About } from "@/components/sections/about";
-import { Experience } from "@/components/sections/experience";
-import { Skills } from "@/components/sections/skills";
-import { Projects } from "@/components/sections/projects";
-import { Education } from "@/components/sections/education";
-import { Contact } from "@/components/sections/contact";
+import { Masthead } from "@/components/blocks/masthead";
+import { Outcomes } from "@/components/blocks/outcomes";
+import { Platform } from "@/components/blocks/platform";
+import { Profile } from "@/components/blocks/profile";
+import { Career } from "@/components/blocks/career";
+import { Capabilities } from "@/components/blocks/capabilities";
+import { SelectedWork } from "@/components/blocks/selected-work";
+import { Credentials } from "@/components/blocks/credentials";
+import { ReachOut } from "@/components/blocks/reach-out";
 
 export default function Home() {
   return (
     <>
-      <Hero />
-      <Impact />
-      <Architecture />
-      <About />
-      <Experience />
-      <Skills />
-      <Projects />
-      <Education />
-      <Contact />
+      <Masthead />
+      <Outcomes />
+      <Platform />
+      <Profile />
+      <Career />
+      <Capabilities />
+      <SelectedWork />
+      <Credentials />
+      <ReachOut />
     </>
   );
 }

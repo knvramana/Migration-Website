@@ -1,12 +1,12 @@
 import { Reveal } from "@/components/common/reveal";
-import { Section } from "@/components/common/section";
+import { Panel } from "@/components/common/panel";
 import { Tag } from "@/components/common/tag";
 import {
   architectureMeta,
   involvementLabels,
   productLayers,
   type Layer,
-} from "@/content/architecture";
+} from "@/content/platform";
 
 function LayerRow({ layer, index }: { layer: Layer; index: number }) {
   return (
@@ -49,11 +49,11 @@ function LayerRow({ layer, index }: { layer: Layer; index: number }) {
   );
 }
 
-export function Architecture() {
+export function Platform() {
   return (
-    <Section
+    <Panel
       id="architecture"
-      eyebrow={architectureMeta.eyebrow}
+      kicker={architectureMeta.eyebrow}
       title={architectureMeta.title}
       lead={architectureMeta.lead}
     >
@@ -64,6 +64,6 @@ export function Architecture() {
           ))}
         </div>
       </Reveal>
-    </Section>
+    </Panel>
   );
 }

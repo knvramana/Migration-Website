@@ -6,7 +6,7 @@ import type { Role } from "@/content/resume";
  * still rendering as hairline-separated rows, which made the most important
  * block on the page read as the plainest.
  */
-export function ExperienceCard({ role }: { role: Role }) {
+export function CareerEntry({ role }: { role: Role }) {
   return (
     <article className="border-border bg-card shadow-card rounded-xl border p-6 md:p-8">
       <div className="grid gap-6 lg:grid-cols-12 lg:gap-10">
