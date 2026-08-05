@@ -29,7 +29,7 @@ export function Contact() {
 
             <div className="grid gap-10 lg:grid-cols-12 lg:items-end lg:gap-14">
               <div className="lg:col-span-7">
-                <Eyebrow className="text-ink-accent">Contact</Eyebrow>
+                <Eyebrow className="text-white/70">Contact</Eyebrow>
                 <h2
                   id="contact-heading"
                   className="mt-4 text-3xl leading-[1.08] font-extrabold tracking-[-0.02em] text-balance text-white sm:text-4xl md:text-5xl"

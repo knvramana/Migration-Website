@@ -57,7 +57,7 @@ export default function OpengraphImage() {
             maxWidth: 900,
           }}
         >
-          Enterprise systems at IBM ELM · Agentic AI with MCP and watsonx
+          Enterprise systems at IBM · REST/OSLC · Spring Boot · React
         </div>
       </div>
 

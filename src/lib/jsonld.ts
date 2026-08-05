@@ -45,10 +45,8 @@ export function personLd() {
       recognizedBy: { "@type": "Organization", name: cert.issuer },
     })),
     knowsAbout: [
-      "Model Context Protocol",
-      "Agentic AI",
-      "LLM Orchestration",
-      "IBM watsonx",
+      "Enterprise Software",
+      "Distributed Systems",
       "Engineering Lifecycle Management",
       "OSLC",
       "REST APIs",

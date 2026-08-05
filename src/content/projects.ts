@@ -20,7 +20,7 @@ export const projects: Project[] = [
     title: "RoboProf",
     subtitle: "Chatbot using intelligent systems",
     description:
-      "Academic support chatbot that answers university-related queries by combining NLP, a knowledge graph and deep learning. Rasa NLU handles intent, SPARQL queries an RDF course ontology for grounded retrieval, and Apache Tika ingests lecture material. The same grounding instinct as the MCP work — answer from a source, not from recall.",
+      "Academic support chatbot that answers university-related queries by combining NLP, a knowledge graph and deep learning. Rasa NLU handles intent, SPARQL queries an RDF course ontology for grounded retrieval, and Apache Tika ingests lecture material. Answers are retrieved from the ontology rather than generated, so every response traces to a source.",
     tags: ["NLP", "Rasa NLU", "SPARQL", "Knowledge Graphs", "Deep Learning"],
     span: "md:col-span-2",
   },

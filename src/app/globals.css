@@ -10,131 +10,123 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* ---------------------------------------------------------------------------
-   Palette — warm neutrals, light-first.
+   Palette — near-monochrome.
 
-   Replaces the cool blue-grey scale inherited from the legacy site. Two
-   reasons: `#fff` + `#000` + a blue accent is the shadcn/Inter default that
-   every scaffolded site already ships, and the old palette was built around a
-   dark hero photograph that no longer exists.
+   Colour appears on roughly three things: links, the focus ring, and nothing
+   else. Buttons are near-black rather than a brand hue. Hierarchy is carried
+   by type scale, spacing and hairline rules instead of by colour, which is
+   what the strongest engineer portfolios actually do.
 
-   Foreground is #21201c, never pure black. Body copy sits a step lighter than
-   headings rather than everything being maximum contrast.
+   Foreground is #1a1a1a, never pure black. Body copy sits at #666 — a step
+   down from headings rather than everything competing at full contrast.
 
-   Accent hues double as both decoration and text: at these values all four
-   clear 4.5:1 on every light surface, so the old split between decorative
-   rails and a darkened text ramp (which existed because the legacy teal and
-   gold failed as body text) is gone.
+   Verified contrast (light / dark):
+     text    17.40 / 17.12
+     muted    5.74 /  7.42
+     link     6.70 /  9.10
 --------------------------------------------------------------------------- */
 
 :root {
   --radius: 0.625rem;
 
-  --background: oklch(0.9938 0.0013 106.42); /* #fdfdfc */
-  --foreground: oklch(0.2431 0.0076 95.37); /* #21201c  16.0:1 */
-  --card: oklch(0.9938 0.0013 106.42); /* same as page — cards are borders, not slabs */
-  --card-foreground: oklch(0.2431 0.0076 95.37);
-  --popover: oklch(0.9818 0.0013 106.42); /* #f9f9f8 */
-  --popover-foreground: oklch(0.2431 0.0076 95.37);
-  --primary: oklch(0.5182 0.1367 35.71); /* #a8452b rust  5.8:1 */
-  --primary-foreground: oklch(0.9938 0.0013 106.42);
-  --secondary: oklch(0.9556 0.0017 67.8); /* #f1f0ef */
-  --secondary-foreground: oklch(0.2431 0.0076 95.37);
-  --muted: oklch(0.9556 0.0017 67.8);
-  --muted-foreground: oklch(0.4809 0.0095 99.04); /* #5f5e58  6.4:1 */
-  --accent: oklch(0.9556 0.0017 67.8);
-  --accent-foreground: oklch(0.2431 0.0076 95.37);
+  --background: oklch(1 0 0); /* #ffffff */
+  --foreground: oklch(0.2178 0 0); /* #1a1a1a  17.4:1 */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.2178 0 0);
+  --popover: oklch(0.9851 0 0); /* #fafafa */
+  --popover-foreground: oklch(0.2178 0 0);
+  --primary: oklch(0.2178 0 0); /* near-black buttons, not a brand hue */
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.9672 0 0); /* #f4f4f4 */
+  --secondary-foreground: oklch(0.2178 0 0);
+  --muted: oklch(0.9672 0 0);
+  --muted-foreground: oklch(0.5103 0 0); /* #666666  5.7:1 */
+  --accent: oklch(0.9672 0 0);
+  --accent-foreground: oklch(0.2178 0 0);
   --destructive: oklch(0.577 0.245 27.325);
 
   /* Alpha-based so hairlines composite correctly over any surface. */
-  --border: oklch(0 0 0 / 0.09);
+  --border: oklch(0 0 0 / 0.08);
   --input: oklch(0 0 0 / 0.12);
-  --ring: oklch(0.5182 0.1367 35.71);
+  --ring: oklch(0.2178 0 0);
 
-  /* Categorical hues. Text-safe on every light surface. */
-  --rail-rust: oklch(0.5182 0.1367 35.71); /* #a8452b  5.8:1 */
-  --rail-teal: oklch(0.4847 0.0832 181.53); /* #0f6e62  6.0:1 */
-  --rail-amber: oklch(0.5088 0.1009 70.01); /* #8a5a16  5.8:1 */
-  --rail-indigo: oklch(0.4287 0.1196 278.91); /* #43458f  8.3:1 */
+  /* The entire colour budget. */
+  --link: oklch(0.4568 0.2146 264.05); /* #1d4ed8  6.7:1 */
 
-  --tag: oklch(0.9556 0.0017 67.8);
-  --tag-border: oklch(0 0 0 / 0.1);
+  --tag: oklch(0.9672 0 0);
+  --tag-border: oklch(0 0 0 / 0.09);
 
-  /* The one dark anchor left on the page: the contact panel. Warm ink,
-     not the old navy — it reads as intentional rather than as a photo. */
-  --ink: oklch(0.2431 0.0076 95.37);
-  --ink-foreground: oklch(0.9938 0.0013 106.42);
-  --ink-accent: oklch(0.711 0.1354 40); /* #e8825e — fixed, never flips */
+  /* One dark anchor: the contact panel. */
+  --ink: oklch(0.2178 0 0);
+  --ink-foreground: oklch(1 0 0);
 
   /* Shadows are reserved for genuinely floating things (dialog, toast).
      Static cards use a hairline border instead. */
   --shadow-card: 0 1px 2px oklch(0 0 0 / 0.04);
   --shadow-raised: 0 12px 32px oklch(0 0 0 / 0.1);
 
-  --chart-1: oklch(0.5182 0.1367 35.71);
-  --chart-2: oklch(0.4847 0.0832 181.53);
-  --chart-3: oklch(0.5088 0.1009 70.01);
-  --chart-4: oklch(0.4287 0.1196 278.91);
-  --chart-5: oklch(0.4809 0.0095 99.04);
+  --chart-1: oklch(0.2178 0 0);
+  --chart-2: oklch(0.4 0 0);
+  --chart-3: oklch(0.5103 0 0);
+  --chart-4: oklch(0.62 0 0);
+  --chart-5: oklch(0.74 0 0);
 
-  --sidebar: oklch(0.9818 0.0013 106.42);
-  --sidebar-foreground: oklch(0.2431 0.0076 95.37);
-  --sidebar-primary: oklch(0.5182 0.1367 35.71);
-  --sidebar-primary-foreground: oklch(0.9938 0.0013 106.42);
-  --sidebar-accent: oklch(0.9556 0.0017 67.8);
-  --sidebar-accent-foreground: oklch(0.2431 0.0076 95.37);
-  --sidebar-border: oklch(0 0 0 / 0.09);
-  --sidebar-ring: oklch(0.5182 0.1367 35.71);
+  --sidebar: oklch(0.9851 0 0);
+  --sidebar-foreground: oklch(0.2178 0 0);
+  --sidebar-primary: oklch(0.2178 0 0);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.9672 0 0);
+  --sidebar-accent-foreground: oklch(0.2178 0 0);
+  --sidebar-border: oklch(0 0 0 / 0.08);
+  --sidebar-ring: oklch(0.2178 0 0);
 }
 
 .dark {
-  --background: oklch(0.2094 0.0042 84.59); /* #191816 warm near-black */
-  --foreground: oklch(0.9556 0.0057 84.57); /* #f2f0ec  15.6:1 */
-  --card: oklch(0.2404 0.0064 78.2); /* #211f1c */
-  --card-foreground: oklch(0.9556 0.0057 84.57);
-  --popover: oklch(0.2745 0.0085 75.24); /* #2a2723 */
-  --popover-foreground: oklch(0.9556 0.0057 84.57);
-  --primary: oklch(0.711 0.1354 40); /* #e8825e  6.6:1 */
-  --primary-foreground: oklch(0.2094 0.0042 84.59);
-  --secondary: oklch(0.2745 0.0085 75.24);
-  --secondary-foreground: oklch(0.9556 0.0057 84.57);
-  --muted: oklch(0.2745 0.0085 75.24);
-  --muted-foreground: oklch(0.7149 0.0134 75.33); /* #a8a29a  7.0:1 */
-  --accent: oklch(0.2745 0.0085 75.24);
-  --accent-foreground: oklch(0.9556 0.0057 84.57);
+  --background: oklch(0.1684 0 0); /* #0f0f0f */
+  --foreground: oklch(0.9612 0 0); /* #f2f2f2  17.1:1 */
+  --card: oklch(0.2046 0 0); /* #171717 */
+  --card-foreground: oklch(0.9612 0 0);
+  --popover: oklch(0.2393 0 0); /* #1f1f1f */
+  --popover-foreground: oklch(0.9612 0 0);
+  --primary: oklch(0.9612 0 0);
+  --primary-foreground: oklch(0.1684 0 0);
+  --secondary: oklch(0.2393 0 0);
+  --secondary-foreground: oklch(0.9612 0 0);
+  --muted: oklch(0.2393 0 0);
+  --muted-foreground: oklch(0.709 0 0); /* #a1a1a1  7.4:1 */
+  --accent: oklch(0.2393 0 0);
+  --accent-foreground: oklch(0.9612 0 0);
   --destructive: oklch(0.704 0.191 22.216);
 
-  --border: oklch(1 1 1 / 0.12);
-  --input: oklch(1 1 1 / 0.16);
-  --ring: oklch(0.711 0.1354 40);
+  --border: oklch(1 0 0 / 0.11);
+  --input: oklch(1 0 0 / 0.15);
+  --ring: oklch(0.9612 0 0);
 
-  --rail-rust: oklch(0.711 0.1354 40); /* #e8825e  6.6:1 */
-  --rail-teal: oklch(0.7618 0.1129 181.27); /* #4dc9b6  8.7:1 */
-  --rail-amber: oklch(0.7687 0.1281 78.34); /* #e0a94a  8.4:1 */
-  --rail-indigo: oklch(0.7254 0.121 282.43); /* #9b9cf0  7.1:1 */
+  --link: oklch(0.7661 0.1083 259.79); /* #8ab4f8  9.1:1 */
 
-  --tag: oklch(0.2745 0.0085 75.24);
-  --tag-border: oklch(1 1 1 / 0.14);
+  --tag: oklch(0.2393 0 0);
+  --tag-border: oklch(1 0 0 / 0.13);
 
-  --ink: oklch(0.1794 0.004 84.59);
-  --ink-foreground: oklch(0.9556 0.0057 84.57);
+  --ink: oklch(0.1684 0 0);
+  --ink-foreground: oklch(0.9612 0 0);
 
   --shadow-card: 0 1px 2px oklch(0 0 0 / 0.3);
   --shadow-raised: 0 12px 32px oklch(0 0 0 / 0.5);
 
-  --chart-1: oklch(0.711 0.1354 40);
-  --chart-2: oklch(0.7618 0.1129 181.27);
-  --chart-3: oklch(0.7687 0.1281 78.34);
-  --chart-4: oklch(0.7254 0.121 282.43);
-  --chart-5: oklch(0.7149 0.0134 75.33);
+  --chart-1: oklch(0.9612 0 0);
+  --chart-2: oklch(0.82 0 0);
+  --chart-3: oklch(0.709 0 0);
+  --chart-4: oklch(0.6 0 0);
+  --chart-5: oklch(0.48 0 0);
 
-  --sidebar: oklch(0.2404 0.0064 78.2);
-  --sidebar-foreground: oklch(0.9556 0.0057 84.57);
-  --sidebar-primary: oklch(0.711 0.1354 40);
-  --sidebar-primary-foreground: oklch(0.2094 0.0042 84.59);
-  --sidebar-accent: oklch(0.2745 0.0085 75.24);
-  --sidebar-accent-foreground: oklch(0.9556 0.0057 84.57);
-  --sidebar-border: oklch(1 1 1 / 0.12);
-  --sidebar-ring: oklch(0.711 0.1354 40);
+  --sidebar: oklch(0.2046 0 0);
+  --sidebar-foreground: oklch(0.9612 0 0);
+  --sidebar-primary: oklch(0.9612 0 0);
+  --sidebar-primary-foreground: oklch(0.1684 0 0);
+  --sidebar-accent: oklch(0.2393 0 0);
+  --sidebar-accent-foreground: oklch(0.9612 0 0);
+  --sidebar-border: oklch(1 0 0 / 0.11);
+  --sidebar-ring: oklch(0.9612 0 0);
 }
 
 @theme inline {
@@ -161,15 +153,11 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  --color-rail-rust: var(--rail-rust);
-  --color-rail-teal: var(--rail-teal);
-  --color-rail-amber: var(--rail-amber);
-  --color-rail-indigo: var(--rail-indigo);
+  --color-link: var(--link);
   --color-tag: var(--tag);
   --color-tag-border: var(--tag-border);
   --color-ink: var(--ink);
   --color-ink-foreground: var(--ink-foreground);
-  --color-ink-accent: var(--ink-accent);
 
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
@@ -227,8 +215,8 @@
   }
 
   ::selection {
-    background-color: var(--primary);
-    color: var(--primary-foreground);
+    background-color: var(--foreground);
+    color: var(--background);
   }
 }
 
@@ -240,11 +228,10 @@
   }
 
   /*
-    Replaces the hero photograph. A graph-paper wash built from a single
-    radial-gradient — zero assets, zero requests — masked so it fades out
-    before it can read as a repeating pattern. Alpha stays under 0.08; above
-    that it stops looking like a drafting grid and starts looking like a 2019
-    SaaS template.
+    Replaces the hero photograph the legacy site used. A drafting grid built
+    from one radial-gradient — no asset, no request — masked so it fades out
+    before it can read as a repeating pattern. Alpha stays low; above ~0.08 it
+    stops looking like graph paper and starts looking like a SaaS template.
   */
   .dot-grid {
     background-image: radial-gradient(
@@ -252,13 +239,9 @@
       var(--foreground) 1px,
       transparent 0
     );
-    background-size: 22px 22px;
-    opacity: 0.07;
-    mask-image: radial-gradient(
-      120% 85% at 50% 0%,
-      #000 25%,
-      transparent 78%
-    );
+    background-size: 24px 24px;
+    opacity: 0.055;
+    mask-image: radial-gradient(115% 80% at 50% 0%, #000 22%, transparent 76%);
   }
 }
 
@@ -309,21 +292,17 @@
   :root,
   .dark {
     --background: #ffffff;
-    --foreground: #21201c;
+    --foreground: #1a1a1a;
     --card: #ffffff;
-    --card-foreground: #21201c;
+    --card-foreground: #1a1a1a;
     --muted: #ffffff;
-    --muted-foreground: #4a4943;
-    --border: #cfceca;
+    --muted-foreground: #4a4a4a;
+    --border: #cccccc;
+    --link: #1d4ed8;
     --ink: #ffffff;
-    --ink-foreground: #21201c;
-    --ink-accent: #0f6e62;
-    --rail-rust: #a8452b;
-    --rail-teal: #0f6e62;
-    --rail-amber: #8a5a16;
-    --rail-indigo: #43458f;
+    --ink-foreground: #1a1a1a;
     --tag: #ffffff;
-    --tag-border: #cfceca;
+    --tag-border: #cccccc;
     --shadow-card: none;
     --shadow-raised: none;
   }
@@ -337,7 +316,7 @@
 
   body {
     background: #ffffff !important;
-    color: #21201c !important;
+    color: #1a1a1a !important;
   }
 
   /* Reveal never fires without a viewport intersection — force it visible. */
@@ -371,11 +350,11 @@
 
   [class*="bg-ink"] {
     background: #ffffff !important;
-    color: #21201c !important;
+    color: #1a1a1a !important;
   }
 
   [class*="text-white"] {
-    color: #21201c !important;
+    color: #1a1a1a !important;
   }
 
   a[href^="http"]::after {

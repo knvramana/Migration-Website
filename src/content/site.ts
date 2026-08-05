@@ -2,9 +2,8 @@ export const site = {
   name: "Ramana Koduri",
   firstName: "Ramana",
   lastName: "Koduri",
-  role: "Full-Stack Software Developer",
-  secondRole: "AI Application Engineering",
-  tagline: "Full-Stack Software Developer · AI Application Engineering",
+  role: "Software Developer",
+  tagline: "Full-stack software developer, enterprise systems",
   location: "Toronto, Canada",
   email: "knvramana234@gmail.com",
   phone: "+1-514-586-9903",
@@ -20,22 +19,20 @@ export const site = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://ramanakoduri.vercel.app",
 
   description:
-    "Full-stack software developer at IBM Canada building enterprise Engineering Lifecycle Management systems — REST/OSLC services, Spring Boot, Django and React — and agentic AI applications with Model Context Protocol servers and LLM tool calling.",
+    "Full-stack software developer at IBM Canada building and stabilising enterprise Engineering Lifecycle Management systems — REST/OSLC services, Java and Spring Boot backends, React and Django applications, and the release validation that gets fixes to customers.",
 
   shortDescription:
-    "Full-stack engineer shipping enterprise systems at IBM and building agentic AI with MCP.",
+    "Full-stack engineer shipping enterprise systems at IBM Canada.",
 
   socials: {
     github: "https://github.com/knvramana",
     linkedin: "https://www.linkedin.com/in/ramanakoduri/",
   },
 
-  /** Order matches the page. Education is on the page but not in the nav —
-      six items is the most the pill bar holds without wrapping. */
   nav: [
-    { label: "Agentic AI", href: "#agentic" },
     { label: "About", href: "#about" },
     { label: "Experience", href: "#experience" },
+    { label: "Stack", href: "#architecture" },
     { label: "Skills", href: "#skills" },
     { label: "Projects", href: "#projects" },
     { label: "Contact", href: "#contact" },
@@ -43,27 +40,7 @@ export const site = {
 
   availability: {
     open: true,
-    text: "Open to Application Developer and AI Engineer roles",
-  },
-
-  /**
-   * The compact tool call shown in the hero. Static and server-rendered — the
-   * animated version lives in the Agentic AI section, and one orchestrated
-   * moment beats two competing ones.
-   */
-  heroTrace: {
-    server: "mcp · rmm-tools",
-    rows: [
-      {
-        key: "ask",
-        value: '"Which requirements changed since the 7.0.3 baseline?"',
-      },
-      {
-        key: "call",
-        value: 'rmm.query_requirements({ configuration: "7.0.3" })',
-      },
-      { key: "ground", value: "24 changed · 5 with no linked test case" },
-    ],
+    text: "Open to full-stack and application developer roles",
   },
 } as const;
 
