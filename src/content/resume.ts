@@ -322,8 +322,11 @@ export const certifications: Certification[] = [
 /* -------------------------------------------------------------------------- */
 
 /**
- * Numbers a hiring manager can scan in five seconds. Every one traces to a
- * specific bullet in the experience above — nothing rounded up for effect.
+ * What a hiring manager can scan in five seconds. Every tile traces to a
+ * specific bullet in the experience above, nothing rounded up for effect.
+ *
+ * Deliberately no defect count: the same work covers Sev cases and new
+ * releases, so a tally of "defects fixed" describes the job badly.
  */
 export interface Outcomes {
   value: string;
@@ -333,15 +336,9 @@ export interface Outcomes {
 
 export const impact: Outcomes[] = [
   {
-    value: "15+",
-    label: "Production defects resolved",
-    context:
-      "Indexing, linking, permissions and configuration contexts across IBM ELM",
-  },
-  {
-    value: "15–20%",
-    label: "Regression coverage added",
-    context: "JUnit and Mockito on backend service and integration components",
+    value: "Fortune 500",
+    label: "Engineering teams served",
+    context: "IBM ELM and Rhapsody Model Manager",
   },
   {
     value: "~35%",
@@ -349,9 +346,14 @@ export const impact: Outcomes[] = [
     context: "Redis caching, query optimisation and code splitting",
   },
   {
-    value: "₹25L+",
-    label: "Patient payments processed",
-    context: "Payment gateway integrated into clinical billing at LVPEI",
+    value: "~30%",
+    label: "Faster hotfix turnaround",
+    context: "Log analysis and cross-environment validation at Wipro",
+  },
+  {
+    value: "~25%",
+    label: "Fewer stability incidents",
+    context: "OSI PI data-sync debugging and targeted fixes at Wipro",
   },
 ];
 
