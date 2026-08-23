@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { FileTextIcon, MailIcon } from "lucide-react";
+import { MailIcon } from "lucide-react";
 
-import { GithubIcon, LinkedinIcon } from "@/components/common/brand-icons";
+import { LinkedinIcon } from "@/components/common/brand-icons";
 import { CopyEmail } from "@/components/common/copy-email";
 import { Kicker } from "@/components/common/panel";
 import { Reveal } from "@/components/common/reveal";
@@ -22,8 +22,6 @@ const links = [
     Icon: LinkedinIcon,
     out: true,
   },
-  { label: "GitHub", href: site.socials.github, Icon: GithubIcon, out: true },
-  { label: "Résumé", href: site.resumePath, Icon: FileTextIcon, out: true },
 ];
 
 export function ReachOut() {
@@ -55,14 +53,8 @@ export function ReachOut() {
                   href={href}
                   aria-label={label}
                   title={label}
-                  prefetch={href.startsWith("/") ? false : undefined}
                   {...(out
-                    ? {
-                        target: "_blank",
-                        rel: href.startsWith("http")
-                          ? "noopener noreferrer"
-                          : "noopener",
-                      }
+                    ? { target: "_blank", rel: "noopener noreferrer" }
                     : {})}
                   className="border-border bg-card text-muted-foreground hover:border-brand hover:text-brand hover:shadow-card group inline-flex size-14 items-center justify-center rounded-full border transition-all duration-200 hover:-translate-y-0.5"
                 >

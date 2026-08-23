@@ -1,11 +1,10 @@
 import Link from "next/link";
 import { MailIcon } from "lucide-react";
 
-import { GithubIcon, LinkedinIcon } from "@/components/common/brand-icons";
+import { LinkedinIcon } from "@/components/common/brand-icons";
 import { site } from "@/content/site";
 
 const links = [
-  { href: site.socials.github, label: "GitHub", Icon: GithubIcon },
   { href: site.socials.linkedin, label: "LinkedIn", Icon: LinkedinIcon },
   { href: `mailto:${site.email}`, label: "Email", Icon: MailIcon },
 ];
@@ -17,7 +16,7 @@ export function SiteFooter() {
         <div className="text-center sm:text-left">
           <p className="text-sm font-extrabold">{site.name}</p>
           <p className="text-muted-foreground mt-1 font-mono text-xs">
-            {site.location} · Built with Next.js &amp; Tailwind
+            {site.location}
           </p>
         </div>
 
