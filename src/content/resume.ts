@@ -35,12 +35,12 @@ export const experience: Role[] = [
     location: "Canada",
     start: "2025-01",
     end: "Present",
-    period: "Jan 2025 — Present",
+    period: "Jan 2025 – Present",
     featured: true,
     summary:
-      "Building and stabilising Rhapsody Model Manager and IBM ELM for Fortune 500 engineering teams — shipping customer-facing fixes across the full request path and coordinating what goes into each interim-fix release.",
+      "Building and stabilising Rhapsody Model Manager and IBM ELM for Fortune 500 engineering teams, shipping customer-facing fixes across the full request path and coordinating what goes into each interim-fix release.",
     highlights: [
-      "Engineered full-stack enterprise features across RMM and IBM ELM — REST/OSLC service layers, Dojo-based web UI workflows, persistent data models and cross-application integration flows used by Fortune 500 engineering teams.",
+      "Engineered full-stack enterprise features across RMM and IBM ELM: REST/OSLC service layers, Dojo-based web UI workflows, persistent data models and cross-application integration flows used by Fortune 500 engineering teams.",
       "Resolved 15+ customer-reported production defects spanning indexing, linking, permissions, configuration contexts and cross-application integration, improving platform reliability and reducing recurring validation issues.",
       "Coordinated iFix release readiness for IBM ELM interim-fix deliveries, tracking 15+ candidate defects across validation, backport decisions and release scope to ensure on-time delivery to enterprise customers.",
       "Increased regression coverage by 15–20% for impacted backend-service and integration components using JUnit and Mockito, strengthening defect validation before iFix and final-build gates.",
@@ -65,11 +65,11 @@ export const experience: Role[] = [
     location: "Hyderabad, India",
     start: "2022-03",
     end: "2022-08",
-    period: "Mar 2022 — Aug 2022",
+    period: "Mar 2022 – Aug 2022",
     summary:
       "Shipped end-to-end features for a learning platform serving special-needs education, from reusable React components through Django REST APIs to the persistence layer.",
     highlights: [
-      "Delivered end-to-end full-stack features across React, Python/Django REST APIs and MongoDB — including a real-time dashboard giving educators live visibility into student learning activity via WebSocket-driven updates.",
+      "Delivered end-to-end full-stack features across React, Python/Django REST APIs and MongoDB, including a real-time dashboard giving educators live visibility into student learning activity via WebSocket-driven updates.",
       "Cut dashboard response time by ~35% through Redis caching, query optimisation, lazy loading, code splitting and API response compression, reducing repeated data-fetching overhead across data-heavy workflows.",
       "Built 10+ reusable React components with Zustand/Redux state management and shipped 5+ Django REST endpoints with request validation, structured error handling and consistent response formatting.",
       "Containerised application components with Docker and validated frontend/API behaviour with Git, Postman, React DevTools and browser debugging during Agile sprint delivery.",
@@ -90,7 +90,7 @@ export const experience: Role[] = [
     location: "Hyderabad, India",
     start: "2021-03",
     end: "2022-01",
-    period: "Mar 2021 — Jan 2022",
+    period: "Mar 2021 – Jan 2022",
     summary:
       "Built and hardened Java Spring Boot services integrating with OSI PI real-time process data for enterprise operations.",
     highlights: [
@@ -102,12 +102,12 @@ export const experience: Role[] = [
     stack: ["Java", "Spring Boot", "REST APIs", "OSI PI", "SQL", "Agile"],
   },
   {
-    company: "LVPEI — Centre for Innovation",
+    company: "LVPEI, Centre for Innovation",
     title: "Software Developer",
     location: "Hyderabad, India",
     start: "2020-01",
     end: "2021-03",
-    period: "Jan 2020 — Mar 2021",
+    period: "Jan 2020 – Mar 2021",
     summary:
       "Backend APIs and workflow automation for patient care, EMR and clinical data at a leading eye-care institute, built with data privacy as a first constraint.",
     highlights: [
@@ -180,7 +180,7 @@ export const skillGroups: SkillGroup[] = [
     title: "Frontend",
     icon: "layout",
     context:
-      "Product workflows, not landing pages — long-lived UI in React and Dojo where state and permissions matter.",
+      "Product workflows, not landing pages: long-lived UI in React and Dojo where state and permissions matter.",
     span: "md:col-span-6 lg:col-span-5",
     items: [
       "React.js",
@@ -198,7 +198,7 @@ export const skillGroups: SkillGroup[] = [
     title: "Databases & Data Systems",
     icon: "database",
     context:
-      "Relational, document and real-time process data — including OSI PI feeds at Wipro.",
+      "Relational, document and real-time process data, including OSI PI feeds at Wipro.",
     span: "md:col-span-3 lg:col-span-4",
     items: [
       "PostgreSQL",
@@ -253,7 +253,7 @@ export const skillGroups: SkillGroup[] = [
     title: "Machine Learning",
     icon: "brain",
     context:
-      "Applied work from my own projects — NLP and knowledge-graph retrieval, and image classification in PyTorch.",
+      "Applied work from my own projects: NLP and knowledge-graph retrieval, and image classification in PyTorch.",
     span: "md:col-span-6 lg:col-span-4",
     items: [
       "PyTorch",
@@ -295,13 +295,13 @@ export const education: Education[] = [
     degree: "Master of Applied Computer Science",
     institution: "Concordia University",
     location: "Montreal, Canada",
-    period: "2022 — 2024",
+    period: "2022 – 2024",
   },
   {
     degree: "B.Tech, Computer Science and Engineering",
     institution: "Geethanjali College of Engineering and Technology",
     location: "Hyderabad, India",
-    period: "2016 — 2020",
+    period: "2016 – 2020",
   },
 ];
 
@@ -358,7 +358,7 @@ export const impact: Outcomes[] = [
 export const about = {
   paragraphs: [
     "I build and stabilise software across frontend workflows, backend services, API integrations, persistence layers and release validation. My work at IBM centres on Engineering Lifecycle Management, where I debug distributed enterprise systems, coordinate interim-fix readiness and ship customer-facing fixes under sprint timelines.",
-    "Before IBM I shipped product across ed-tech, energy services and healthcare — a real-time dashboard for educators, Spring Boot services reading live OSI PI process data, and a payment gateway inside clinical billing at an eye-care institute.",
+    "Before IBM I shipped product across ed-tech, energy services and healthcare: a real-time dashboard for educators, Spring Boot services reading live OSI PI process data, and a payment gateway inside clinical billing at an eye-care institute.",
     "What I care about is the unglamorous part: the defect that turns out to be three layers below where it surfaced, and the fix that actually reaches production and holds up.",
   ],
   facts: [

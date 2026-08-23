@@ -61,7 +61,7 @@ const nunito = Nunito({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — ${site.role}`,
+    default: `${site.name} | ${site.role}`,
     template: `%s · ${site.name}`,
   },
   description: site.description,
@@ -89,12 +89,12 @@ export const metadata: Metadata = {
     locale: "en_CA",
     url: site.url,
     siteName: site.name,
-    title: `${site.name} — ${site.role}`,
+    title: `${site.name} | ${site.role}`,
     description: site.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — ${site.role}`,
+    title: `${site.name} | ${site.role}`,
     description: site.shortDescription,
   },
   robots: {

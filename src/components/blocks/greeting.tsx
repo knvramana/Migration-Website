@@ -27,8 +27,7 @@ export function Greeting() {
         </div>
 
         <p className="bg-secondary/70 text-muted-foreground mt-6 rounded-lg px-4 py-2.5 text-sm">
-          Hello &mdash; I&rsquo;m a full-stack developer based in{" "}
-          {site.location}.
+          Hello, I&rsquo;m a full-stack developer based in {site.location}.
         </p>
 
         {/*

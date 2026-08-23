@@ -66,7 +66,7 @@ export function webSiteLd() {
     "@type": "WebSite",
     "@id": WEBSITE_ID,
     url: site.url,
-    name: `${site.name} — ${site.role}`,
+    name: `${site.name} | ${site.role}`,
     description: site.description,
     inLanguage: "en-CA",
     publisher: { "@id": PERSON_ID },

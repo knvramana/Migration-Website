@@ -21,7 +21,7 @@ export function CopyEmail() {
       toast.success("Email copied to clipboard");
       window.setTimeout(() => setCopied(false), 2000);
     } catch {
-      toast.error(`Could not copy — the address is ${site.email}`);
+      toast.error(`Could not copy. The address is ${site.email}`);
     }
   };
 

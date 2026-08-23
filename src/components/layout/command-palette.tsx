@@ -124,7 +124,7 @@ export function CommandPalette({
                     toast.success("Email copied to clipboard");
                   } catch {
                     toast.error(
-                      "Could not copy — the address is " + site.email,
+                      "Could not copy. The address is " + site.email,
                     );
                   }
                 })
