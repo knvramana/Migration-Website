@@ -44,7 +44,9 @@ export const site = {
 
   availability: {
     open: true,
-    text: "Open to full-stack and application developer roles",
+    text: "Open to full-stack and application developer roles, remote or relocation",
+    /** Footer suffix. Kept separate from location, which reads as prose in the hero. */
+    mobility: "open to remote or relocation",
   },
 } as const;
 

@@ -16,7 +16,7 @@ export function SiteFooter() {
         <div className="text-center sm:text-left">
           <p className="text-sm font-extrabold">{site.name}</p>
           <p className="text-muted-foreground mt-1 font-mono text-xs">
-            {site.location}
+            {site.location} · {site.availability.mobility}
           </p>
         </div>
 
