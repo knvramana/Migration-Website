@@ -363,7 +363,10 @@ export const about = {
   ],
   facts: [
     { label: "Based in", value: "Toronto, Canada" },
-    { label: "Education", value: "M.ACS, Concordia University" },
+    {
+      label: "Education",
+      value: "Master of Applied Computer Science, Concordia University",
+    },
     { label: "Certified", value: "Azure Data Engineer (DP-203)" },
   ],
 } as const;
@@ -400,17 +403,22 @@ export const bio: BioEntry[] = [
     year: "2022",
     place: "Montreal, Canada",
     moved: true,
-    text: "Shipped an ed-tech platform at CognitiveBotics, then moved to Montreal for a Master of Applied Computer Science at Concordia.",
+    text: "Moved to Montreal for a Master of Applied Computer Science at Concordia University.",
   },
   {
     year: "2024",
     place: "Montreal, Canada",
-    text: "Completed the M.ACS and became Microsoft Certified: Azure Data Engineer Associate.",
+    text: "Completed the Master of Applied Computer Science and became Microsoft Certified: Azure Data Engineer Associate.",
   },
   {
     year: "2025",
     place: "Toronto, Canada",
     moved: true,
-    text: "Joined IBM Canada, working on Engineering Lifecycle Management.",
+    text: "Joined IBM Canada in January, working on Engineering Lifecycle Management from Toronto.",
   },
 ];
+  {
+    year: "2022",
+    place: "Hyderabad, India",
+    text: "Shipped an ed-tech platform for special-needs education at CognitiveBotics.",
+  },

@@ -21,8 +21,8 @@ export function Bio() {
           className="bg-border absolute top-2 bottom-6 left-[0.4375rem] w-px"
         />
 
-        {bio.map((entry) => (
-          <li key={entry.year} className="relative pb-7 pl-8 last:pb-0">
+        {bio.map((entry, index) => (
+          <li key={index} className="relative pb-7 pl-8 last:pb-0">
             {/* Node — filled where the city changes, hollow otherwise. */}
             <span
               aria-hidden="true"
