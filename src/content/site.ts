@@ -21,9 +21,7 @@ export const site = {
    * reach new URL(site.url) in layout.tsx, which throws ERR_INVALID_URL at
    * module scope and fails the whole build on /_not-found.
    */
-  url:
-    process.env.NEXT_PUBLIC_SITE_URL?.trim() ||
-    "https://ramanakoduri.vercel.app",
+  url: process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://ramanakoduri.com",
 
   /**
    * Kept under 160 characters: Google truncates the snippet around there,
