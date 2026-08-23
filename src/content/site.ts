@@ -18,8 +18,12 @@ export const site = {
    */
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://ramanakoduri.vercel.app",
 
+  /**
+   * Kept under 160 characters: Google truncates the snippet around there,
+   * and this string is also the og:description and the JSON-LD description.
+   */
   description:
-    "Full-stack software developer at IBM Canada building and stabilising enterprise Engineering Lifecycle Management systems: REST/OSLC services, Java and Python backends, React and TypeScript applications, and the release validation that gets fixes to customers.",
+    "Full-stack developer at IBM Canada building enterprise Engineering Lifecycle Management systems: REST/OSLC services, Java and Python backends, React UIs.",
 
   shortDescription:
     "Full-stack engineer shipping enterprise systems at IBM Canada.",
