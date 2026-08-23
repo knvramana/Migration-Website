@@ -13,10 +13,17 @@ export const site = {
 
   /**
    * Canonical origin. Set NEXT_PUBLIC_SITE_URL in Vercel for Production,
-   * Preview and Development — a wrong value here silently poisons
+   * Preview and Development; a wrong value here silently poisons
    * metadataBase, canonicals, the sitemap and every OG image URL.
+   *
+   * `||` and not `??`: an env var that exists but is empty is the usual
+   * Vercel misconfiguration, and `??` only guards null/undefined. It let ""
+   * reach new URL(site.url) in layout.tsx, which throws ERR_INVALID_URL at
+   * module scope and fails the whole build on /_not-found.
    */
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://ramanakoduri.vercel.app",
+  url:
+    process.env.NEXT_PUBLIC_SITE_URL?.trim() ||
+    "https://ramanakoduri.vercel.app",
 
   /**
    * Kept under 160 characters: Google truncates the snippet around there,
