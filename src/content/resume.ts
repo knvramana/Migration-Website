@@ -357,6 +357,23 @@ export const impact: Outcomes[] = [
   },
 ];
 
+/**
+ * The hero's stack line. Every item also appears in skillGroups above: the
+ * hero names what I reach for most, the skills section is the full list.
+ */
+export const heroStack: string[] = [
+  "Java",
+  "Python",
+  "TypeScript",
+  "React",
+  "Next.js",
+  "Node.js",
+  "PostgreSQL",
+  "Docker",
+  "Kubernetes",
+  "PyTorch",
+];
+
 export const about = {
   paragraphs: [
     "I build and stabilise software across frontend workflows, backend services, API integrations, persistence layers and release validation. My work at IBM centres on Engineering Lifecycle Management, where I debug distributed enterprise systems, coordinate interim-fix readiness and ship customer-facing fixes under sprint timelines.",
@@ -403,6 +420,11 @@ export const bio: BioEntry[] = [
   },
   {
     year: "2022",
+    place: "Hyderabad, India",
+    text: "Shipped an ed-tech platform for special-needs education at CognitiveBotics.",
+  },
+  {
+    year: "2022",
     place: "Montreal, Canada",
     moved: true,
     text: "Moved to Montreal for a Master of Applied Computer Science at Concordia University.",
@@ -419,8 +441,3 @@ export const bio: BioEntry[] = [
     text: "Joined IBM Canada in January, working on Engineering Lifecycle Management from Toronto.",
   },
 ];
-  {
-    year: "2022",
-    place: "Hyderabad, India",
-    text: "Shipped an ed-tech platform for special-needs education at CognitiveBotics.",
-  },

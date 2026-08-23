@@ -1,16 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRightIcon, FileTextIcon } from "lucide-react";
+import { ArrowRightIcon } from "lucide-react";
 
-import { GithubIcon, LinkedinIcon } from "@/components/common/brand-icons";
+import { LinkedinIcon } from "@/components/common/brand-icons";
 import { PixelDesk } from "@/components/common/pixel-desk";
+import { TagRow } from "@/components/common/tag";
 import { Button } from "@/components/ui/button";
+import { heroStack } from "@/content/resume";
 import { site } from "@/content/site";
-
-const socials = [
-  { href: site.socials.github, label: "GitHub", Icon: GithubIcon },
-  { href: site.socials.linkedin, label: "LinkedIn", Icon: LinkedinIcon },
-];
 
 export function Greeting() {
   return (
@@ -62,12 +59,20 @@ export function Greeting() {
         </div>
 
         <p className="text-muted-foreground mt-8 leading-relaxed text-pretty">
-          I build and stabilise enterprise systems at IBM &mdash; REST/OSLC
-          services, Java and Spring Boot backends, React and Dojo workflows, and
-          the release validation that decides whether a fix reaches a customer.
+          Most of my work starts as a defect report and ends as a shipped fix.
+          At IBM I trace them across the full request path: REST/OSLC services,
+          Java and Python backends, React and TypeScript workflows, and the
+          regression tests that decide whether the fix reaches a customer.
+        </p>
+
+        <p className="text-muted-foreground mt-3 leading-relaxed text-pretty">
           Four years across enterprise tooling, ed-tech, energy services and
           healthcare.
         </p>
+
+        {/* Same Tag treatment as the skills bento, so the hero introduces no
+            new visual vocabulary. */}
+        <TagRow items={heroStack} className="mt-6" />
 
         <div className="mt-8 flex flex-wrap items-center gap-3">
           <Button asChild className="min-h-10">
@@ -76,33 +81,15 @@ export function Greeting() {
               <ArrowRightIcon className="size-4" />
             </Link>
           </Button>
-          <Button asChild variant="outline" className="min-h-10">
-            {/* prefetch={false}: /resume redirects to a 231KB PDF. */}
-            <Link
-              href={site.resumePath}
-              target="_blank"
-              rel="noopener"
-              prefetch={false}
-            >
-              <FileTextIcon className="size-4" />
-              R&eacute;sum&eacute;
-            </Link>
-          </Button>
-          <ul className="flex items-center gap-2">
-            {socials.map(({ href, label, Icon }) => (
-              <li key={label}>
-                <Link
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className="border-border hover:border-foreground/30 hover:bg-secondary inline-flex size-10 items-center justify-center rounded-lg border transition-colors duration-200"
-                >
-                  <Icon className="size-4" />
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <Link
+            href={site.socials.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            className="border-border hover:border-foreground/30 hover:bg-secondary inline-flex size-10 items-center justify-center rounded-lg border transition-colors duration-200"
+          >
+            <LinkedinIcon className="size-4" />
+          </Link>
         </div>
       </div>
     </section>
