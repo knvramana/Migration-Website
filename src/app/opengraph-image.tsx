@@ -54,10 +54,12 @@ export default function OpengraphImage() {
             fontSize: 32,
             lineHeight: 1.35,
             color: "#5f5e58",
-            maxWidth: 900,
+            // The card is 1200 wide with 80px side padding, so 1040 is the
+            // content box. Anything less orphans the last word of the line.
+            maxWidth: 1040,
           }}
         >
-          Enterprise systems at IBM · REST/OSLC · Spring Boot · React
+          Enterprise systems at IBM · REST/OSLC · Java · Python · React
         </div>
       </div>
 

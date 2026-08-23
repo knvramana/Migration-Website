@@ -19,7 +19,7 @@ export const site = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://ramanakoduri.vercel.app",
 
   description:
-    "Full-stack software developer at IBM Canada building and stabilising enterprise Engineering Lifecycle Management systems: REST/OSLC services, Java and Spring Boot backends, React and Django applications, and the release validation that gets fixes to customers.",
+    "Full-stack software developer at IBM Canada building and stabilising enterprise Engineering Lifecycle Management systems: REST/OSLC services, Java and Python backends, React and TypeScript applications, and the release validation that gets fixes to customers.",
 
   shortDescription:
     "Full-stack engineer shipping enterprise systems at IBM Canada.",
