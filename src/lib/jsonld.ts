@@ -1,12 +1,10 @@
-import { certifications, education, experience } from "@/content/resume";
+import { certifications, education } from "@/content/resume";
 import { site } from "@/content/site";
 
 const PERSON_ID = `${site.url}/#person`;
 const WEBSITE_ID = `${site.url}/#website`;
 
 export function personLd() {
-  const current = experience[0];
-
   return {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -14,14 +12,9 @@ export function personLd() {
     name: site.name,
     url: site.url,
     image: `${site.url}/images/portrait.jpg`,
-    jobTitle: `${current.title}, ${current.team}`,
+    jobTitle: site.role,
     description: site.description,
     email: `mailto:${site.email}`,
-    worksFor: {
-      "@type": "Organization",
-      name: current.company,
-      url: "https://www.ibm.com",
-    },
     address: {
       "@type": "PostalAddress",
       addressLocality: "Toronto",

@@ -34,11 +34,11 @@ export const experience: Role[] = [
     team: "Engineering Lifecycle Management (ELM)",
     location: "Canada",
     start: "2025-01",
-    end: "Present",
-    period: "Jan 2025 – Present",
+    end: "2026-09-23",
+    period: "Jan 2025 – Sep 2026",
     featured: true,
     summary:
-      "Building and stabilising Rhapsody Model Manager and IBM ELM for Fortune 500 engineering teams, shipping customer-facing fixes across the full request path and coordinating what goes into each interim-fix release.",
+      "Built and stabilised Rhapsody Model Manager and IBM ELM for Fortune 500 engineering teams, shipping customer-facing fixes across the full request path and coordinating what went into each interim-fix release.",
     highlights: [
       "Engineered full-stack enterprise features across RMM and IBM ELM: REST/OSLC service layers, Dojo-based web UI workflows, persistent data models and cross-application integration flows used by Fortune 500 engineering teams.",
       "Resolved 15+ customer-reported production defects spanning indexing, linking, permissions, configuration contexts and cross-application integration, improving platform reliability and reducing recurring validation issues.",
@@ -376,7 +376,7 @@ export const heroStack: string[] = [
 
 export const about = {
   paragraphs: [
-    "I build and stabilise software across frontend workflows, backend services, API integrations, persistence layers and release validation. My work at IBM centres on Engineering Lifecycle Management, where I debug distributed enterprise systems, coordinate interim-fix readiness and ship customer-facing fixes under sprint timelines.",
+    "I build and stabilise software across frontend workflows, backend services, API integrations, persistence layers and release validation. At IBM I worked on Engineering Lifecycle Management, debugging distributed enterprise systems, coordinating interim-fix readiness and shipping customer-facing fixes under sprint timelines.",
     "Before IBM I shipped product across ed-tech, energy services and healthcare: a real-time dashboard for educators, Spring Boot services reading live OSI PI process data, and a payment gateway inside clinical billing at an eye-care institute.",
     "What I care about is the unglamorous part: the defect that turns out to be three layers below where it surfaced, and the fix that actually reaches production and holds up.",
   ],
@@ -439,5 +439,10 @@ export const bio: BioEntry[] = [
     place: "Toronto, Canada",
     moved: true,
     text: "Joined IBM Canada in January, working on Engineering Lifecycle Management from Toronto.",
+  },
+  {
+    year: "2026",
+    place: "Toronto, Canada",
+    text: "Completed my role at IBM Canada on September 23.",
   },
 ];

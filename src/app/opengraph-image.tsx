@@ -59,7 +59,7 @@ export default function OpengraphImage() {
             maxWidth: 1040,
           }}
         >
-          Enterprise systems at IBM · REST/OSLC · Java · Python · React
+          Enterprise systems · REST/OSLC · Java · Python · React
         </div>
       </div>
 

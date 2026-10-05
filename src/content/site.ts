@@ -28,10 +28,10 @@ export const site = {
    * and this string is also the og:description and the JSON-LD description.
    */
   description:
-    "Full-stack developer at IBM Canada. I build and debug enterprise Engineering Lifecycle Management systems: REST/OSLC services, Java and Python, React.",
+    "Full-stack developer and former IBM Canada software developer. I build enterprise systems across REST/OSLC services, Java, Python and React.",
 
   shortDescription:
-    "Full-stack engineer shipping enterprise systems at IBM Canada.",
+    "Full-stack engineer with experience building enterprise systems at IBM Canada.",
 
   socials: {
     github: "https://github.com/knvramana",

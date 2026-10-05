@@ -60,7 +60,7 @@ export function Greeting() {
 
         <p className="text-muted-foreground mt-8 leading-relaxed text-pretty">
           Most of my work starts as a defect report and ends as a shipped fix.
-          At IBM I trace them across the full request path: REST/OSLC services,
+          At IBM I traced them across the full request path: REST/OSLC services,
           Java and Python backends, React and TypeScript workflows, and the
           regression tests that decide whether the fix reaches a customer.
         </p>
